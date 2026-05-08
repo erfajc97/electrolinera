@@ -66,10 +66,10 @@ const dashFeatures = [
 
           <div class="relative mx-auto max-w-[260px]">
             <div class="aspect-[9/19] rounded-[2.2rem] border-[8px] border-ink-950 bg-ink-900 p-2 shadow-glow">
-              <div class="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-gradient-to-b from-brand-700 to-ink-950">
+              <div class="relative flex h-full w-full flex-col gap-2 overflow-hidden rounded-[1.4rem] bg-gradient-to-b from-brand-700 to-ink-950 p-2.5">
 
                 <!-- Status bar -->
-                <div class="absolute inset-x-4 top-3 flex items-center justify-between text-[10px] font-semibold text-white">
+                <div class="flex items-center justify-between text-[10px] font-semibold text-white">
                   <span>9:41</span>
                   <span class="flex items-center gap-1">
                     <span class="inline-block h-1 w-1 rounded-full bg-white/80"></span>
@@ -79,46 +79,56 @@ const dashFeatures = [
                   </span>
                 </div>
 
+                <!-- Greeting + search -->
+                <div class="flex items-center gap-2">
+                  <div class="grid h-7 w-7 place-items-center rounded-full bg-lime-glow/90 text-[10px] font-bold text-ink-950">H</div>
+                  <div class="flex-1">
+                    <p class="text-[9px] text-brand-200">Hola, Harold</p>
+                    <p class="text-[10px] font-semibold text-white">¿A dónde vamos hoy?</p>
+                  </div>
+                  <span class="grid h-7 w-7 place-items-center rounded-full bg-white/15 text-white">
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/></svg>
+                  </span>
+                </div>
+
                 <!-- Mini map -->
-                <div class="absolute inset-x-3 top-9 h-[110px] overflow-hidden rounded-2xl border border-white/10 bg-ink-950">
-                  <svg viewBox="0 0 240 110" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" aria-hidden>
+                <div class="relative h-[120px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-ink-950">
+                  <svg viewBox="0 0 240 120" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" aria-hidden>
                     <defs>
                       <pattern id="grid-map" width="20" height="20" patternUnits="userSpaceOnUse">
                         <path d="M 20 0 L 0 0 0 20" fill="none" stroke="oklch(0.55 0.17 152 / 0.18)" stroke-width="0.5"/>
                       </pattern>
                     </defs>
-                    <rect width="240" height="110" fill="url(#grid-map)"/>
-                    <!-- streets -->
-                    <path d="M0 70 Q60 60 120 70 T240 65" stroke="oklch(0.46 0.14 152 / 0.6)" stroke-width="2.5" fill="none"/>
-                    <path d="M70 0 Q60 50 80 110" stroke="oklch(0.46 0.14 152 / 0.5)" stroke-width="2.5" fill="none"/>
-                    <path d="M170 0 Q180 50 165 110" stroke="oklch(0.46 0.14 152 / 0.4)" stroke-width="2" fill="none"/>
-                    <path d="M0 30 Q120 25 240 35" stroke="oklch(0.46 0.14 152 / 0.35)" stroke-width="1.8" fill="none"/>
-                    <!-- park -->
-                    <ellipse cx="200" cy="90" rx="35" ry="18" fill="oklch(0.64 0.18 152 / 0.18)"/>
-                    <!-- pins -->
+                    <rect width="240" height="120" fill="url(#grid-map)"/>
+                    <path d="M0 80 Q60 70 120 80 T240 75" stroke="oklch(0.46 0.14 152 / 0.6)" stroke-width="2.5" fill="none"/>
+                    <path d="M70 0 Q60 60 80 120" stroke="oklch(0.46 0.14 152 / 0.5)" stroke-width="2.5" fill="none"/>
+                    <path d="M170 0 Q180 60 165 120" stroke="oklch(0.46 0.14 152 / 0.4)" stroke-width="2" fill="none"/>
+                    <path d="M0 35 Q120 30 240 40" stroke="oklch(0.46 0.14 152 / 0.35)" stroke-width="1.8" fill="none"/>
+                    <ellipse cx="200" cy="100" rx="35" ry="18" fill="oklch(0.64 0.18 152 / 0.18)"/>
                     <g>
-                      <circle cx="80" cy="55" r="14" fill="oklch(0.88 0.20 130 / 0.25)"/>
-                      <circle cx="80" cy="55" r="6" fill="oklch(0.88 0.20 130)"/>
-                      <circle cx="80" cy="55" r="2" fill="white"/>
+                      <circle cx="80" cy="60" r="16" fill="oklch(0.88 0.20 130 / 0.18)" class="animate-pulse-soft"/>
+                      <circle cx="80" cy="60" r="7" fill="oklch(0.88 0.20 130)"/>
+                      <circle cx="80" cy="60" r="2" fill="white"/>
                     </g>
-                    <circle cx="155" cy="40" r="4" fill="oklch(0.64 0.18 152)"/>
-                    <circle cx="200" cy="78" r="4" fill="oklch(0.64 0.18 152)"/>
-                    <circle cx="45" cy="85" r="4" fill="oklch(0.64 0.18 152)"/>
+                    <circle cx="155" cy="45" r="4" fill="oklch(0.64 0.18 152)"/>
+                    <circle cx="200" cy="85" r="4" fill="oklch(0.64 0.18 152)"/>
+                    <circle cx="45" cy="95" r="4" fill="oklch(0.64 0.18 152)"/>
                   </svg>
+                  <div class="absolute left-2 top-2 rounded-full bg-ink-900/80 px-2 py-0.5 text-[9px] font-semibold text-white backdrop-blur">📍 Bogotá</div>
                   <div class="absolute right-2 top-2 grid h-6 w-6 place-items-center rounded-md border border-white/20 bg-ink-900/80 text-white">
-                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/></svg>
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
                   </div>
                 </div>
 
                 <!-- Nearest station card -->
-                <div class="absolute inset-x-3 top-[140px] rounded-2xl bg-white/10 p-3 backdrop-blur">
+                <div class="rounded-2xl bg-white/10 p-2.5 backdrop-blur">
                   <div class="flex items-center justify-between">
                     <p class="text-[10px] uppercase tracking-widest text-brand-200">Más cerca</p>
                     <span class="rounded-full bg-lime-glow/30 px-1.5 py-0.5 text-[9px] font-bold text-lime-glow">Libre</span>
                   </div>
                   <p class="font-display text-sm font-bold text-white">Estación Chapinero</p>
-                  <p class="text-[10px] text-brand-100">2 conectores libres · 1.4 km · 4 min</p>
-                  <div class="mt-2 flex gap-1.5">
+                  <p class="text-[10px] text-brand-100">2 conectores · 1.4 km · 4 min</p>
+                  <div class="mt-1.5 flex gap-1">
                     <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">CCS2</span>
                     <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">120 kW</span>
                     <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">★ 4.8</span>
@@ -126,36 +136,37 @@ const dashFeatures = [
                 </div>
 
                 <!-- Charging session -->
-                <div class="absolute inset-x-3 bottom-[88px] rounded-2xl bg-white p-3 shadow-soft">
+                <div class="rounded-2xl bg-white p-2.5 shadow-soft">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-semibold uppercase text-brand-700">Cargando</span>
+                    <span class="text-[10px] font-semibold uppercase text-brand-700">Cargando · 142 kW</span>
                     <span class="font-display text-xs font-bold text-ink-950">68%</span>
                   </div>
                   <div class="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink-100">
                     <div class="h-full w-[68%] rounded-full bg-gradient-to-r from-brand-500 to-lime-glow"></div>
                   </div>
                   <div class="mt-1.5 flex items-center justify-between text-[10px] text-ink-500">
-                    <span>~ 12 min · 142 kW</span>
+                    <span>~ 12 min</span>
                     <span class="font-semibold text-brand-700">28.4 kWh</span>
                   </div>
                 </div>
 
-                <!-- Bottom tab bar -->
-                <div class="absolute inset-x-3 bottom-12 rounded-2xl bg-ink-950/70 p-2 backdrop-blur">
-                  <div class="flex items-center justify-between text-white">
-                    <div>
-                      <p class="text-[9px] uppercase tracking-widest text-brand-200">CO₂ evitado</p>
-                      <p class="font-display text-xs font-bold">3.4 kg · hoy</p>
-                    </div>
-                    <div class="text-right">
-                      <p class="text-[9px] uppercase tracking-widest text-brand-200">Puntos</p>
-                      <p class="font-display text-xs font-bold text-lime-glow">+ 142 ⚡</p>
-                    </div>
+                <!-- CO2 + points strip -->
+                <div class="grid grid-cols-2 gap-1.5">
+                  <div class="rounded-xl bg-ink-950/60 p-2 text-white backdrop-blur">
+                    <p class="text-[9px] uppercase tracking-widest text-brand-200">CO₂ hoy</p>
+                    <p class="font-display text-xs font-bold">3.4 kg ↓</p>
+                  </div>
+                  <div class="rounded-xl bg-ink-950/60 p-2 text-white backdrop-blur">
+                    <p class="text-[9px] uppercase tracking-widest text-brand-200">Puntos</p>
+                    <p class="font-display text-xs font-bold text-lime-glow">+ 142 ⚡</p>
                   </div>
                 </div>
 
+                <!-- Spacer pushes tab nav to the bottom -->
+                <div class="flex-1"></div>
+
                 <!-- Tab nav -->
-                <div class="absolute inset-x-2 bottom-2 flex items-center justify-around rounded-2xl bg-white/10 p-1.5 backdrop-blur">
+                <div class="flex items-center justify-around rounded-2xl bg-white/10 p-1.5 backdrop-blur">
                   <span class="grid h-7 w-7 place-items-center rounded-xl bg-white text-ink-950">
                     <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 8v12h5v-7h6v7h5V8L12 2Z"/></svg>
                   </span>

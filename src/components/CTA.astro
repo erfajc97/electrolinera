@@ -24,36 +24,98 @@
         </ul>
       </div>
 
-      <form class="lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactamos en menos de 24 horas.');">
+      <form id="contact-form" class="lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur" novalidate>
         <div class="space-y-4">
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Nombre</span>
-            <input required type="text" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Harold Velázquez"/>
+            <input name="name" required type="text" autocomplete="name" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Harold Velázquez"/>
           </label>
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Email</span>
-            <input required type="email" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="harold@empresa.co"/>
+            <input name="email" required type="email" autocomplete="email" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="harold@empresa.co"/>
           </label>
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Ciudad / sitio</span>
-            <input required type="text" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Bogotá, Chapinero"/>
+            <input name="city" required type="text" autocomplete="address-level2" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Bogotá, Chapinero"/>
           </label>
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">¿Qué te interesa?</span>
-            <select class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-brand-400">
+            <select name="interest" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-brand-400">
               <option class="bg-ink-900">Franquicia llave en mano</option>
               <option class="bg-ink-900">Hardware (compra directa)</option>
               <option class="bg-ink-900">Solar + electrolinera</option>
               <option class="bg-ink-900">Solo software / dashboard</option>
             </select>
           </label>
-          <button type="submit" class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime-glow px-5 py-3.5 text-sm font-bold text-ink-950 transition hover:bg-white">
-            Solicitar diagnóstico
+
+          <!-- Honeypot — hidden from real users, bots will fill it. -->
+          <label class="absolute left-[-9999px] top-[-9999px]" aria-hidden="true" tabindex="-1">
+            Sitio web
+            <input name="website" type="text" tabindex="-1" autocomplete="off"/>
+          </label>
+
+          <button type="submit" data-submit class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime-glow px-5 py-3.5 text-sm font-bold text-ink-950 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60">
+            <span data-label>Solicitar diagnóstico</span>
             <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
+
+          <p data-feedback class="hidden rounded-xl border border-lime-glow/40 bg-lime-glow/10 px-3 py-2 text-center text-xs text-lime-glow"></p>
+
           <p class="text-center text-[10px] text-ink-400">Al enviar aceptas la política de privacidad de Disart Energy.</p>
         </div>
       </form>
+
+      <script>
+        const form = document.getElementById('contact-form') as HTMLFormElement | null;
+        if (form) {
+          const button = form.querySelector('[data-submit]') as HTMLButtonElement;
+          const label = form.querySelector('[data-label]') as HTMLSpanElement;
+          const feedback = form.querySelector('[data-feedback]') as HTMLParagraphElement;
+          const originalLabel = label.textContent ?? 'Solicitar diagnóstico';
+
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const data = new FormData(form);
+            const payload = {
+              name: String(data.get('name') ?? ''),
+              email: String(data.get('email') ?? ''),
+              city: String(data.get('city') ?? ''),
+              interest: String(data.get('interest') ?? ''),
+              website: String(data.get('website') ?? ''),
+            };
+
+            button.disabled = true;
+            label.textContent = 'Enviando…';
+            feedback.classList.add('hidden');
+
+            try {
+              const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+              });
+              const body = await res.json().catch(() => ({}));
+
+              if (res.ok && body.ok) {
+                feedback.textContent = '¡Listo, Harold! Te contactamos en menos de 24 horas.';
+                feedback.classList.remove('hidden', 'border-red-400/40', 'bg-red-500/10', 'text-red-200');
+                feedback.classList.add('border-lime-glow/40', 'bg-lime-glow/10', 'text-lime-glow');
+                form.reset();
+              } else {
+                throw new Error(body.error ?? 'NETWORK');
+              }
+            } catch {
+              feedback.textContent = 'No se pudo enviar. Intenta de nuevo o escríbenos a hola@disart.energy.';
+              feedback.classList.remove('hidden', 'border-lime-glow/40', 'bg-lime-glow/10', 'text-lime-glow');
+              feedback.classList.add('border-red-400/40', 'bg-red-500/10', 'text-red-200');
+            } finally {
+              button.disabled = false;
+              label.textContent = originalLabel;
+            }
+          });
+        }
+      </script>
     </div>
   </div>
 </section>

@@ -42,6 +42,8 @@
   --animate-marquee: marquee 30s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-soft: pulseSoft 4s ease-in-out infinite;
+  --animate-grid-pan: gridPan 22s linear infinite;
+  --animate-grid-glow: gridGlow 8s ease-in-out infinite;
 }
 
 @keyframes marquee {
@@ -55,6 +57,14 @@
 @keyframes pulseSoft {
   0%,100% { opacity: 0.6; }
   50%     { opacity: 1; }
+}
+@keyframes gridPan {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 56px 56px, 56px 56px; }
+}
+@keyframes gridGlow {
+  0%,100% { opacity: 0.55; transform: scale(1); }
+  50%     { opacity: 1;    transform: scale(1.04); }
 }
 
 html, body {
@@ -77,16 +87,60 @@ body {
 
 .bg-grid {
   background-image:
-    linear-gradient(to right, oklch(0.55 0.17 152 / 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.55 0.17 152 / 0.08) 1px, transparent 1px);
+    linear-gradient(to right, oklch(0.55 0.17 152 / 0.10) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.55 0.17 152 / 0.10) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  animation: var(--animate-grid-pan);
+  will-change: background-position;
+}
+
+/* Pulsing scan beam that sweeps over the grid */
+.bg-grid-beam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 30% at 50% 50%, oklch(0.88 0.20 130 / 0.18), transparent 70%);
+  filter: blur(20px);
+  animation: var(--animate-grid-glow);
+  transform-origin: center;
 }
 
 .bg-radial-fade {
   background:
     radial-gradient(60% 60% at 50% 0%, oklch(0.88 0.10 152 / 0.55), transparent 70%),
     radial-gradient(50% 60% at 100% 0%, oklch(0.88 0.20 130 / 0.35), transparent 70%);
+}
+
+.hero-spark {
+  position: absolute;
+  bottom: -20px;
+  left: var(--x, 50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: oklch(0.88 0.20 130);
+  box-shadow:
+    0 0 8px oklch(0.88 0.20 130 / 0.9),
+    0 0 18px oklch(0.64 0.18 152 / 0.6);
+  opacity: 0;
+  animation: sparkRise var(--dur, 10s) linear infinite;
+  animation-delay: var(--d, 0s);
+  filter: saturate(140%);
+}
+@keyframes sparkRise {
+  0%   { transform: translateY(0)    scale(0.6); opacity: 0; }
+  10%  { opacity: 0.9; }
+  100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-grid, .bg-grid-beam, .hero-spark, .animate-marquee, .animate-pulse-soft, .animate-float {
+    animation: none !important;
+  }
+  .hero-spark { display: none; }
 }
 
 .glass {
