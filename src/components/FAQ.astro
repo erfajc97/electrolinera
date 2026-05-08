@@ -1,0 +1,35 @@
+---
+const faqs = [
+  { q: "¿Cuánto se demora instalar una electrolinera Disart?", a: "Entre 60 y 90 días desde la firma del contrato, dependiendo de los permisos eléctricos y la obra civil. Te acompañamos con el trámite ante la CREG, UPME y operador de red local." },
+  { q: "¿Necesito experiencia técnica para operarla?", a: "Para nada. Disart Energy se encarga del hardware y el software. Vos gestionás el sitio y recibís los ingresos ya liquidados." },
+  { q: "¿Cuál es la inversión mínima?", a: "Desde 28.000 USD para el paquete Starter con 1 cargador DC de 60 kW. Manejamos modelos de financiación con bancos aliados en Colombia." },
+  { q: "¿Se pueden combinar paneles solares con la electrolinera?", a: "Sí. Disart nació en energía solar. Integramos paneles + batería para bajar tu costo por kWh hasta un 60% — clave en zonas con tarifas altas." },
+  { q: "¿Quién paga la energía y el internet?", a: "El franquiciado paga el consumo, pero el costo se descuenta automáticamente del flujo de caja del software y solo recibís la utilidad neta." },
+  { q: "¿Qué carros soportan los cargadores?", a: "Todos los eléctricos con CCS2 o CHAdeMO: Tesla (con adaptador), BYD, Renault, JAC, Volvo, Kia, Hyundai, Audi, BMW, Porsche, etc." },
+  { q: "¿En qué ciudades de Colombia operan?", a: "Empezamos en Bogotá, Medellín, Cali y Bucaramanga, con expansión a Barranquilla, Cartagena y el Eje Cafetero. Si tu sitio está fuera, lo evaluamos igual." },
+];
+---
+<section id="faq" class="relative py-24">
+  <div class="mx-auto max-w-3xl px-4">
+    <div class="text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Preguntas frecuentes</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Lo que más preguntan los futuros franquiciados.
+      </h2>
+    </div>
+
+    <div class="mt-12 divide-y divide-ink-100 rounded-3xl border border-ink-100 bg-white shadow-soft">
+      {faqs.map((f) => (
+        <details class="group p-6 open:bg-brand-50/40">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+            <span class="font-display text-base font-semibold text-ink-950">{f.q}</span>
+            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 transition group-open:rotate-45">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-ink-700">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

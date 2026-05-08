@@ -1,0 +1,23 @@
+---
+const stats = [
+  { v: "+10", u: "años", t: "de Disart en energía limpia y solar" },
+  { v: "60%", u: "menos", t: "de costo por kWh combinando solar" },
+  { v: "24×7", u: "", t: "monitoreo y soporte de operación" },
+  { v: "99.7%", u: "", t: "uptime promedio de la red" },
+];
+---
+<section class="relative -mt-12 px-4">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-px overflow-hidden rounded-3xl border border-ink-100 bg-ink-100 shadow-soft sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((s) => (
+        <div class="bg-white p-8">
+          <p class="font-display text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+            {s.v}
+            {s.u && <span class="ml-1 text-base font-semibold text-brand-700">{s.u}</span>}
+          </p>
+          <p class="mt-2 text-sm text-ink-700">{s.t}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

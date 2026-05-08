@@ -1,0 +1,33 @@
+---
+const steps = [
+  { n: "01", t: "Diagnóstico", d: "Evaluamos tu sitio: tráfico, energía, permisos y proyección financiera. 48 horas." },
+  { n: "02", t: "Diseño y propuesta", d: "Te entregamos una propuesta técnica + comercial personalizada con ROI estimado." },
+  { n: "03", t: "Instalación", d: "Obra civil, instalación eléctrica, integración de cargadores y puesta en marcha." },
+  { n: "04", t: "Operación", d: "App + dashboard activos, monitoreo 24/7 y liquidaciones semanales a tu cuenta." },
+];
+---
+<section id="proceso" class="relative bg-gradient-to-b from-white to-brand-50/40 py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Cómo trabajamos</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        De la primera llamada al primer kWh vendido en 90 días.
+      </h2>
+    </div>
+
+    <div class="relative mt-16">
+      <!-- timeline line (lg+) -->
+      <div class="absolute left-6 right-6 top-12 hidden h-px bg-gradient-to-r from-transparent via-brand-300 to-transparent lg:block"></div>
+
+      <ol class="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s) => (
+          <li class="flex h-full flex-col rounded-3xl border border-ink-100 bg-white p-6 shadow-soft">
+            <span class="font-display grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-sm font-bold text-white shadow-soft">{s.n}</span>
+            <h3 class="font-display mt-5 text-lg font-bold text-ink-950">{s.t}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

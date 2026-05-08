@@ -1,0 +1,63 @@
+---
+const features = [
+  {
+    title: "Hardware llave en mano",
+    desc: "Cargadores DC de 60 a 360 kW, certificados, instalados y monitoreados por nuestro equipo.",
+    icon: `<path d="M9 2v6m6-6v6M5 8h14l-1 13H6L5 8Zm5 5v3m4-3v3"/>`,
+  },
+  {
+    title: "App para conductores",
+    desc: "Mapa en vivo, reserva, pago, historial de consumo y promociones — con tu marca o la nuestra.",
+    icon: `<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>`,
+  },
+  {
+    title: "Dashboard del franquiciado",
+    desc: "Ingresos, eficiencia energética, alertas y cierre contable diario en un solo panel.",
+    icon: `<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/>`,
+  },
+  {
+    title: "Pagos y facturación",
+    desc: "Cobros con tarjeta, PSE, Nequi, Daviplata y suscripciones. Facturación electrónica DIAN incluida.",
+    icon: `<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/>`,
+  },
+  {
+    title: "Energía solar opcional",
+    desc: "Integramos paneles solares y baterías para reducir tu costo por kWh hasta un 60%.",
+    icon: `<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>`,
+  },
+  {
+    title: "Soporte y operación",
+    desc: "Monitoreo 24/7, mantenimiento preventivo, atención al cliente y SLA contractual.",
+    icon: `<path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M12 7v5l3 2"/>`,
+  },
+];
+---
+<section id="solucion" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">La solución completa</p>
+      <h2 class="font-display mt-3 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Todo lo que tu electrolinera necesita, en un solo ecosistema.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Disart Energy reúne hardware, software y operación bajo un único contrato.
+        Tú aportas el sitio, nosotros llevamos la red al siguiente nivel.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((f) => (
+        <article class="group relative overflow-hidden rounded-3xl border border-ink-100 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-brand-100/0 transition-colors group-hover:bg-brand-100/70"></div>
+          <div class="relative">
+            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon} />
+            </span>
+            <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">{f.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">{f.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

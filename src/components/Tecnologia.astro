@@ -1,0 +1,251 @@
+---
+const appFeatures = [
+  "Mapa con disponibilidad en tiempo real",
+  "Reserva anticipada y QR",
+  "Pagos con PSE, Nequi, Daviplata y tarjeta",
+  "Historial, recibos y CO₂ ahorrado",
+  "Notificaciones de carga completa",
+  "Programa de puntos y referidos",
+];
+const dashFeatures = [
+  "Ingresos por sitio, conector y turno",
+  "Eficiencia energética y costo por kWh",
+  "Alertas y diagnóstico remoto",
+  "Cierre contable diario y factura electrónica DIAN",
+  "Tarifas dinámicas por horario",
+  "Integraciones API y webhooks",
+];
+---
+<section id="tecnologia" class="relative overflow-hidden py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Tecnología propietaria</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Una plataforma para conductores. Otra para los dueños. Las dos hablan entre sí.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Hardware abierto sobre OCPP, software pensado para escalar y experiencia
+        cuidada en cada pantalla.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 lg:grid-cols-2">
+      <!-- App conductor -->
+      <article class="group relative overflow-hidden rounded-[2rem] border border-ink-100 bg-gradient-to-br from-white to-brand-50 p-8 shadow-soft">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">App del conductor</p>
+            <h3 class="font-display mt-2 text-2xl font-bold text-ink-950">Disart Drive</h3>
+            <p class="mt-1 text-sm text-ink-700">iOS · Android · WebApp</p>
+          </div>
+          <div class="flex -space-x-2">
+            <span class="grid h-10 w-10 place-items-center rounded-full bg-white shadow-soft ring-1 ring-ink-100"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 13.4c0-2.6 2.2-3.9 2.3-4-1.3-1.8-3.2-2.1-3.9-2.1-1.7-.2-3.2.9-4.1.9-.9 0-2.2-.9-3.6-.9-1.9 0-3.6 1.1-4.5 2.7-1.9 3.3-.5 8.2 1.4 10.9.9 1.3 2 2.7 3.4 2.7 1.4-.1 1.9-.9 3.6-.9 1.6 0 2.1.9 3.6.9 1.5 0 2.5-1.3 3.4-2.6 1-1.5 1.5-3 1.5-3.1-.1-.1-2.9-1.1-2.9-4.5ZM14 5.4c.7-.9 1.2-2.1 1.1-3.4-1 .1-2.3.7-3 1.6-.7.8-1.3 2.1-1.1 3.3 1.2.1 2.3-.6 3-1.5Z"/></svg></span>
+            <span class="grid h-10 w-10 place-items-center rounded-full bg-white shadow-soft ring-1 ring-ink-100"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 20.5 14 14l-2.5-1.5L3.6 20.5Zm0-17 7.9 8.5 2.5-1.4L3.6 3.5Zm12.6 7.6L20 9.6c.6-.3.6-1.2 0-1.5l-3.8-2.2-3 2.7 3 2.5Zm0 1.8-3 2.5 3 2.7 3.8-2.2c.6-.3.6-1.2 0-1.5l-3.8-1.5Z"/></svg></span>
+          </div>
+        </div>
+
+        <div class="relative mt-8">
+          <!-- Floating context cards around phone -->
+          <div class="absolute -left-4 top-6 z-10 hidden w-44 rounded-2xl border border-ink-100 bg-white/95 p-3 shadow-soft backdrop-blur sm:block">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-700">Tarifa actual</p>
+            <p class="font-display mt-0.5 text-base font-bold text-ink-950">$ 980 <span class="text-[10px] font-medium text-ink-500">/ kWh</span></p>
+            <p class="mt-0.5 text-[10px] text-ink-500">Hora valle · 22:00–06:00</p>
+          </div>
+
+          <div class="absolute -right-2 bottom-10 z-10 hidden w-48 rounded-2xl border border-ink-100 bg-white/95 p-3 shadow-soft backdrop-blur sm:block">
+            <div class="flex items-center justify-between">
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-700">Pago listo</p>
+              <span class="rounded-full bg-brand-100 px-1.5 py-0.5 text-[9px] font-bold text-brand-700">Nequi</span>
+            </div>
+            <p class="font-display mt-1 text-sm font-bold text-ink-950">$ 32.450 <span class="text-[10px] font-medium text-ink-500">COP</span></p>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="grid h-5 w-5 place-items-center rounded-full bg-lime-glow text-[10px] font-bold text-ink-950">✓</span>
+              <p class="text-[10px] text-ink-700">Aprobado · ref. #DZ-7821</p>
+            </div>
+          </div>
+
+          <div class="relative mx-auto max-w-[260px]">
+            <div class="aspect-[9/19] rounded-[2.2rem] border-[8px] border-ink-950 bg-ink-900 p-2 shadow-glow">
+              <div class="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-gradient-to-b from-brand-700 to-ink-950">
+
+                <!-- Status bar -->
+                <div class="absolute inset-x-4 top-3 flex items-center justify-between text-[10px] font-semibold text-white">
+                  <span>9:41</span>
+                  <span class="flex items-center gap-1">
+                    <span class="inline-block h-1 w-1 rounded-full bg-white/80"></span>
+                    <span class="inline-block h-1.5 w-1 rounded-full bg-white"></span>
+                    <span class="inline-block h-2 w-1 rounded-full bg-white"></span>
+                    <span class="ml-1 inline-block h-2 w-3 rounded-[2px] border border-white"></span>
+                  </span>
+                </div>
+
+                <!-- Mini map -->
+                <div class="absolute inset-x-3 top-9 h-[110px] overflow-hidden rounded-2xl border border-white/10 bg-ink-950">
+                  <svg viewBox="0 0 240 110" preserveAspectRatio="none" class="absolute inset-0 h-full w-full" aria-hidden>
+                    <defs>
+                      <pattern id="grid-map" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="oklch(0.55 0.17 152 / 0.18)" stroke-width="0.5"/>
+                      </pattern>
+                    </defs>
+                    <rect width="240" height="110" fill="url(#grid-map)"/>
+                    <!-- streets -->
+                    <path d="M0 70 Q60 60 120 70 T240 65" stroke="oklch(0.46 0.14 152 / 0.6)" stroke-width="2.5" fill="none"/>
+                    <path d="M70 0 Q60 50 80 110" stroke="oklch(0.46 0.14 152 / 0.5)" stroke-width="2.5" fill="none"/>
+                    <path d="M170 0 Q180 50 165 110" stroke="oklch(0.46 0.14 152 / 0.4)" stroke-width="2" fill="none"/>
+                    <path d="M0 30 Q120 25 240 35" stroke="oklch(0.46 0.14 152 / 0.35)" stroke-width="1.8" fill="none"/>
+                    <!-- park -->
+                    <ellipse cx="200" cy="90" rx="35" ry="18" fill="oklch(0.64 0.18 152 / 0.18)"/>
+                    <!-- pins -->
+                    <g>
+                      <circle cx="80" cy="55" r="14" fill="oklch(0.88 0.20 130 / 0.25)"/>
+                      <circle cx="80" cy="55" r="6" fill="oklch(0.88 0.20 130)"/>
+                      <circle cx="80" cy="55" r="2" fill="white"/>
+                    </g>
+                    <circle cx="155" cy="40" r="4" fill="oklch(0.64 0.18 152)"/>
+                    <circle cx="200" cy="78" r="4" fill="oklch(0.64 0.18 152)"/>
+                    <circle cx="45" cy="85" r="4" fill="oklch(0.64 0.18 152)"/>
+                  </svg>
+                  <div class="absolute right-2 top-2 grid h-6 w-6 place-items-center rounded-md border border-white/20 bg-ink-900/80 text-white">
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/></svg>
+                  </div>
+                </div>
+
+                <!-- Nearest station card -->
+                <div class="absolute inset-x-3 top-[140px] rounded-2xl bg-white/10 p-3 backdrop-blur">
+                  <div class="flex items-center justify-between">
+                    <p class="text-[10px] uppercase tracking-widest text-brand-200">Más cerca</p>
+                    <span class="rounded-full bg-lime-glow/30 px-1.5 py-0.5 text-[9px] font-bold text-lime-glow">Libre</span>
+                  </div>
+                  <p class="font-display text-sm font-bold text-white">Estación Chapinero</p>
+                  <p class="text-[10px] text-brand-100">2 conectores libres · 1.4 km · 4 min</p>
+                  <div class="mt-2 flex gap-1.5">
+                    <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">CCS2</span>
+                    <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">120 kW</span>
+                    <span class="rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold text-white">★ 4.8</span>
+                  </div>
+                </div>
+
+                <!-- Charging session -->
+                <div class="absolute inset-x-3 bottom-[88px] rounded-2xl bg-white p-3 shadow-soft">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-semibold uppercase text-brand-700">Cargando</span>
+                    <span class="font-display text-xs font-bold text-ink-950">68%</span>
+                  </div>
+                  <div class="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink-100">
+                    <div class="h-full w-[68%] rounded-full bg-gradient-to-r from-brand-500 to-lime-glow"></div>
+                  </div>
+                  <div class="mt-1.5 flex items-center justify-between text-[10px] text-ink-500">
+                    <span>~ 12 min · 142 kW</span>
+                    <span class="font-semibold text-brand-700">28.4 kWh</span>
+                  </div>
+                </div>
+
+                <!-- Bottom tab bar -->
+                <div class="absolute inset-x-3 bottom-12 rounded-2xl bg-ink-950/70 p-2 backdrop-blur">
+                  <div class="flex items-center justify-between text-white">
+                    <div>
+                      <p class="text-[9px] uppercase tracking-widest text-brand-200">CO₂ evitado</p>
+                      <p class="font-display text-xs font-bold">3.4 kg · hoy</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-[9px] uppercase tracking-widest text-brand-200">Puntos</p>
+                      <p class="font-display text-xs font-bold text-lime-glow">+ 142 ⚡</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tab nav -->
+                <div class="absolute inset-x-2 bottom-2 flex items-center justify-around rounded-2xl bg-white/10 p-1.5 backdrop-blur">
+                  <span class="grid h-7 w-7 place-items-center rounded-xl bg-white text-ink-950">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 8v12h5v-7h6v7h5V8L12 2Z"/></svg>
+                  </span>
+                  <span class="grid h-7 w-7 place-items-center rounded-xl text-white/60">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/></svg>
+                  </span>
+                  <span class="grid h-7 w-7 place-items-center rounded-xl text-white/60">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14.69 2.66 9.5 12h4l-1.19 9.34L18 12h-4l1.19-9.34Z"/></svg>
+                  </span>
+                  <span class="grid h-7 w-7 place-items-center rounded-xl text-white/60">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="mt-8 grid grid-cols-1 gap-2 text-sm">
+          {appFeatures.map((f) => (
+            <li class="flex items-center gap-2 text-ink-800">
+              <svg class="h-4 w-4 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <!-- Dashboard franquicia -->
+      <article class="group relative overflow-hidden rounded-[2rem] border border-ink-100 bg-ink-950 p-8 text-white shadow-soft">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">Dashboard del franquiciado</p>
+          <h3 class="font-display mt-2 text-2xl font-bold">Disart Operations</h3>
+          <p class="mt-1 text-sm text-ink-300">Panel web + alertas a tu celular</p>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Ingresos · hoy</p>
+              <p class="font-display mt-1 text-3xl font-bold">$ 1’850.400 <span class="text-sm font-medium text-ink-300">COP</span></p>
+              <p class="mt-1 text-xs text-lime-glow">▲ 12.4% vs. ayer</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="rounded-xl bg-white/5 p-2 text-center">
+                <p class="font-display text-base font-bold">42</p>
+                <p class="text-[10px] text-ink-300">Cargas</p>
+              </div>
+              <div class="rounded-xl bg-white/5 p-2 text-center">
+                <p class="font-display text-base font-bold">98%</p>
+                <p class="text-[10px] text-ink-300">Uptime</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-7 items-end gap-1.5 h-24">
+            {[28,42,36,55,48,72,64].map((h) => (
+              <div class="flex h-full items-end">
+                <div class="w-full rounded-t-md bg-gradient-to-t from-brand-700 to-lime-glow" style={`height:${h}%`}></div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-2 flex justify-between text-[10px] text-ink-300">
+            <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+          </div>
+        </div>
+
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Conector A · 142 kW</p>
+            <p class="font-display mt-1 text-sm font-semibold">Activo · 22 min</p>
+            <p class="mt-1 text-xs text-ink-300">Renault Megane E-Tech · 68%</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Conector B · 60 kW</p>
+            <p class="font-display mt-1 text-sm font-semibold">Reservado</p>
+            <p class="mt-1 text-xs text-ink-300">Inicia 16:42 · BYD Dolphin</p>
+          </div>
+        </div>
+
+        <ul class="mt-8 grid grid-cols-1 gap-2 text-sm">
+          {dashFeatures.map((f) => (
+            <li class="flex items-center gap-2 text-ink-100">
+              <svg class="h-4 w-4 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

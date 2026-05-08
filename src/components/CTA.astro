@@ -1,0 +1,59 @@
+---
+---
+<section id="contacto" class="relative px-4 py-24">
+  <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-brand-700/30 bg-ink-950 p-10 text-white shadow-glow md:p-16">
+    <div class="absolute inset-0 -z-0 opacity-60 [background-image:radial-gradient(60%_60%_at_100%_0%,oklch(0.55_0.17_152_/_0.6),transparent_60%),radial-gradient(40%_60%_at_0%_100%,oklch(0.88_0.20_130_/_0.4),transparent_60%)]"></div>
+    <div class="absolute inset-0 -z-0 opacity-30 bg-grid"></div>
+
+    <div class="relative grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">Da el siguiente paso</p>
+        <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight md:text-6xl">
+          ¿Listo para electrificar tu negocio?
+        </h2>
+        <p class="mt-4 max-w-xl text-pretty text-lg text-ink-300">
+          Te entregamos un diagnóstico gratuito en 48 horas. Sin compromiso.
+          Si tu sitio califica, te enviamos una propuesta cerrada con ROI estimado.
+        </p>
+
+        <ul class="mt-6 grid grid-cols-2 gap-2 text-sm text-ink-200 max-w-md">
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sin costo</li>
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>48 horas</li>
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Confidencial</li>
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cobertura nacional</li>
+        </ul>
+      </div>
+
+      <form class="lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactamos en menos de 24 horas.');">
+        <div class="space-y-4">
+          <label class="block">
+            <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Nombre</span>
+            <input required type="text" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Harold Velázquez"/>
+          </label>
+          <label class="block">
+            <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Email</span>
+            <input required type="email" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="harold@empresa.co"/>
+          </label>
+          <label class="block">
+            <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Ciudad / sitio</span>
+            <input required type="text" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Bogotá, Chapinero"/>
+          </label>
+          <label class="block">
+            <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">¿Qué te interesa?</span>
+            <select class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-brand-400">
+              <option class="bg-ink-900">Franquicia llave en mano</option>
+              <option class="bg-ink-900">Hardware (compra directa)</option>
+              <option class="bg-ink-900">Solar + electrolinera</option>
+              <option class="bg-ink-900">Solo software / dashboard</option>
+            </select>
+          </label>
+          <button type="submit" class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime-glow px-5 py-3.5 text-sm font-bold text-ink-950 transition hover:bg-white">
+            Solicitar diagnóstico
+            <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+          <p class="text-center text-[10px] text-ink-400">Al enviar aceptas la política de privacidad de Disart Energy.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

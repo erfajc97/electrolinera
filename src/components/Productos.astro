@@ -1,0 +1,47 @@
+---
+const products = [
+  { img: "/img/station-hero.jpg", tag: "Urbano", title: "Disart Urban 60", desc: "Cargador DC compacto para retail, hoteles y parqueaderos.", specs: ["60 kW", "CCS2 + CHAdeMO", "Pantalla 10\""] },
+  { img: "/img/truck-charging.jpg", tag: "Pesado", title: "Disart Heavy 240", desc: "Para flotillas eléctricas, camiones y transporte de carga.", specs: ["240 kW", "Doble conector", "Refrigeración líquida"] },
+  { img: "/img/station-fleet.jpg", tag: "Hub", title: "Disart Hub 360+", desc: "Estación multi-cargador con paneles solares y batería integrada.", specs: ["Hasta 360 kW", "Solar opcional", "4 puntos simultáneos"] },
+];
+---
+<section id="productos" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Hardware</p>
+        <h2 class="font-display mt-3 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+          Cargadores certificados para cada caso.
+        </h2>
+      </div>
+      <p class="max-w-md text-ink-700">
+        Selecciona el modelo según tu flujo. Todos vienen integrados a la plataforma
+        Disart, con instalación y mantenimiento incluidos.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-3">
+      {products.map((p) => (
+        <article class="group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src={p.img} alt={p.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+            <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 backdrop-blur">{p.tag}</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-ink-950">{p.title}</h3>
+            <p class="mt-2 text-sm text-ink-700">{p.desc}</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {p.specs.map((s) => (
+                <li class="rounded-full border border-ink-100 bg-ink-50 px-3 py-1 text-xs font-medium text-ink-700">{s}</li>
+              ))}
+            </ul>
+            <a href="#contacto" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800">
+              Ver ficha técnica
+              <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
