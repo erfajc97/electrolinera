@@ -1,14 +1,14 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import node from '@astrojs/node';
+import netlify from '@astrojs/netlify';
 import tailwindcss from '@tailwindcss/vite';
 
 // `output: 'static'` keeps the landing fully prerendered.
-// Only routes that opt out via `export const prerender = false`
-// (currently `/api/contact`) run on-demand through the Node adapter.
+// Routes that opt out via `export const prerender = false`
+// (currently `/api/contact`) deploy as Netlify Functions through the adapter.
 export default defineConfig({
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  adapter: netlify(),
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],

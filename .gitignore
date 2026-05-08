@@ -33,3 +33,6 @@ assets/
 
 # rtk logs
 *.rtk.log
+
+# Local Netlify folder
+.netlify
