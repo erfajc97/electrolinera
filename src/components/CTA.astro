@@ -28,15 +28,21 @@
         <div class="space-y-4">
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Nombre</span>
-            <input name="name" required type="text" autocomplete="name" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Harold Velázquez"/>
+            <input name="name" required type="text" maxlength="120" autocomplete="name" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Harold Velázquez"/>
           </label>
-          <label class="block">
-            <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Email</span>
-            <input name="email" required type="email" autocomplete="email" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="harold@empresa.co"/>
-          </label>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Email</span>
+              <input name="email" required type="email" maxlength="200" autocomplete="email" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="harold@empresa.co"/>
+            </label>
+            <label class="block">
+              <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Teléfono</span>
+              <input name="phone" required type="tel" inputmode="tel" maxlength="30" pattern="^\+?[0-9\s()\-]{7,20}$" autocomplete="tel" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="+57 300 000 0000"/>
+            </label>
+          </div>
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Ciudad / sitio</span>
-            <input name="city" required type="text" autocomplete="address-level2" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Bogotá, Chapinero"/>
+            <input name="city" required type="text" maxlength="120" autocomplete="address-level2" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-ink-300 outline-none transition focus:border-brand-400" placeholder="Bogotá, Chapinero"/>
           </label>
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">¿Qué te interesa?</span>
@@ -78,11 +84,12 @@
 
             const data = new FormData(form);
             const payload = {
-              name: String(data.get('name') ?? ''),
-              email: String(data.get('email') ?? ''),
-              city: String(data.get('city') ?? ''),
-              interest: String(data.get('interest') ?? ''),
-              website: String(data.get('website') ?? ''),
+              name: String(data.get('name') ?? '').slice(0, 120),
+              email: String(data.get('email') ?? '').slice(0, 200),
+              phone: String(data.get('phone') ?? '').slice(0, 30),
+              city: String(data.get('city') ?? '').slice(0, 120),
+              interest: String(data.get('interest') ?? '').slice(0, 120),
+              website: String(data.get('website') ?? '').slice(0, 200),
             };
 
             button.disabled = true;
