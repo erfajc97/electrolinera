@@ -1,0 +1,37 @@
+---
+const reasons = [
+  { t: "Ingeniería especializada",        d: "Equipo técnico propio con experiencia en proyectos solares, eléctricos y de movilidad." },
+  { t: "Soluciones llave en mano",         d: "Desde el primer plano hasta la operación. Tú aportas el sitio, nosotros entregamos energía." },
+  { t: "Tecnología de última generación",  d: "Hardware certificado, software propietario y monitoreo remoto en tiempo real." },
+  { t: "Eficiencia y sostenibilidad",      d: "Reducimos costos operativos y huella de carbono con modelos medibles." },
+  { t: "Acompañamiento integral",          d: "Diseño, financiamiento, ejecución, operación y posventa bajo un solo contrato." },
+  { t: "Proyectos viables y escalables",   d: "Modelos financieros con ROI estimado y rutas claras de crecimiento." },
+];
+---
+<section id="nosotros" class="relative bg-ink-950 py-24 text-white">
+  <div class="absolute inset-0 -z-0 opacity-30 [background-image:radial-gradient(60%_60%_at_50%_0%,oklch(0.55_0.17_152_/_0.45),transparent_70%)]"></div>
+  <div class="relative mx-auto max-w-6xl px-4">
+    <div class="grid items-end gap-10 md:grid-cols-2">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">Por qué Disart Energy</p>
+        <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight md:text-5xl">
+          La energía no solo se consume. Se gestiona inteligentemente.
+        </h2>
+      </div>
+      <p class="text-lg text-ink-300">
+        Trabajamos para acelerar la transición energética en Colombia y Latinoamérica,
+        creando infraestructura sostenible que genere valor económico, ambiental y social.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+      {reasons.map((r, i) => (
+        <div class="group relative bg-ink-950 p-8 transition hover:bg-ink-900">
+          <span class="font-display text-xs font-bold uppercase tracking-widest text-brand-300">0{i + 1}</span>
+          <h3 class="font-display mt-4 text-xl font-bold">{r.t}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-300">{r.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

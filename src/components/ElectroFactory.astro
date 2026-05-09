@@ -1,0 +1,49 @@
+---
+const checks = [
+  "Pruebas de carga DC al 100% de potencia nominal",
+  "Inspección visual y eléctrica unidad por unidad",
+  "Configuración OCPP 1.6 / 2.0.1 antes de embarque",
+  "Calibración de pantalla y sensores de presencia",
+  "Control de embalaje, anti-humedad y trazabilidad logística",
+];
+---
+<section class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <div class="relative overflow-hidden rounded-[2rem] border border-ink-100 shadow-soft">
+          <img src="/img/electrolinera/charger-factory.jpg" alt="Inspección de cargadores en fábrica" class="h-full w-full object-cover" loading="lazy" />
+          <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-950/80 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-white">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-500"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-9 9-9 9s-9-4-9-9c0-2.8 1.4-5.4 3.5-7"/></svg></span>
+            <div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Centro de pruebas</p>
+              <p class="font-display text-base font-semibold">Shenzhen · QA pre-embarque</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">QA + supply chain</p>
+        <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+          Cada cargador pasa por nuestro QA antes de salir.
+        </h2>
+        <p class="mt-4 text-lg text-ink-700">
+          Inspeccionamos, configuramos y validamos cada unidad en fábrica antes
+          de embarcarla. Cuando llega a tu sitio, basta con conectar y operar.
+        </p>
+        <ul class="mt-6 space-y-2.5">
+          {checks.map((c) => (
+            <li class="flex items-start gap-3 text-sm text-ink-800">
+              <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-700">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              {c}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

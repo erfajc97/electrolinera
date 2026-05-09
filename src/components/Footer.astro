@@ -2,10 +2,31 @@
 import Logo from "./Logo.astro";
 const year = new Date().getFullYear();
 const cols = [
-  { t: "Producto", links: ["Solución", "Tecnología", "Hardware", "App Disart Drive"] },
-  { t: "Franquicia", links: ["Cómo funciona", "Paquetes", "Casos", "Diagnóstico"] },
-  { t: "Empresa", links: ["Disart Energy", "Solar", "Sostenibilidad", "Carreras"] },
-  { t: "Soporte", links: ["Centro de ayuda", "Contacto", "Estado del servicio", "Privacidad"] },
+  { t: "Soluciones", links: [
+    { label: "Energía solar", href: "/solar" },
+    { label: "Movilidad eléctrica", href: "/movilidad" },
+    { label: "Electrolineras", href: "/electrolineras" },
+    { label: "Almacenamiento", href: "/#contacto" },
+  ]},
+  { t: "Empresa", links: [
+    { label: "Nosotros", href: "/#nosotros" },
+    { label: "Proceso", href: "/#proceso" },
+    { label: "Casos", href: "/#contacto" },
+    { label: "Carreras", href: "/#contacto" },
+  ]},
+  { t: "Recursos", links: [
+    { label: "Centro de ayuda", href: "/#contacto" },
+    { label: "Blog", href: "/#contacto" },
+    { label: "Sostenibilidad", href: "/#nosotros" },
+    { label: "Privacidad", href: "/privacidad" },
+    { label: "Términos y condiciones", href: "/terminos" },
+  ]},
+  { t: "Contacto", links: [
+    { label: "WhatsApp", href: "/#contacto" },
+    { label: "hola@disart.energy", href: "mailto:hola@disart.energy" },
+    { label: "Bogotá · Colombia", href: "/#contacto" },
+    { label: "Estado del servicio", href: "/#contacto" },
+  ]},
 ];
 ---
 <footer class="border-t border-ink-100 bg-white">
@@ -36,7 +57,7 @@ const cols = [
             <p class="font-display text-sm font-semibold text-ink-950">{c.t}</p>
             <ul class="mt-4 space-y-2.5">
               {c.links.map((l) => (
-                <li><a href="#" class="text-sm text-ink-700 transition hover:text-brand-700">{l}</a></li>
+                <li><a href={l.href} class="text-sm text-ink-700 transition hover:text-brand-700">{l.label}</a></li>
               ))}
             </ul>
           </div>

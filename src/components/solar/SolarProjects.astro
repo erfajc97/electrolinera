@@ -1,0 +1,78 @@
+---
+const projects = [
+  {
+    img: "/img/solar/utility-farm.jpg",
+    tag: "Utility scale",
+    metric: "390 MW",
+    title: "4 proyectos solares de gran escala",
+    desc: "Identificados en las zonas de mayor radiación de Colombia. Diseño, ingeniería y permisos.",
+  },
+  {
+    img: "/img/solar/installer-pole.jpg",
+    tag: "Generación distribuida",
+    metric: "17 proyectos",
+    title: "1 MW por municipio",
+    desc: "Instalaciones distribuidas en 17 municipios para diversificar la matriz local.",
+  },
+  {
+    img: "/img/solar/kids-rural-panel.jpg",
+    tag: "Comunidades energéticas",
+    metric: "5 comunidades",
+    title: "Zonas PDET y ZOMAC",
+    desc: "Mejoramos tarifas y acceso a energía limpia en territorios prioritarios del país.",
+  },
+  {
+    img: "/img/solar/rooftop-village.jpg",
+    tag: "Comercial AGPE",
+    metric: "22 proyectos",
+    title: "Autogeneradores a pequeña escala",
+    desc: "Soluciones a la medida que reducen costos y aumentan sostenibilidad para el comercio.",
+  },
+  {
+    img: "/img/solar/installer-hilltop.jpg",
+    tag: "Pilotos escolares",
+    metric: "10 colegios",
+    title: "Solar en el sector educativo",
+    desc: "Iniciativas de sostenibilidad con impacto pedagógico y energético en colegios.",
+  },
+  {
+    img: "/img/solar/mountain-house.jpg",
+    tag: "Alumbrado público",
+    metric: "Off-grid",
+    title: "Iluminación solar en calles y parques",
+    desc: "Alternativas eficientes al alumbrado tradicional para municipios y zonas rurales.",
+  },
+];
+---
+<section id="proyectos" class="relative bg-gradient-to-b from-white to-brand-50/40 py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid items-end gap-10 md:grid-cols-2">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Track record</p>
+        <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+          Energía en cada rincón para un futuro más sostenible.
+        </h2>
+      </div>
+      <p class="text-lg text-ink-700">
+        Hemos ejecutado proyectos solares de gran escala, generación distribuida,
+        comunidades energéticas y pilotos educativos en toda Colombia.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((p) => (
+        <article class="group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src={p.img} alt={p.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+            <span class="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 backdrop-blur">{p.tag}</span>
+            <span class="absolute right-3 top-3 rounded-full bg-ink-950/80 px-2.5 py-1 text-[10px] font-bold tracking-wide text-lime-glow backdrop-blur">{p.metric}</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-base font-bold text-ink-950">{p.title}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-ink-700">{p.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+const services = [
+  {
+    href: "/solar",
+    tag: "Solar",
+    icon: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+    video: null,
+    image: "/img/solar/rooftop-village.jpg",
+    title: "Proyectos solares",
+    pitch: "Transformamos la luz del sol en ahorro y sostenibilidad.",
+    bullets: [
+      "Diseño e ingeniería fotovoltaica",
+      "Sistemas On-Grid, Off-Grid e híbridos",
+      "Instalación residencial, comercial e industrial",
+      "Mantenimiento + monitoreo inteligente",
+    ],
+    cta: "Ver soluciones solares",
+  },
+  {
+    href: "/movilidad",
+    tag: "Movilidad",
+    icon: '<path d="M5 17h14"/><path d="M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/><path d="M3 13l2-5h14l2 5v4H3v-4Z"/>',
+    video: "/video/vehiculos/showroom-loop.mp4",
+    image: null,
+    title: "Movilidad eléctrica",
+    pitch: "Impulsamos la movilidad del futuro desde hoy.",
+    bullets: [
+      "Importación directa de vehículos eléctricos",
+      "Flotas corporativas y last-mile",
+      "Infraestructura de carga in-house",
+      "Integración con sistemas solares",
+    ],
+    cta: "Importar mi vehículo",
+  },
+  {
+    href: "/electrolineras",
+    tag: "Electrolineras",
+    icon: '<path d="M14 2 5 14h7l-2 8 9-12h-7l2-8Z"/>',
+    video: null,
+    image: "/img/electrolinera/charger-rain-suv.jpg",
+    title: "Electrolineras",
+    pitch: "Construimos la red energética que moverá las ciudades del mañana.",
+    bullets: [
+      "Diseño + obra civil + interconexión eléctrica",
+      "Cargadores DC fast charging 60–360 kW",
+      "Integración con almacenamiento + solar",
+      "Modelo de franquicia y operación 24/7",
+    ],
+    cta: "Quiero una franquicia",
+  },
+];
+---
+<section id="soluciones" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Nuestras soluciones</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Tres frentes de la transición energética. Un solo aliado.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Combinamos ingeniería, importación y operación para ejecutar proyectos
+        de alto impacto a empresas, industrias, constructoras y entidades públicas.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 lg:grid-cols-3">
+      {services.map((s) => (
+        <article class="group relative flex flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            {s.video ? (
+              <video src={s.video} autoplay loop muted playsinline preload="metadata" class="h-full w-full object-cover transition duration-700 group-hover:scale-105"></video>
+            ) : (
+              <img src={s.image!} alt={s.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+            )}
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent"></div>
+            <span class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 backdrop-blur">
+              <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon} />
+              {s.tag}
+            </span>
+          </div>
+
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="font-display text-xl font-bold text-ink-950">{s.title}</h3>
+            <p class="mt-2 text-sm italic text-brand-700">{s.pitch}</p>
+            <ul class="mt-5 space-y-2 text-sm text-ink-700">
+              {s.bullets.map((b) => (
+                <li class="flex items-start gap-2">
+                  <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <a href={s.href} class="mt-6 inline-flex items-center justify-center gap-1.5 rounded-full bg-ink-950 px-4 py-2.5 text-sm font-semibold text-white transition group-hover:bg-brand-700">
+              {s.cta}
+              <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

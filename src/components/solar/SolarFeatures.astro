@@ -1,0 +1,32 @@
+---
+const offerings = [
+  { t: "Diseño e ingeniería",        d: "Estudios técnicos, simulación PVsyst, ingeniería de detalle y aprobaciones." , icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/>' },
+  { t: "Instalación profesional",    d: "Cuadrillas certificadas RETIE para residencial, comercial e industrial.", icon: '<path d="M14.7 6.3a4.5 4.5 0 0 0-6.4 6.4L4 17v3h3l4.3-4.3a4.5 4.5 0 0 0 6.4-6.4l-3 3-1.5-.5-.5-1.5z"/>' },
+  { t: "On-Grid · Off-Grid · Híbrido", d: "Conexión a red, autoconsumo o respaldo total con baterías de litio.", icon: '<path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/><circle cx="12" cy="12" r="4"/>' },
+  { t: "Optimización energética",    d: "Auditoría de consumo, gemelo digital y ajustes en tiempo real.", icon: '<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/>' },
+  { t: "Reducción CO₂",               d: "Reporte mensual de emisiones evitadas y certificado para reportes ESG.", icon: '<path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M8 12h8"/>' },
+  { t: "Mantenimiento + monitoreo",   d: "Limpieza, termografía, inversores y app con alertas en vivo.", icon: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1z"/>' },
+];
+---
+<section id="beneficios" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Lo que entregamos</p>
+      <h2 class="font-display mt-3 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Solar fotovoltaico, llave en mano.
+      </h2>
+    </div>
+
+    <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {offerings.map((f) => (
+        <article class="group relative overflow-hidden rounded-3xl border border-ink-100 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <span class="grid h-11 w-11 place-items-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-200">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={f.icon} />
+          </span>
+          <h3 class="font-display mt-5 text-lg font-semibold text-ink-950">{f.t}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-700">{f.d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

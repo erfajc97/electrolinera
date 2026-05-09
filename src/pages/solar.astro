@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import SolarHero from "../components/solar/SolarHero.astro";
+import SolarFeatures from "../components/solar/SolarFeatures.astro";
+import SolarProjects from "../components/solar/SolarProjects.astro";
+import SolarTech from "../components/solar/SolarTech.astro";
+import Stats from "../components/Stats.astro";
+import Proceso from "../components/Proceso.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Energía solar Disart Energy — Ingeniería e instalación fotovoltaica en Colombia",
+  description:
+    "Diseñamos e instalamos sistemas solares fotovoltaicos On-Grid, Off-Grid e híbridos. Más de 40 proyectos ejecutados en Colombia: utility scale, distribuida, comunidades, comercio, colegios y alumbrado.",
+  image: "/img/solar/solar-wind-farm.jpg",
+};
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Instalación de paneles solares fotovoltaicos",
+  provider: { "@type": "Organization", name: "Disart Energy", url: "https://disart.energy" },
+  areaServed: { "@type": "Country", name: "Colombia" },
+  audience: { "@type": "BusinessAudience", audienceType: "Empresas, industrias, constructoras, entidades públicas" },
+  description: meta.description,
+};
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <SolarHero />
+    <SolarFeatures />
+    <SolarProjects />
+    <SolarTech />
+    <Stats />
+    <Proceso />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

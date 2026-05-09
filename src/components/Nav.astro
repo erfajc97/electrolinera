@@ -1,12 +1,36 @@
 ---
 import Logo from "./Logo.astro";
-const links = [
-  { href: "#solucion",  label: "Solución" },
-  { href: "#franquicia", label: "Franquicia" },
-  { href: "#tecnologia", label: "Tecnología" },
-  { href: "#proceso",   label: "Proceso" },
-  { href: "#faq",       label: "FAQ" },
+
+const solutions = [
+  {
+    href: "/solar",
+    icon: "sun",
+    title: "Energía solar",
+    desc: "Diseño, instalación y monitoreo de plantas solares.",
+  },
+  {
+    href: "/movilidad",
+    icon: "car",
+    title: "Movilidad eléctrica",
+    desc: "Importamos vehículos e infraestructura de carga corporativa.",
+  },
+  {
+    href: "/electrolineras",
+    icon: "bolt",
+    title: "Electrolineras",
+    desc: "Franquicias DC fast charging llave en mano.",
+  },
 ];
+const links = [
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#proceso",  label: "Proceso" },
+  { href: "/#contacto", label: "Contacto" },
+];
+const icons: Record<string, string> = {
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+  car: '<path d="M5 17h14"/><path d="M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/><path d="M3 13l2-5h14l2 5v4H3v-4Z"/>',
+  bolt: '<path d="M14 2 5 14h7l-2 8 9-12h-7l2-8Z"/>',
+};
 ---
 <header class="fixed inset-x-0 top-0 z-50">
   <div class="mx-auto mt-4 max-w-6xl px-4">
@@ -16,6 +40,35 @@ const links = [
       <Logo className="pl-2" />
 
       <ul class="hidden items-center gap-1 md:flex">
+        <li class="group relative">
+          <button
+            type="button"
+            class="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-brand-50 hover:text-brand-700"
+          >
+            Soluciones
+            <svg class="h-3 w-3 transition group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
+            <div class="w-[420px] rounded-2xl border border-ink-100 bg-white/95 p-2 shadow-soft backdrop-blur">
+              <ul class="grid gap-1">
+                {solutions.map((s) => (
+                  <li>
+                    <a href={s.href} class="group/link flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-brand-50">
+                      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.icon]} />
+                      </span>
+                      <span class="flex-1">
+                        <span class="block font-display text-sm font-semibold text-ink-950 group-hover/link:text-brand-700">{s.title}</span>
+                        <span class="block text-xs text-ink-700">{s.desc}</span>
+                      </span>
+                      <svg class="h-3.5 w-3.5 mt-1.5 text-ink-300 transition group-hover/link:translate-x-0.5 group-hover/link:text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </li>
         {links.map((l) => (
           <li>
             <a
@@ -30,11 +83,11 @@ const links = [
 
       <div class="flex items-center gap-2">
         <a
-          href="#contacto"
+          href="/#contacto"
           class="inline-flex items-center gap-1.5 rounded-full bg-ink-950 px-3.5 py-2 text-xs font-semibold text-white shadow-soft transition hover:bg-brand-700 sm:px-4 sm:text-sm"
         >
-          <span class="sm:hidden">Franquicia</span>
-          <span class="hidden sm:inline">Quiero una franquicia</span>
+          <span class="sm:hidden">Contacto</span>
+          <span class="hidden sm:inline">Hablar con un asesor</span>
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
 
@@ -43,10 +96,10 @@ const links = [
           aria-label="Abrir menú"
           class="grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-ink-100 bg-white/70 text-ink-900 transition hover:bg-brand-50 md:hidden"
         >
-          <svg class="block h-5 w-5 peer-checked:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-icon="bars">
+          <svg class="block h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-icon="bars">
             <path d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
-          <svg class="hidden h-5 w-5 peer-checked:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-icon="x">
+          <svg class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-icon="x">
             <path d="M6 6l12 12M18 6l-12 12"/>
           </svg>
         </label>
@@ -54,6 +107,24 @@ const links = [
     </nav>
 
     <div class="pointer-events-none absolute inset-x-4 top-full mt-2 origin-top scale-y-95 rounded-2xl border border-ink-100 bg-white/95 p-2 opacity-0 shadow-soft backdrop-blur transition duration-200 peer-checked:pointer-events-auto peer-checked:scale-y-100 peer-checked:opacity-100 md:hidden">
+      <p class="px-4 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest text-brand-700">Soluciones</p>
+      <ul class="flex flex-col">
+        {solutions.map((s) => (
+          <li>
+            <a
+              href={s.href}
+              class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-ink-800 transition hover:bg-brand-50 hover:text-brand-700"
+              onclick="document.getElementById('nav-toggle').checked=false"
+            >
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-700">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.icon]} />
+              </span>
+              {s.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="px-4 pt-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-brand-700">Empresa</p>
       <ul class="flex flex-col">
         {links.map((l) => (
           <li>
@@ -68,11 +139,11 @@ const links = [
         ))}
         <li class="mt-1 border-t border-ink-100 pt-2">
           <a
-            href="#contacto"
+            href="/#contacto"
             class="block rounded-xl bg-ink-950 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-700"
             onclick="document.getElementById('nav-toggle').checked=false"
           >
-            Quiero una franquicia
+            Hablar con un asesor
           </a>
         </li>
       </ul>
@@ -81,8 +152,6 @@ const links = [
 </header>
 
 <style>
-  /* Toggle hamburger ↔ X via :checked sibling — needed because peer modifier
-     applies to siblings but the icons are inside the label, not next to checkbox. */
   #nav-toggle:checked ~ nav [data-icon="bars"] { display: none; }
   #nav-toggle:checked ~ nav [data-icon="x"]    { display: block; }
 </style>

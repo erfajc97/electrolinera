@@ -1,34 +1,60 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
+import HomeHero from "../components/home/HomeHero.astro";
 import TrustBar from "../components/TrustBar.astro";
-import Solucion from "../components/Solucion.astro";
-import Stats from "../components/Stats.astro";
-import Franquicia from "../components/Franquicia.astro";
-import Tecnologia from "../components/Tecnologia.astro";
-import Beneficios from "../components/Beneficios.astro";
-import Productos from "../components/Productos.astro";
+import HomeServices from "../components/home/HomeServices.astro";
+import HomeProjects from "../components/home/HomeProjects.astro";
+import HomePurpose from "../components/home/HomePurpose.astro";
+import HomeWhy from "../components/home/HomeWhy.astro";
 import Proceso from "../components/Proceso.astro";
-import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Disart Energy — Energía inteligente para un futuro sostenible",
+  description:
+    "Soluciones llave en mano de energía solar, movilidad eléctrica y electrolineras. Ingeniería, importación, instalación y operación en Colombia y Latinoamérica.",
+};
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Disart Energy",
+    url: "https://disart.energy",
+    inLanguage: "es-CO",
+    publisher: { "@type": "Organization", name: "Disart Energy" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://disart.energy/#org",
+    name: "Disart Energy",
+    image: "https://disart.energy/img/electrolinera/station-ev-fast.png",
+    url: "https://disart.energy",
+    telephone: "+573104836462",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bogotá",
+      addressCountry: "CO",
+    },
+    areaServed: { "@type": "Country", name: "Colombia" },
+    priceRange: "$$$",
+  },
+];
 ---
-<BaseLayout>
+<BaseLayout title={meta.title} description={meta.description} jsonld={jsonld}>
   <Nav />
   <WhatsAppFab />
   <main>
-    <Hero />
+    <HomeHero />
     <TrustBar />
-    <Solucion />
-    <Stats />
-    <Franquicia />
-    <Tecnologia />
-    <Beneficios />
-    <Productos />
+    <HomeServices />
+    <HomeProjects />
+    <HomePurpose />
+    <HomeWhy />
     <Proceso />
-    <FAQ />
     <CTA />
   </main>
   <Footer />

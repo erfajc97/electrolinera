@@ -1,0 +1,61 @@
+---
+const cars = [
+  { img: "/img/vehiculos/jetour-suv-black.jpg", tag: "SUV rugged", title: "Jetour T1 / T2", specs: ["Autonomía 480 km", "Tracción 4×4", "Carga DC 120 kW"] },
+  { img: "/img/vehiculos/sedan-white-side.jpg", tag: "Sedán", title: "Toyota bZ Sedan", specs: ["Autonomía 520 km", "Premium", "Carga DC 150 kW"] },
+  { img: "/img/vehiculos/import-tow.jpg",    tag: "Logística", title: "Entrega puerto Buenaventura", specs: ["Grúa especializada", "Tracking en vivo", "Matrícula incluida"] },
+  { img: "/img/vehiculos/import-container.jpg", tag: "Importación", title: "Contenedor 40' HC", specs: ["1 vehículo / contenedor", "Seguro all-risk", "Naviera CMA-CGM"] },
+];
+---
+<section id="flota" class="relative py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-xl">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Cómo trabajamos</p>
+        <h2 class="font-display mt-3 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+          Importación directa, sin intermediarios.
+        </h2>
+      </div>
+      <p class="max-w-md text-ink-700">
+        Negociamos en origen, gestionamos el embarque, la nacionalización y
+        la matrícula en Colombia. Tú recibes el vehículo listo para rodar.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {cars.map((c) => (
+        <article class="group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src={c.img} alt={c.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+            <span class="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 backdrop-blur">{c.tag}</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-base font-bold text-ink-950">{c.title}</h3>
+            <ul class="mt-3 space-y-1 text-xs text-ink-700">
+              {c.specs.map((s) => (
+                <li class="flex items-center gap-1.5">
+                  <svg class="h-3 w-3 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-ink-100 bg-ink-100 sm:grid-cols-4">
+      {[
+        { v: "01", t: "Cotización", d: "Cotiza el modelo en CIF Buenaventura." },
+        { v: "02", t: "Producción", d: "Negociamos directo con la fábrica en China." },
+        { v: "03", t: "Embarque", d: "Contenedor + seguro all-risk hasta puerto." },
+        { v: "04", t: "Entrega", d: "Nacionalización, matrícula y entrega en tu ciudad." },
+      ].map((s) => (
+        <div class="bg-white p-6">
+          <p class="font-display text-xs font-bold uppercase tracking-widest text-brand-700">{s.v}</p>
+          <p class="font-display mt-2 text-base font-bold text-ink-950">{s.t}</p>
+          <p class="mt-1 text-sm text-ink-700">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

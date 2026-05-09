@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import Solucion from "../components/Solucion.astro";
+import Stats from "../components/Stats.astro";
+import Franquicia from "../components/Franquicia.astro";
+import Tecnologia from "../components/Tecnologia.astro";
+import Beneficios from "../components/Beneficios.astro";
+import Productos from "../components/Productos.astro";
+import ElectroFactory from "../components/ElectroFactory.astro";
+import Proceso from "../components/Proceso.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Electrolineras Disart Energy — Franquicias llave en mano en Colombia",
+  description:
+    "Diseñamos, construimos y operamos electrolineras DC fast charging. Modelo de franquicia con app, dashboard y soporte 24/7.",
+  image: "/img/electrolinera/charger-rain-suv.jpg",
+};
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Diseño, construcción y operación de electrolineras DC fast charging",
+  provider: { "@type": "Organization", name: "Disart Energy", url: "https://disart.energy" },
+  areaServed: { "@type": "Country", name: "Colombia" },
+  audience: { "@type": "BusinessAudience", audienceType: "Inversionistas, franquiciados, empresas con flotas" },
+  description: meta.description,
+};
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <Hero />
+    <TrustBar />
+    <Solucion />
+    <Stats />
+    <Franquicia />
+    <Tecnologia />
+    <Beneficios />
+    <Productos />
+    <ElectroFactory />
+    <Proceso />
+    <FAQ />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

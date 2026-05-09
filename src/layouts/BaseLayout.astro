@@ -1,33 +1,90 @@
 ---
 import "../styles/global.css";
+
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  noindex?: boolean;
+  jsonld?: unknown;
 }
 const {
-  title = "Disart Energy — Electrolineras inteligentes para el futuro de la movilidad",
-  description = "Disart Energy ofrece franquicias de electrolineras llave en mano: hardware, app para conductores y dashboard de gestión. Energía limpia, ingresos recurrentes.",
+  title = "Disart Energy — Energía inteligente para un futuro sostenible",
+  description = "Soluciones llave en mano de energía solar, movilidad eléctrica y electrolineras. Ingeniería, importación, instalación y operación en Colombia y Latinoamérica.",
+  image = "/img/electrolinera/station-ev-fast.png",
+  noindex = false,
+  jsonld = null,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://disart.energy").toString();
+const ogImage = new URL(image, Astro.site ?? "https://disart.energy").toString();
+
+// Default Organization JSON-LD applied to every page; pages can supply
+// extra structured data via the `jsonld` prop and it is appended below.
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Disart Energy",
+  url: "https://disart.energy",
+  logo: "https://disart.energy/favicon.svg",
+  description,
+  sameAs: [],
+  contactPoint: [{
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    areaServed: "CO",
+    availableLanguage: ["Spanish", "English"],
+  }],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CO",
+    addressLocality: "Bogotá",
+  },
+};
 ---
 <!doctype html>
-<html lang="es">
+<html lang="es" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0d3a23" />
+    <meta name="color-scheme" content="light" />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Disart Energy" />
+    <meta property="og:locale" content="es_CO" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/img/station-hero.jpg" />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </head>
   <body class="overflow-x-hidden">
     <slot />

@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import MovilidadHero from "../components/movilidad/MovilidadHero.astro";
+import MovilidadShowroom from "../components/movilidad/MovilidadShowroom.astro";
+import MovilidadFleet from "../components/movilidad/MovilidadFleet.astro";
+import Stats from "../components/Stats.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Movilidad eléctrica Disart Energy — Importación de vehículos eléctricos en Colombia",
+  description:
+    "Importamos SUVs, sedanes y vehículos comerciales eléctricos directo desde fábrica. Nacionalización, matrícula e infraestructura de carga incluidos.",
+  image: "/img/vehiculos/toyota-white-front.jpg",
+};
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Importación de vehículos eléctricos y soluciones de movilidad",
+  provider: { "@type": "Organization", name: "Disart Energy", url: "https://disart.energy" },
+  areaServed: { "@type": "Country", name: "Colombia" },
+  audience: { "@type": "BusinessAudience", audienceType: "Empresas con flotas, compradores corporativos" },
+  description: meta.description,
+};
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <MovilidadHero />
+    <MovilidadShowroom />
+    <MovilidadFleet />
+    <Stats />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>
