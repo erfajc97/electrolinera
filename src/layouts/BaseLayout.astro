@@ -16,8 +16,8 @@ const {
   jsonld = null,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://disart.energy").toString();
-const ogImage = new URL(image, Astro.site ?? "https://disart.energy").toString();
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://disartenergy.com").toString();
+const ogImage = new URL(image, Astro.site ?? "https://disartenergy.com").toString();
 
 // Default Organization JSON-LD applied to every page; pages can supply
 // extra structured data via the `jsonld` prop and it is appended below.
@@ -25,8 +25,8 @@ const orgLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Disart Energy",
-  url: "https://disart.energy",
-  logo: "https://disart.energy/favicon.svg",
+  url: "https://disartenergy.com",
+  logo: "https://disartenergy.com/favicon.svg",
   description,
   sameAs: [],
   contactPoint: [{
