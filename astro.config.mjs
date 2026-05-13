@@ -22,18 +22,11 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       serialize(item) {
-        // Boost priority for the home + flagship landings.
+        // Boost priority for the home + flagship landings + about page.
         if (item.url === 'https://disartenergy.com/') return { ...item, priority: 1.0 };
         if (
           item.url === 'https://disartenergy.com/solar/' ||
           item.url === 'https://disartenergy.com/movilidad/' ||
           item.url === 'https://disartenergy.com/electrolineras/'
         ) return { ...item, priority: 0.9 };
-        return item;
-      },
-    }),
-  ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
-});
+        if (item.url === 'https://disartenergy.com/nosotros/') return { ...item

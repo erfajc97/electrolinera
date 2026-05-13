@@ -1,0 +1,274 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+import { CONTACT } from "../config/contact";
+
+const meta = {
+  title: "Nosotros — Disart Energy | Ingeniería energética para Colombia",
+  description:
+    "Disart Energy es una compañía colombiana de ingeniería energética que diseña, importa, instala y opera infraestructura solar, electrolineras y movilidad eléctrica. Conoce nuestra trayectoria, propósito y equipo técnico.",
+};
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Nosotros — Disart Energy",
+  url: "https://disartenergy.com/nosotros",
+  description: meta.description,
+  inLanguage: "es-CO",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Disart Energy",
+    url: "https://disartenergy.com",
+    foundingLocation: { "@type": "Place", name: "Bogotá, Colombia" },
+    areaServed: { "@type": "Country", name: "Colombia" },
+  },
+};
+
+const pilares = [
+  {
+    kicker: "Propósito",
+    title: "Acelerar la transición energética en Latinoamérica.",
+    body: "Existimos para hacer la energía limpia accesible, rentable y operable a escala — para empresas, constructoras y entidades públicas que quieren liderar la descarbonización sin sacrificar competitividad.",
+  },
+  {
+    kicker: "Misión",
+    title: "Entregar infraestructura energética llave en mano.",
+    body: "Diseñamos, importamos, instalamos y operamos plantas solares, electrolineras y soluciones de movilidad eléctrica. Un solo aliado, un solo contrato, un solo punto de responsabilidad.",
+  },
+  {
+    kicker: "Visión",
+    title: "Ser el operador energético de referencia en la región.",
+    body: "Construir la red privada de infraestructura sostenible más confiable de Colombia y Latinoamérica, con tecnología propia y operación 24×7 para todos nuestros clientes y franquiciados.",
+  },
+];
+
+const capacidades = [
+  { t: "Ingeniería", d: "Estudios técnicos, dimensionamiento, simulación energética y diseño eléctrico bajo norma RETIE y NTC." },
+  { t: "Importación", d: "Importación directa de hardware certificado: inversores, paneles, baterías, cargadores DC y vehículos eléctricos." },
+  { t: "Instalación", d: "Equipos propios de instalación y obra civil con cobertura nacional. Cumplimiento HSE y aseguramiento de calidad." },
+  { t: "Operación", d: "Monitoreo remoto 24×7, mantenimiento preventivo y correctivo, y reporte de generación para nuestros clientes." },
+];
+
+const principios = [
+  {
+    n: "01",
+    t: "Ingeniería antes que venta",
+    d: "Cada proyecto empieza con un diagnóstico técnico real. No vendemos lo que no podemos sostener en operación.",
+  },
+  {
+    n: "02",
+    t: "Tecnología certificada",
+    d: "Trabajamos solo con marcas Tier-1 con certificación internacional y respaldo en Colombia. Cero atajos en hardware.",
+  },
+  {
+    n: "03",
+    t: "Operación como producto",
+    d: "Nuestro software propio monitorea cada instalación en tiempo real. Si algo se desvía 1%, lo sabemos antes que el cliente.",
+  },
+  {
+    n: "04",
+    t: "ROI medible",
+    d: "Cada propuesta incluye modelo financiero con flujo de caja, payback y TIR. Cero promesas, mucho número.",
+  },
+  {
+    n: "05",
+    t: "Cobertura nacional",
+    d: "Operamos en las 5 regiones de Colombia con equipos propios y aliados locales certificados.",
+  },
+  {
+    n: "06",
+    t: "Sostenibilidad certificable",
+    d: "Generamos reportes de huella de carbono evitada compatibles con estándares ESG y reportes de sostenibilidad corporativos.",
+  },
+];
+
+const numeros = [
+  { v: "+10", u: "años", t: "de experiencia en energía limpia y solar" },
+  { v: "390", u: "MW", t: "identificados en proyectos utility-scale" },
+  { v: "24×7", u: "",   t: "monitoreo remoto de cada instalación" },
+  { v: "99.7%", u: "",  t: "uptime promedio de la red operada" },
+];
+---
+<BaseLayout title={meta.title} description={meta.description} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+
+  <main class="pt-28">
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 to-white px-4 pt-12 pb-20">
+      <div class="absolute inset-0 -z-0 opacity-40 [background-image:radial-gradient(60%_60%_at_85%_0%,oklch(0.88_0.20_130_/_0.35),transparent_60%),radial-gradient(45%_45%_at_0%_100%,oklch(0.55_0.17_152_/_0.25),transparent_60%)]"></div>
+
+      <div class="relative mx-auto max-w-6xl">
+        <div class="grid items-end gap-10 lg:grid-cols-12">
+          <div class="lg:col-span-7">
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Nosotros</p>
+            <h1 class="font-display mt-4 text-balance text-5xl font-bold leading-[1.05] tracking-tight text-ink-950 md:text-6xl lg:text-7xl">
+              Somos
+              <span class="relative whitespace-nowrap">
+                <span class="bg-linear-to-r from-brand-600 via-brand-500 to-brand-700 bg-clip-text text-transparent">Disart Energy</span>
+                <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none" aria-hidden>
+                  <path d="M2 9 C 80 2, 160 2, 298 9" stroke="oklch(0.64 0.18 152)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </span>,
+              ingeniería energética hecha en Colombia.
+            </h1>
+            <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-ink-700">
+              Una compañía de ingeniería y operación energética que entrega
+              infraestructura llave en mano: <strong>solar fotovoltaico</strong>,
+              <strong>electrolineras DC fast charging</strong> y
+              <strong>movilidad eléctrica</strong>. Diseñamos, importamos,
+              instalamos y operamos cada proyecto bajo un solo contrato,
+              en toda Colombia y la región.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="/#contacto" class="group inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+                Habla con nuestro equipo
+                <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#capacidades" class="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-6 py-3.5 text-sm font-semibold text-ink-900 transition hover:border-brand-300 hover:bg-brand-50">
+                Conoce qué hacemos
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="grid grid-cols-2 gap-4">
+              {numeros.map((n) => (
+                <div class="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
+                  <p class="font-display text-3xl font-bold tracking-tight text-ink-950 md:text-4xl">
+                    {n.v}
+                    {n.u && <span class="ml-1 text-sm font-semibold text-brand-700">{n.u}</span>}
+                  </p>
+                  <p class="mt-1.5 text-xs leading-relaxed text-ink-700">{n.t}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILARES: Propósito / Misión / Visión -->
+    <section class="relative bg-white px-4 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Qué nos mueve</p>
+          <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+            Energía limpia que también es buen negocio.
+          </h2>
+          <p class="mt-4 text-lg text-ink-700">
+            Creemos que la transición energética solo se acelera cuando deja de
+            ser un sacrificio y se vuelve la mejor decisión financiera disponible.
+            Esa convicción guía cada proyecto que diseñamos.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          {pilares.map((p) => (
+            <article class="group relative flex h-full flex-col rounded-3xl border border-ink-100 bg-gradient-to-b from-white to-brand-50/30 p-7 shadow-soft transition hover:border-brand-300 hover:shadow-glow">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">{p.kicker}</p>
+              <h3 class="font-display mt-3 text-2xl font-bold leading-tight text-ink-950">{p.title}</h3>
+              <p class="mt-4 text-sm leading-relaxed text-ink-700">{p.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACIDADES -->
+    <section id="capacidades" class="relative bg-ink-950 px-4 py-24 text-white">
+      <div class="absolute inset-0 -z-0 opacity-30 [background-image:radial-gradient(60%_60%_at_50%_0%,oklch(0.55_0.17_152_/_0.45),transparent_70%)]"></div>
+      <div class="relative mx-auto max-w-6xl">
+        <div class="grid items-end gap-10 md:grid-cols-2">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">Qué hacemos</p>
+            <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight md:text-5xl">
+              Cuatro disciplinas, un mismo contrato.
+            </h2>
+          </div>
+          <p class="text-lg text-ink-300">
+            Internalizamos toda la cadena para que tú no tengas que coordinar
+            5 proveedores distintos. Una sola compañía responde por el diseño,
+            los equipos, la obra y la operación durante toda la vida útil del proyecto.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          {capacidades.map((c, i) => (
+            <div class="relative bg-ink-950 p-8 transition hover:bg-ink-900">
+              <span class="font-display text-xs font-bold uppercase tracking-widest text-brand-300">0{i + 1}</span>
+              <h3 class="font-display mt-4 text-xl font-bold">{c.t}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-300">{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPIOS / CULTURA -->
+    <section class="relative bg-gradient-to-b from-white to-brand-50/40 px-4 py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid items-end gap-10 md:grid-cols-2">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Cómo trabajamos</p>
+            <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+              Los principios no negociables.
+            </h2>
+          </div>
+          <p class="text-lg text-ink-700">
+            Son las reglas que filtran cada decisión técnica y comercial.
+            Si un proyecto no las cumple, no lo tomamos — sin importar cuánto facture.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {principios.map((p) => (
+            <article class="relative rounded-3xl border border-ink-100 bg-white p-7 shadow-soft transition hover:border-brand-300 hover:shadow-glow">
+              <span class="font-display text-xs font-bold uppercase tracking-widest text-brand-700">{p.n}</span>
+              <h3 class="font-display mt-3 text-xl font-bold text-ink-950">{p.t}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-700">{p.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE / CTA -->
+    <section class="relative bg-white px-4 py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="relative overflow-hidden rounded-[2.5rem] border border-brand-700/30 bg-ink-950 p-10 text-white shadow-glow md:p-16">
+          <div class="absolute inset-0 -z-0 opacity-60 [background-image:radial-gradient(60%_60%_at_100%_0%,oklch(0.55_0.17_152_/_0.55),transparent_60%),radial-gradient(40%_60%_at_0%_100%,oklch(0.88_0.20_130_/_0.35),transparent_60%)]"></div>
+
+          <div class="relative grid items-center gap-10 md:grid-cols-12">
+            <div class="md:col-span-8">
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">Conversemos</p>
+              <h2 class="font-display mt-3 text-balance text-3xl font-bold tracking-tight md:text-5xl">
+                ¿Tienes un proyecto en mente?
+              </h2>
+              <p class="mt-4 text-lg text-ink-300">
+                Cuéntanos qué quieres lograr y te entregamos un diagnóstico
+                técnico en 48 horas. Sin costo y sin compromiso.
+              </p>
+            </div>
+            <div class="md:col-span-4 md:text-right">
+              <a href="/#contacto" class="group inline-flex items-center gap-2 rounded-full bg-lime-glow px-6 py-3.5 text-sm font-bold text-ink-950 transition hover:bg-white">
+                Solicitar diagnóstico
+                <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <p class="mt-4 text-xs text-ink-400 md:text-right">
+                O escríbenos a
+                <a href={`mailto:${CONTACT.email}`} class="font-semibold text-lime-glow underline-offset-2 hover:underline">{CONTACT.email}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
