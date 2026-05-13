@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://disartenergy.com/sitemap-index.x
+Sitemap: https://disartenergy.com/sitemap-index.xml

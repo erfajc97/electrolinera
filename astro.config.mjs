@@ -29,4 +29,12 @@ export default defineConfig({
           item.url === 'https://disartenergy.com/movilidad/' ||
           item.url === 'https://disartenergy.com/electrolineras/'
         ) return { ...item, priority: 0.9 };
-        if (item.url === 'https://disartenergy.com/nosotros/') return { ...item
+        if (item.url === 'https://disartenergy.com/nosotros/') return { ...item, priority: 0.8 };
+        return item;
+      },
+    }),
+  ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
