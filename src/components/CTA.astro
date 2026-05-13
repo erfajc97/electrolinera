@@ -1,4 +1,5 @@
 ---
+import { CONTACT } from "../config/contact";
 ---
 <section id="contacto" class="relative px-4 py-24">
   <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-brand-700/30 bg-ink-950 p-10 text-white shadow-glow md:p-16">
@@ -24,7 +25,7 @@
         </ul>
       </div>
 
-      <form id="contact-form" class="lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur" novalidate>
+      <form id="contact-form" data-fallback-email={CONTACT.email} class="lg:col-span-5 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur" novalidate>
         <div class="space-y-4">
           <label class="block">
             <span class="text-xs font-semibold uppercase tracking-widest text-brand-200">Nombre</span>
@@ -80,6 +81,7 @@
           const button = form.querySelector('[data-submit]') as HTMLButtonElement;
           const label = form.querySelector('[data-label]') as HTMLSpanElement;
           const feedback = form.querySelector('[data-feedback]') as HTMLParagraphElement;
+          const fallbackEmail = form.dataset.fallbackEmail ?? '';
           const originalLabel = label.textContent ?? 'Solicitar diagnóstico';
 
           form.addEventListener('submit', async (event) => {
@@ -108,7 +110,7 @@
               const body = await res.json().catch(() => ({}));
 
               if (res.ok && body.ok) {
-                feedback.textContent = '¡Listo, Harold! Te contactamos en menos de 24 horas.';
+                feedback.textContent = '¡Listo! Te contactamos en menos de 24 horas.';
                 feedback.classList.remove('hidden', 'border-red-400/40', 'bg-red-500/10', 'text-red-200');
                 feedback.classList.add('border-lime-glow/40', 'bg-lime-glow/10', 'text-lime-glow');
                 form.reset();
@@ -116,7 +118,7 @@
                 throw new Error(body.error ?? 'NETWORK');
               }
             } catch {
-              feedback.textContent = 'No se pudo enviar. Intenta de nuevo o escríbenos a harold@eranpay.com.';
+              feedback.textContent = `No se pudo enviar. Intenta de nuevo o escríbenos a ${fallbackEmail}.`;
               feedback.classList.remove('hidden', 'border-lime-glow/40', 'bg-lime-glow/10', 'text-lime-glow');
               feedback.classList.add('border-red-400/40', 'bg-red-500/10', 'text-red-200');
             } finally {

@@ -1,12 +1,11 @@
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
+import { CONTACT, CONTACT_FROM } from '../../config/contact';
 
 export const prerender = false;
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
-const FROM = import.meta.env.CONTACT_FROM ?? 'Disart Energy <onboarding@resend.dev>';
-const TO = import.meta.env.CONTACT_TO ?? 'erfacrypto@gmail.com';
 const WHATSAPP = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '';
 
 const LIMITS = {
@@ -197,8 +196,9 @@ const renderEmail = ({
           <tr>
             <td style="padding:24px 32px 28px 32px;border-top:1px solid #e1ece3;">
               <p style="margin:0;font-size:11px;line-height:1.5;color:#7a8c7f;">
-                Enviado desde el formulario p&uacute;blico de <strong style="color:#1a7b4c;">disart-energy</strong>.
-                Para cambiar el destino edita <code style="background:#f3f6f4;padding:1px 4px;border-radius:4px;">CONTACT_TO</code> en <code style="background:#f3f6f4;padding:1px 4px;border-radius:4px;">.env</code>.
+                Enviado desde el formulario p&uacute;blico de
+                <a href="https://disartenergy.com" style="color:#1a7b4c;text-decoration:none;font-weight:600;">disartenergy.com</a>.
+                Responde directamente a este correo para contestarle al lead.
               </p>
             </td>
           </tr>
@@ -253,8 +253,8 @@ export const POST: APIRoute = async ({ request }) => {
     `Interés: ${interest}\n`;
 
   const { data, error } = await resend.emails.send({
-    from: FROM,
-    to: TO,
+    from: CONTACT_FROM,
+    to: CONTACT.email,
     replyTo: email,
     subject,
     html,

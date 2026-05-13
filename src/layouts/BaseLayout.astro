@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { CONTACT } from "../config/contact";
 
 interface Props {
   title?: string;
@@ -29,16 +30,18 @@ const orgLd = {
   logo: "https://disartenergy.com/favicon.svg",
   description,
   sameAs: [],
+  email: CONTACT.email,
   contactPoint: [{
     "@type": "ContactPoint",
     contactType: "customer support",
+    email: CONTACT.email,
     areaServed: "CO",
     availableLanguage: ["Spanish", "English"],
   }],
   address: {
     "@type": "PostalAddress",
     addressCountry: "CO",
-    addressLocality: "Bogotá",
+    addressLocality: CONTACT.city,
   },
 };
 ---

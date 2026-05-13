@@ -1,5 +1,7 @@
 ---
 import Logo from "./Logo.astro";
+import { CONTACT, CONTACT_MAILTO } from "../config/contact";
+
 const year = new Date().getFullYear();
 const cols = [
   { t: "Soluciones", links: [
@@ -23,8 +25,8 @@ const cols = [
   ]},
   { t: "Contacto", links: [
     { label: "WhatsApp", href: "/#contacto" },
-    { label: "harold@eranpay.com", href: "mailto:harold@eranpay.com" },
-    { label: "Bogotá · Colombia", href: "/#contacto" },
+    { label: CONTACT.email, href: CONTACT_MAILTO },
+    { label: `${CONTACT.city} · ${CONTACT.country}`, href: "/#contacto" },
     { label: "Estado del servicio", href: "/#contacto" },
   ]},
 ];
