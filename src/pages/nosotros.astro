@@ -6,26 +6,34 @@ import WhatsAppFab from "../components/WhatsAppFab.astro";
 import { CONTACT } from "../config/contact";
 
 const meta = {
-  title: "Nosotros | Disart Energy — Ingeniería energética Colombia",
+  title: "Sobre Disart Energy · Empresa de energía limpia en Colombia",
   description:
-    "Disart Energy: ingeniería energética colombiana que diseña, importa, instala y opera infraestructura solar, electrolineras y movilidad eléctrica.",
+    "Disart Energy es una empresa colombiana de ingeniería energética que diseña, importa, instala y opera electrolineras de carga rápida, sistemas solares fotovoltaicos y movilidad eléctrica bajo norma RETIE y NTC.",
+  image: "/img/electrolinera/station-ev-fast.png",
+  imageAlt: "Equipo Disart Energy en planta de pruebas de cargadores eléctricos en Colombia",
+  keywords:
+    "Disart Energy, empresa energía limpia Colombia, ingeniería energética, RETIE, NTC, infraestructura energética, operador de carga eléctrica Colombia, CPO Colombia",
 };
 
-const jsonld = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  name: "Nosotros — Disart Energy",
-  url: "https://disartenergy.com/nosotros",
-  description: meta.description,
-  inLanguage: "es-CO",
-  mainEntity: {
-    "@type": "Organization",
-    name: "Disart Energy",
-    url: "https://disartenergy.com",
-    foundingLocation: { "@type": "Place", name: "Bogotá, Colombia" },
-    areaServed: { "@type": "Country", name: "Colombia" },
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "Sobre Disart Energy",
+    url: "https://disartenergy.com/nosotros",
+    description: meta.description,
+    inLanguage: "es-CO",
+    mainEntity: { "@id": "https://disartenergy.com/#org" },
   },
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Nosotros", item: "https://disartenergy.com/nosotros" },
+    ],
+  },
+];
 
 const pilares = [
   {
@@ -92,7 +100,14 @@ const numeros = [
   { v: "99.7%", u: "",  t: "uptime promedio de la red operada" },
 ];
 ---
-<BaseLayout title={meta.title} description={meta.description} jsonld={jsonld}>
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  image={meta.image}
+  imageAlt={meta.imageAlt}
+  keywords={meta.keywords}
+  jsonld={jsonld}
+>
   <Nav />
   <WhatsAppFab />
 
@@ -153,7 +168,7 @@ const numeros = [
     </section>
 
     <!-- PILARES: Propósito / Misión / Visión -->
-    <section class="relative bg-white px-4 py-24">
+    <section class="relative bg-white px-4 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
         <div class="max-w-2xl">
           <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Qué nos mueve</p>
@@ -167,7 +182,7 @@ const numeros = [
           </p>
         </div>
 
-        <div class="mt-14 grid gap-6 md:grid-cols-3">
+        <div class="mt-10 md:mt-14 grid gap-6 md:grid-cols-3">
           {pilares.map((p) => (
             <article class="group relative flex h-full flex-col rounded-3xl border border-ink-100 bg-gradient-to-b from-white to-brand-50/30 p-7 shadow-soft transition hover:border-brand-300 hover:shadow-glow">
               <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">{p.kicker}</p>
@@ -180,7 +195,7 @@ const numeros = [
     </section>
 
     <!-- CAPACIDADES -->
-    <section id="capacidades" class="relative bg-ink-950 px-4 py-24 text-white">
+    <section id="capacidades" class="relative bg-ink-950 px-4 py-16 md:py-24 text-white">
       <div class="absolute inset-0 -z-0 opacity-30 [background-image:radial-gradient(60%_60%_at_50%_0%,oklch(0.55_0.17_152_/_0.45),transparent_70%)]"></div>
       <div class="relative mx-auto max-w-6xl">
         <div class="grid items-end gap-10 md:grid-cols-2">
@@ -197,7 +212,7 @@ const numeros = [
           </p>
         </div>
 
-        <div class="mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-10 md:mt-14 grid gap-px overflow-hidden rounded-3xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {capacidades.map((c, i) => (
             <div class="relative bg-ink-950 p-8 transition hover:bg-ink-900">
               <span class="font-display text-xs font-bold uppercase tracking-widest text-brand-300">0{i + 1}</span>
@@ -210,7 +225,7 @@ const numeros = [
     </section>
 
     <!-- PRINCIPIOS / CULTURA -->
-    <section class="relative bg-gradient-to-b from-white to-brand-50/40 px-4 py-24">
+    <section class="relative bg-gradient-to-b from-white to-brand-50/40 px-4 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
         <div class="grid items-end gap-10 md:grid-cols-2">
           <div>
@@ -225,7 +240,7 @@ const numeros = [
           </p>
         </div>
 
-        <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-10 md:mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {principios.map((p) => (
             <article class="relative rounded-3xl border border-ink-100 bg-white p-7 shadow-soft transition hover:border-brand-300 hover:shadow-glow">
               <span class="font-display text-xs font-bold uppercase tracking-widest text-brand-700">{p.n}</span>
@@ -238,7 +253,7 @@ const numeros = [
     </section>
 
     <!-- CIERRE / CTA -->
-    <section class="relative bg-white px-4 py-24">
+    <section class="relative bg-white px-4 py-16 md:py-24">
       <div class="mx-auto max-w-5xl">
         <div class="relative overflow-hidden rounded-[2.5rem] border border-brand-700/30 bg-ink-950 p-10 text-white shadow-glow md:p-16">
           <div class="absolute inset-0 -z-0 opacity-60 [background-image:radial-gradient(60%_60%_at_100%_0%,oklch(0.55_0.17_152_/_0.55),transparent_60%),radial-gradient(40%_60%_at_0%_100%,oklch(0.88_0.20_130_/_0.35),transparent_60%)]"></div>

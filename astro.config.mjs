@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
 import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -12,7 +11,6 @@ export default defineConfig({
   output: 'static',
   adapter: netlify(),
   integrations: [
-    react(),
     sitemap({
       filter: (page) =>
         !page.includes('/api/') &&
@@ -22,14 +20,15 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       serialize(item) {
-        // Boost priority for the home + flagship landings + about page.
-        if (item.url === 'https://disartenergy.com/') return { ...item, priority: 1.0 };
+        // Priority hierarchy: home + investor money page = max; flagship verticals next.
+        if (item.url === 'https://disartenergy.com/') return { ...item, priority: 1.0, changefreq: 'weekly' };
+        if (item.url === 'https://disartenergy.com/inversion/') return { ...item, priority: 0.95, changefreq: 'weekly' };
+        if (item.url === 'https://disartenergy.com/electrolineras/') return { ...item, priority: 0.95, changefreq: 'weekly' };
         if (
           item.url === 'https://disartenergy.com/solar/' ||
-          item.url === 'https://disartenergy.com/movilidad/' ||
-          item.url === 'https://disartenergy.com/electrolineras/'
-        ) return { ...item, priority: 0.9 };
-        if (item.url === 'https://disartenergy.com/nosotros/') return { ...item, priority: 0.8 };
+          item.url === 'https://disartenergy.com/movilidad/'
+        ) return { ...item, priority: 0.85, changefreq: 'monthly' };
+        if (item.url === 'https://disartenergy.com/nosotros/') return { ...item, priority: 0.7, changefreq: 'monthly' };
         return item;
       },
     }),

@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import InversionHero from "../components/inversion/InversionHero.astro";
+import InversionModel from "../components/inversion/InversionModel.astro";
+import InversionShares from "../components/inversion/InversionShares.astro";
+import InversionCalculator from "../components/inversion/InversionCalculator.astro";
+import InversionVsCompetition from "../components/inversion/InversionVsCompetition.astro";
+import Productos from "../components/Productos.astro";
+import Tecnologia from "../components/Tecnologia.astro";
+import InversionFAQ from "../components/inversion/InversionFAQ.astro";
+import SeoCopy from "../components/SeoCopy.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Invertir en electrolineras Colombia · ROI 8.6 meses | Disart",
+  description:
+    "Invierte en una electrolinera Disart Energy en Colombia: franquicia 720 kW llave en mano, ROI proyectado desde 8.6 meses. Calculadora de retorno en vivo con tipo de cambio USD/COP.",
+  image: "/img/electrolinera/charger-rain-suv.jpg",
+  imageAlt: "Inversión en franquicia de electrolinera Disart Energy Colombia 720 kW con tres cargadores DC",
+  keywords:
+    "invertir en electrolineras Colombia, inversión franquicia electrolinera, oportunidad inversión movilidad eléctrica, ROI electrolinera, payback electrolinera, franquicia carga rápida Colombia, calculadora inversión electrolinera, Disart Energy inversión",
+};
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://disartenergy.com/inversion/#webpage",
+    url: "https://disartenergy.com/inversion",
+    name: meta.title,
+    description: meta.description,
+    inLanguage: "es-CO",
+    isPartOf: { "@id": "https://disartenergy.com/#website" },
+    about: { "@id": "https://disartenergy.com/#org" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "InvestAction",
+    name: "Inversión en franquicia de electrolineras Disart Energy",
+    description: meta.description,
+    agent: { "@id": "https://disartenergy.com/#org" },
+    instrument: {
+      "@type": "Service",
+      serviceType: "Franquicia electrolinera 720 kW (3 × 240 kW)",
+      provider: { "@id": "https://disartenergy.com/#org" },
+      areaServed: { "@type": "Country", name: "Colombia" },
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Offer",
+    name: "Participación accionaria en electrolinera Disart Energy",
+    url: "https://disartenergy.com/inversion",
+    priceCurrency: "USD",
+    price: "19000",
+    priceSpecification: [
+      { "@type": "PriceSpecification", price: 19000, priceCurrency: "USD", description: "Participación 10%" },
+      { "@type": "PriceSpecification", price: 38000, priceCurrency: "USD", description: "Participación 20%" },
+      { "@type": "PriceSpecification", price: 57000, priceCurrency: "USD", description: "Participación 30%" },
+      { "@type": "PriceSpecification", price: 95000, priceCurrency: "USD", description: "Participación 50%" },
+      { "@type": "PriceSpecification", price: 190000, priceCurrency: "USD", description: "Participación 100%" },
+    ],
+    availability: "https://schema.org/LimitedAvailability",
+    seller: { "@id": "https://disartenergy.com/#org" },
+    areaServed: ["CO", "US", "EU", "LATAM"],
+    eligibleCustomerType: "Inversionista institucional o individual",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "¿Cuánto cuesta una franquicia de electrolinera en Colombia?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "El CAPEX total de una franquicia Disart Energy es de USD 190.000 (aprox. COP 660 millones). Incluye 3 cargadores DC de 240 kW, transformador 1000 kVA, obras civiles, sistema eléctrico, trámites y legalización. La inversión puede compartirse entre varios inversionistas desde el 10% (USD 19.000).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Cuál es el retorno de inversión proyectado de una electrolinera?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "El payback proyectado es de 8.6 meses en el escenario objetivo de 6 horas diarias de operación, con utilidad mensual aproximada de COP 76.4 millones. En el escenario alto (9 h/día) baja a 5.5 meses; en el escenario bajo (3 h/día) sube a 20 meses.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Puedo invertir si no resido en Colombia?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí. El modelo está abierto a inversionistas internacionales. Disart maneja la estructura legal y financiera local; tu participación se respalda con contrato de inversión privada y distribución periódica de utilidades en USD o COP según prefieras.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Qué pasa con los permisos y certificaciones?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Todos los permisos CREG/UPME, certificaciones eléctricas IEC 61851 y negociaciones con el operador de red ya están resueltos por Disart Energy. El inversionista no asume ese riesgo regulatorio.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Quién opera la electrolinera día a día?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Disart Energy opera completamente: monitoreo 24/7, mantenimiento preventivo y correctivo, atención al conductor, gestión de pagos y reportería contable. El inversor recibe utilidades, no responsabilidades operativas.",
+        },
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Electrolineras", item: "https://disartenergy.com/electrolineras" },
+      { "@type": "ListItem", position: 3, name: "Inversión", item: "https://disartenergy.com/inversion" },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  image={meta.image}
+  imageAlt={meta.imageAlt}
+  keywords={meta.keywords}
+  jsonld={jsonld}
+>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <InversionHero />
+    <InversionModel />
+    <InversionShares />
+    <InversionCalculator />
+    <InversionVsCompetition />
+    <Productos />
+    <Tecnologia />
+    <InversionFAQ />
+    <SeoCopy />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

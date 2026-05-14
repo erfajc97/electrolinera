@@ -1,0 +1,108 @@
+---
+const highlights = [
+  { v: "USD 190k", l: "Por franquicia completa · 720 kW" },
+  { v: "8.6 mo",   l: "Payback proyectado (objetivo 6 h/día)" },
+  { v: "100%",     l: "Llave en mano · sin operación técnica" },
+];
+---
+<section id="top" class="relative isolate overflow-hidden bg-ink-950 pt-32 pb-24 text-white md:pt-40 md:pb-28">
+  <div class="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(60%_60%_at_50%_0%,oklch(0.55_0.17_152_/_0.45),transparent_70%),radial-gradient(50%_40%_at_85%_20%,oklch(0.88_0.20_130_/_0.25),transparent_70%)]"></div>
+  <div class="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(to_right,oklch(0.88_0.20_130_/_0.18)_1px,transparent_1px),linear-gradient(to_bottom,oklch(0.88_0.20_130_/_0.18)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_80%)]"></div>
+
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <span class="hero-spark" style="--x:14%; --d:0.2s; --dur:10s;"></span>
+    <span class="hero-spark" style="--x:32%; --d:2.1s; --dur:12s;"></span>
+    <span class="hero-spark" style="--x:55%; --d:1.0s; --dur:9s;"></span>
+    <span class="hero-spark" style="--x:78%; --d:3.0s; --dur:11s;"></span>
+    <span class="hero-spark" style="--x:92%; --d:0.7s; --dur:13s;"></span>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid items-center gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <span class="inline-flex items-center gap-2 rounded-full border border-brand-400/40 bg-brand-700/30 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-brand-100 backdrop-blur">
+          <span class="grid h-4 w-4 place-items-center rounded-full bg-lime-glow text-[10px] font-bold text-ink-950">●</span>
+          Ronda 2026 · cupos limitados
+        </span>
+
+        <h1 class="font-display mt-6 text-balance text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+          Invierte en una
+          <span class="relative whitespace-nowrap">
+            <span class="bg-linear-to-r from-lime-glow via-brand-300 to-brand-100 bg-clip-text text-transparent">electrolinera en Colombia</span>
+            <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 320 12" fill="none" aria-hidden>
+              <path d="M2 9 C 80 2, 160 2, 318 9" stroke="oklch(0.88 0.20 130)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          y recibe ingresos desde el primer mes.
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-ink-200">
+          Una franquicia Disart son 3 cargadores ultra rápidos de 240 kW
+          —720 kW totales, 6 mangueras— operando bajo nuestra marca, app y
+          dashboard. Importamos los equipos, gestionamos los permisos,
+          construimos la obra y operamos 24/7. Tú aportas el capital
+          y participas de las utilidades.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#calculadora" class="group inline-flex items-center gap-2 rounded-full bg-lime-glow px-6 py-3.5 text-sm font-bold text-ink-950 shadow-glow transition hover:bg-white">
+            Simular mi retorno
+            <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#modelo" class="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">
+            Ver modelo de negocio
+          </a>
+        </div>
+
+        <dl class="mt-12 grid max-w-2xl gap-6 sm:grid-cols-3">
+          {highlights.map((h) => (
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <dt class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">{h.l}</dt>
+              <dd class="font-display mt-1 text-2xl font-bold">{h.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="relative lg:col-span-5">
+        <div class="relative mx-auto aspect-4/5 max-w-md">
+          <div class="absolute -inset-8 rounded-4xl bg-linear-to-br from-brand-500/30 to-lime-glow/30 blur-3xl"></div>
+
+          <div class="relative h-full overflow-hidden rounded-4xl border border-white/15 shadow-glow">
+            <img src="/img/electrolinera/charger-rain-suv.jpg" alt="Electrolinera Disart Energy en operación" class="h-full w-full object-cover" loading="eager" decoding="sync" fetchpriority="high"/>
+            <div class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-ink-950 via-ink-950/55 to-transparent"></div>
+
+            <div class="absolute inset-x-5 bottom-5 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl border border-white/15 bg-white/10 px-3 py-2 backdrop-blur">
+                <p class="text-[9px] font-semibold uppercase tracking-widest text-brand-200">Capacidad</p>
+                <p class="font-display text-base font-bold text-white">720 kW</p>
+                <p class="text-[10px] text-ink-200">3 × 240 kW</p>
+              </div>
+              <div class="rounded-2xl border border-white/15 bg-white/10 px-3 py-2 backdrop-blur">
+                <p class="text-[9px] font-semibold uppercase tracking-widest text-brand-200">Mangueras</p>
+                <p class="font-display text-base font-bold text-white">6</p>
+                <p class="text-[10px] text-ink-200">simultáneas CCS2</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -left-6 top-6 hidden w-44 rounded-2xl border border-white/15 bg-ink-900/80 p-3 shadow-soft backdrop-blur md:block">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Margen kWh</p>
+            <p class="font-display mt-1 text-xl font-bold text-white">$ 800 <span class="text-[10px] font-medium text-ink-300">COP</span></p>
+            <div class="mt-1 flex items-center gap-1.5 text-[10px] text-ink-300">
+              <span>$ 800 compra</span>
+              <svg class="h-2.5 w-2.5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              <span class="font-semibold text-lime-glow">$ 1.600 venta</span>
+            </div>
+          </div>
+
+          <div class="absolute -right-4 bottom-20 hidden w-44 rounded-2xl border border-white/15 bg-ink-900/80 p-3 shadow-soft backdrop-blur md:block">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Facturación min.</p>
+            <p class="font-display mt-1 text-xl font-bold text-lime-glow">USD 18k <span class="text-[10px] font-medium text-ink-300">/mes</span></p>
+            <p class="text-[10px] text-ink-300">USD 216k anuales proyectados</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

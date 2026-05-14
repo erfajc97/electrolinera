@@ -1,0 +1,58 @@
+---
+const rows = [
+  { feature: "Importación de equipos sin retención aduanera",  us: "incluida",          them: "el inversor asume" },
+  { feature: "Permisos CREG / operador de red en Colombia",    us: "ya obtenidos",      them: "trámite + meses" },
+  { feature: "Certificaciones eléctricas e IEC 61851",         us: "incluidas",         them: "a cuenta del inversor" },
+  { feature: "Negociación con empresa de energía",             us: "establecida",       them: "el inversor inicia" },
+  { feature: "Obra civil + transformador 1000 kVA",            us: "llave en mano",     them: "contratista externo" },
+  { feature: "App white-label para conductores",               us: "setup + suscripción", them: "no disponible / contrato externo" },
+  { feature: "Dashboard de operación y BI",                    us: "suscripción SaaS",    them: "licencia separada cara" },
+  { feature: "Roaming OCPI con redes nacionales",              us: "estándar",          them: "depende del CPMS" },
+  { feature: "Soporte y monitoreo 24/7",                       us: "incluido",          them: "contrato adicional" },
+  { feature: "Mantenimiento preventivo y correctivo",          us: "operado por Disart",them: "el inversor coordina" },
+];
+---
+<section id="ventaja" class="relative bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Por qué Disart</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Lo que otros tercerizan, nosotros ya lo resolvimos.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Instalar una electrolinera en Colombia no es solo comprar equipos.
+        Es importación, permisos, infraestructura, software y operación.
+        Disart entrega todo bajo un mismo contrato.
+      </p>
+    </div>
+
+    <div class="mt-10 md:mt-14 overflow-hidden rounded-4xl border border-ink-100 bg-white shadow-soft">
+      <div class="grid grid-cols-[1.4fr_1fr_1fr] border-b border-ink-100 bg-ink-50 text-[10px] font-bold uppercase tracking-widest text-ink-700 sm:grid-cols-[1.8fr_1fr_1fr]">
+        <div class="px-5 py-4">Capacidad</div>
+        <div class="px-5 py-4 bg-brand-700 text-white">Disart Energy</div>
+        <div class="px-5 py-4">Otras opciones</div>
+      </div>
+      <div class="divide-y divide-ink-100">
+        {rows.map((r) => (
+          <div class="grid grid-cols-[1.4fr_1fr_1fr] items-center text-sm sm:grid-cols-[1.8fr_1fr_1fr]">
+            <div class="px-5 py-4 font-medium text-ink-950">{r.feature}</div>
+            <div class="flex items-center gap-2 px-5 py-4 font-semibold text-brand-800 bg-brand-50/60">
+              <svg class="h-4 w-4 shrink-0 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              {r.us}
+            </div>
+            <div class="flex items-center gap-2 px-5 py-4 text-ink-700">
+              <svg class="h-4 w-4 shrink-0 text-ink-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              {r.them}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <p class="mt-6 text-center text-xs text-ink-500 max-w-2xl mx-auto">
+      El valor agregado de Disart es lo que no se ve: una cadena de importación,
+      permisos y certificaciones que toma años construir. Tu inversión queda
+      protegida por una operación que ya está funcionando.
+    </p>
+  </div>
+</section>

@@ -31,6 +31,9 @@ disart-*.jpg
 # local assets working folder
 assets/
 
+# local working resources (pitch decks, ref images, briefs)
+recursos/
+
 # rtk logs
 *.rtk.log
 

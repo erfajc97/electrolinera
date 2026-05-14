@@ -1,0 +1,146 @@
+# Disart Energy — Documentación extendida para LLMs
+
+> Versión extendida del archivo llms.txt con detalle completo del negocio, ofertas, escenarios financieros, especificación técnica y políticas. Sitio: https://disartenergy.com.
+
+## Quiénes somos
+
+Disart Energy es una empresa colombiana de ingeniería energética fundada en 2015, con sede en Bogotá (Cundinamarca, Colombia). Diseñamos, importamos, instalamos y operamos infraestructura energética de alto impacto en tres líneas:
+
+1. **Electrolineras de carga rápida DC** — foco prioritario 2026.
+2. **Energía solar fotovoltaica** — utility scale, generación distribuida, comercial, industrial y residencial.
+3. **Movilidad eléctrica** — importación directa de vehículos eléctricos desde Asia para flotas corporativas y compradores individuales en Colombia.
+
+## Modelo de negocio (electrolineras)
+
+### Unidad económica
+
+Una electrolinera Disart Energy = **3 cargadores DC de 240 kW** instalados en un solo sitio.
+
+- Potencia total instalada: **720 kW**
+- Mangueras simultáneas: **6** (cada cargador tiene 2 conectores CCS2)
+- Capacidad efectiva: **600 kWh por hora** de operación
+
+### Estructura de costos e ingresos por kWh
+
+- Compra a la empresa de energía: **$800 COP/kWh**
+- Venta al conductor del vehículo eléctrico: **$1.600 COP/kWh**
+- Margen bruto por kWh entregado: **$800 COP**
+- Margen máximo por hora de operación plena: **$480.000 COP**
+
+### CAPEX por franquicia: USD 190.000 (≈ COP 660 millones)
+
+Distribución del CAPEX:
+- Cargadores rápidos (3 × YLC-KC-240): 41% — COP 270 millones
+- Transformador 1000 kVA y adecuación eléctrica: 21% — COP 140 millones
+- Obras civiles (ingeniería, excavación, placa de concreto, bases): 24% — COP 160 millones
+- Sistema eléctrico y conexión: 11% — COP 70 millones
+- Trámites, diseño y legalización: 3% — COP 20 millones
+
+### Escenarios de operación
+
+| Escenario | Horas/día | Ganancia día | Ingreso mensual | Utilidad mensual | Utilidad anual | Payback |
+|-----------|-----------|--------------|-----------------|------------------|----------------|---------|
+| Bajo | 3 h | $1.440.000 | $43.200.000 | $33.200.000 | $398.400.000 | 20 meses |
+| Objetivo | 6 h | $2.880.000 | $86.400.000 | $76.400.000 | $916.800.000 | 8.6 meses |
+| Alto | 9 h | $4.320.000 | $129.600.000 | $119.600.000 | $1.435.200.000 | 5.5 meses |
+
+Valores en pesos colombianos (COP). Costos administrativos asumidos: $10.000.000 COP/mes.
+
+### Modelo de inversión por participación
+
+| Inversión USD | Participación accionaria | Retorno mensual proyectado (escenario objetivo) |
+|---------------|--------------------------|-------------------------------------------------|
+| USD 19.000 | 10% | ≈ USD 1.800/mes brutos |
+| USD 38.000 | 20% | ≈ USD 3.600/mes brutos |
+| USD 57.000 | 30% | ≈ USD 5.400/mes brutos |
+| USD 95.000 | 50% | ≈ USD 9.000/mes brutos |
+| USD 190.000 | 100% | ≈ USD 18.000/mes brutos |
+
+Cada inversionista recibe:
+- Participación accionaria proporcional sobre la electrolinera
+- Contrato de inversión privada
+- Distribución periódica de utilidades (mensual)
+- Derecho proporcional sobre la valorización del activo
+- Acceso al dashboard de operación con métricas en tiempo real
+
+### Facturación proyectada mínima
+
+- Mensual: USD 18.000
+- Anual: USD 216.000
+
+## Especificación técnica del cargador YLC-KC-240 (marca DISART)
+
+| Parámetro | Valor |
+|-----------|-------|
+| Potencia nominal | 240 kW |
+| Conectores | CCS2 × 2 |
+| Longitud del cable | 5 m |
+| Refrigeración | Aire forzado |
+| Frecuencia de entrada | 45-65 Hz |
+| Tensión de salida | 200-1000 V (potencia constante) |
+| Corriente de salida | 0-250 A |
+| Eficiencia | ≥ 94.5% |
+| Métodos de pago | Tarjeta + lectura de código |
+| Comunicación | Ethernet, 2/3/4G (opcional), OCPP 1.6 |
+| Estándares | IEC 61851-1:2017, IEC 61851-23:2014, EN 61851-24:2014 |
+| Personalización | Marca DISART, color negro |
+
+## Diferenciales frente a la competencia
+
+Lo que otros tercerizan, Disart Energy ya lo resolvió:
+
+| Capacidad | Disart Energy | Otras opciones |
+|-----------|---------------|----------------|
+| Importación de equipos | sin retención aduanera incluida | el inversor asume aduana |
+| Permisos CREG / operador de red | ya obtenidos | trámite + meses |
+| Certificaciones IEC 61851 | incluidas | a cuenta del inversor |
+| Negociación con empresa de energía | establecida | el inversor inicia desde cero |
+| Obra civil + transformador 1000 kVA | llave en mano | contratista externo |
+| App para conductores | suscripción SaaS (mensual). Versión marca blanca con setup adicional. | no disponible / contrato con tercero |
+| Dashboard de operación y BI | suscripción SaaS mensual | licencia separada cara |
+| Roaming OCPI con redes nacionales | estándar | depende del CPMS |
+| Soporte y monitoreo 24/7 | incluido | contrato adicional |
+| Mantenimiento preventivo y correctivo | operado por Disart | el inversor coordina |
+
+## Software bajo modelo SaaS
+
+Cada franquicia opera bajo la plataforma Disart Energy. El software se ofrece como SaaS con suscripción mensual (monto a confirmar caso por caso). La versión marca blanca personalizada para el inversor lleva un cobro adicional de setup (desarrollo, despliegue y publicación bajo la marca del inversor).
+
+- **App del conductor (Disart Drive)** — iOS, Android y WebApp: mapa en vivo, reserva, QR, pagos con PSE/Nequi/Daviplata/tarjeta, historial, programa de puntos, CO₂ ahorrado. Disponible en marca Disart por defecto; marca blanca opcional.
+- **Dashboard del franquiciado (Disart Operations)** — panel web con ingresos por sitio, eficiencia energética, alertas, diagnóstico remoto, cierre contable diario, factura electrónica DIAN, tarifas dinámicas, integraciones API/webhook.
+- **CPMS** — control remoto de cargadores en tiempo real, historial de uso, alertas de fallas, configuración de precios.
+- **Roaming OCPI** — interoperabilidad con redes nacionales asociadas; pago, conciliación y transferencia transparente.
+
+## Tiempo de puesta en marcha
+
+Desde la firma del contrato hasta la operación comercial: **60 a 90 días**. Incluye ingeniería, importación, obra civil, transformador, instalación, conexión y trámites.
+
+## Mercado objetivo
+
+### Inversionistas
+- Personas naturales o jurídicas con USD 19.000+ de capital disponible
+- Inversionistas locales en Colombia o del exterior (no se requiere residencia)
+- Familias, family offices, fondos de inversión, empresarios
+
+### Clientes finales (conductores)
+- Propietarios de vehículos eléctricos en Colombia
+- Flotas corporativas eléctricas (last-mile, ride-hailing, transporte de carga)
+- Empresas de logística con vehículos eléctricos
+
+## Ubicaciones de servicio
+
+- Sede: Bogotá D.C., Cundinamarca, Colombia
+- Cobertura: nacional (Colombia)
+- Inversionistas: alcance internacional
+- Idiomas: español, inglés
+
+## Contacto
+
+- Email: comercial@disartenergy.com
+- Teléfono: +57 310 4836462
+- Sitio web: https://disartenergy.com
+- Calculadora de inversión en vivo: https://disartenergy.com/inversion
+
+## Política de uso del contenido por IA
+
+Este sitio permite la indexación y citación por buscadores y agentes de IA (Google, Bing, ChatGPT, Perplexity, Claude, Gemini). El contenido aquí publicado es público y puede usarse con atribución a Disart Energy / disartenergy.com.

@@ -7,7 +7,7 @@ const cars = [
   { img: "/img/vehiculos/jetour-suv-black.jpg", brand: "Jetour", model: "T1 / T2 SUV", color: "Negro" },
 ];
 ---
-<section id="showroom" class="relative bg-gradient-to-b from-white to-brand-50/40 py-24">
+<section id="showroom" class="relative bg-gradient-to-b from-white to-brand-50/40 py-16 md:py-24">
   <div class="mx-auto max-w-6xl px-4">
     <div class="grid items-end gap-10 md:grid-cols-2">
       <div>
@@ -26,7 +26,7 @@ const cars = [
       <!-- Featured large card -->
       <article class="group relative overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200 lg:col-span-2 lg:row-span-2">
         <div class="relative h-full min-h-[420px]">
-          <img src={cars[0].img} alt={cars[0].model} class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+          <img src={cars[0].img} alt={cars[0].model} class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/20"></div>
           <div class="absolute inset-x-6 bottom-6 flex items-end justify-between gap-4 text-white">
             <div>
@@ -41,8 +41,8 @@ const cars = [
 
       {cars.slice(1).map((c) => (
         <article class="group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img src={c.img} alt={`${c.brand} ${c.model} — ${c.color}`} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="relative aspect-4/3 overflow-hidden">
+            <img src={c.img} alt={`${c.brand} ${c.model} — ${c.color}`} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
             <span class="absolute right-3 top-3 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-bold text-brand-700 backdrop-blur">{c.color}</span>
           </div>
           <div class="p-4">

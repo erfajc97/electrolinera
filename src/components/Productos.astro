@@ -1,47 +1,75 @@
 ---
-const products = [
-  { img: "/img/electrolinera/station-ev-fast.png", tag: "Urbano", title: "Disart Urban 60", desc: "Cargador DC compacto para retail, hoteles y parqueaderos.", specs: ["60 kW", "CCS2 + CHAdeMO", "Pantalla 10\""] },
-  { img: "/img/electrolinera/truck-charging.jpg", tag: "Pesado", title: "Disart Heavy 240", desc: "Para flotillas eléctricas, camiones y transporte de carga.", specs: ["240 kW", "Doble conector", "Refrigeración líquida"] },
-  { img: "/img/electrolinera/station-fleet.jpg", tag: "Hub", title: "Disart Hub 360+", desc: "Estación multi-cargador con paneles solares y batería integrada.", specs: ["Hasta 360 kW", "Solar opcional", "4 puntos simultáneos"] },
+const specs = [
+  { k: "Potencia nominal", v: "240 kW" },
+  { k: "Conectores",        v: "CCS2 × 2" },
+  { k: "Cable",             v: "5 m" },
+  { k: "Tensión salida",    v: "200–1000 V (potencia constante)" },
+  { k: "Corriente salida",  v: "0–250 A" },
+  { k: "Eficiencia",        v: "≥ 94.5%" },
+  { k: "Refrigeración",     v: "Aire forzado" },
+  { k: "Comunicación",      v: "Ethernet · 2/3/4G · OCPP 1.6" },
+  { k: "Pago",              v: "Tarjeta + lectura de código" },
+  { k: "Estándares",        v: "IEC 61851-1, IEC 61851-23, EN 61851-24" },
 ];
 ---
-<section id="productos" class="relative py-24">
+<section id="productos" class="relative bg-white py-16 md:py-24">
   <div class="mx-auto max-w-6xl px-4">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div class="max-w-xl">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Hardware</p>
         <h2 class="font-display mt-3 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
-          Cargadores certificados para cada caso.
+          Cargador DISART YLC-KC-240
         </h2>
       </div>
       <p class="max-w-md text-ink-700">
-        Selecciona el modelo según tu flujo. Todos vienen integrados a la plataforma
-        Disart, con instalación y mantenimiento incluidos.
+        El cargador insignia de nuestra franquicia. Tres unidades por estación,
+        importadas, certificadas e integradas al ecosistema Disart.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-3">
-      {products.map((p) => (
-        <article class="group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
-          <div class="relative aspect-[4/3] overflow-hidden">
-            <img src={p.img} alt={p.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
-            <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 backdrop-blur">{p.tag}</span>
+    <div class="mt-12 grid gap-6 overflow-hidden rounded-4xl border border-ink-100 bg-white shadow-soft lg:grid-cols-12">
+      <div class="relative aspect-4/3 overflow-hidden bg-linear-to-br from-ink-50 to-brand-50/40 lg:col-span-5 lg:aspect-auto">
+        <img src="/img/electrolinera/station-real.jpg" alt="Electrolinera Disart Energy con cargador DISART YLC-KC-240 240 kW en operación en Colombia" class="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+        <div class="absolute inset-0 bg-linear-to-t from-ink-950/30 via-transparent"></div>
+        <span class="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-soft">
+          Marca DISART
+        </span>
+        <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-3 text-white">
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">En operación</p>
+            <p class="font-display text-sm font-bold">Estación Disart · DC fast charging</p>
           </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-ink-950">{p.title}</h3>
-            <p class="mt-2 text-sm text-ink-700">{p.desc}</p>
-            <ul class="mt-5 flex flex-wrap gap-2">
-              {p.specs.map((s) => (
-                <li class="rounded-full border border-ink-100 bg-ink-50 px-3 py-1 text-xs font-medium text-ink-700">{s}</li>
-              ))}
-            </ul>
-            <a href="#contacto" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800">
-              Ver ficha técnica
-              <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </article>
-      ))}
+        </div>
+      </div>
+
+      <div class="flex flex-col p-8 lg:col-span-7 lg:p-10">
+        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Especificación técnica</p>
+        <h3 class="font-display mt-2 text-3xl font-bold text-ink-950">YLC-KC-240 · 240 kW DC</h3>
+        <p class="mt-3 text-sm text-ink-700">
+          Carga ultra rápida con doble pistola CCS2. Modular, escalable y compatible
+          con OCPP 1.6 para integración con cualquier CPMS. Cada franquicia instala
+          tres unidades, sumando 720 kW de potencia y 6 conectores simultáneos.
+        </p>
+
+        <dl class="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
+          {specs.map((s) => (
+            <div class="flex items-baseline justify-between gap-3 border-b border-dashed border-ink-100 py-1.5">
+              <dt class="text-xs font-medium text-ink-500">{s.k}</dt>
+              <dd class="text-sm font-semibold text-ink-950 text-right">{s.v}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <a href="/inversion" class="inline-flex items-center gap-1.5 rounded-full bg-ink-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700">
+            Invertir en una estación
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contacto" class="inline-flex items-center gap-1.5 rounded-full border border-ink-300 px-5 py-3 text-sm font-semibold text-ink-900 transition hover:border-brand-400 hover:text-brand-700">
+            Pedir ficha técnica
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

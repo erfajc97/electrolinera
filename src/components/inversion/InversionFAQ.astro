@@ -1,0 +1,62 @@
+---
+const faqs = [
+  {
+    q: "¿Puedo invertir si no resido en Colombia?",
+    a: "Sí. El modelo está abierto a inversionistas internacionales. Disart maneja la estructura legal y financiera local; tu participación se respalda con contrato de inversión privada y distribución periódica de utilidades en USD o COP según prefieras.",
+  },
+  {
+    q: "¿Qué pasa con los permisos y las regulaciones?",
+    a: "Todos los permisos, certificaciones eléctricas, trámites CREG/UPME y negociaciones con el operador de red ya están resueltos por Disart. El inversor no asume ese riesgo regulatorio — recibe la franquicia operando.",
+  },
+  {
+    q: "¿Cuánto tiempo toma poner una franquicia en operación?",
+    a: "Una vez asegurado el sitio y el capital, el período de ingeniería + obra civil + instalación + puesta en marcha es de aproximadamente 60 a 90 días. La operación comercial inicia inmediatamente después.",
+  },
+  {
+    q: "¿Quién opera la electrolinera día a día?",
+    a: "Disart opera completamente: monitoreo 24/7, mantenimiento preventivo y correctivo, atención al conductor, gestión de pagos, soporte técnico y reportería contable. El inversor recibe utilidades, no responsabilidades operativas.",
+  },
+  {
+    q: "¿Cómo se calculan y distribuyen las utilidades?",
+    a: "La utilidad mensual se calcula como ingresos por kWh menos costos operativos (energía, administración, mantenimiento). Se distribuye proporcionalmente al porcentaje de participación, con corte mensual auditable desde el dashboard.",
+  },
+  {
+    q: "¿La inversión está respaldada por activos físicos?",
+    a: "Sí. Tu participación corresponde a propiedad proporcional sobre la electrolinera — 3 cargadores YLC-KC-240, transformador 1000 kVA, obra civil y derechos de explotación. El activo se valoriza con el tiempo.",
+  },
+  {
+    q: "¿Puedo invertir en varias electrolineras?",
+    a: "Sí. El modelo es escalable. Una vez en operación tu primera franquicia, puedes participar en nuevas estaciones bajo la misma plataforma, app y dashboard.",
+  },
+  {
+    q: "¿Qué incluye exactamente el USD 190.000 de CAPEX?",
+    a: "Los 3 cargadores rápidos (41%), transformador de 1000 kVA (21%), obras civiles completas (24%), sistema eléctrico y conexión (11%), y trámites + legalización (3%). Nada de eso se factura aparte.",
+  },
+];
+---
+<section id="faq" class="relative bg-ink-50 py-16 md:py-24">
+  <div class="mx-auto max-w-4xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Preguntas frecuentes</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Lo que los inversores siempre preguntan.
+      </h2>
+    </div>
+
+    <div class="mt-12 divide-y divide-ink-100 overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft">
+      {faqs.map((f) => (
+        <details class="group">
+          <summary class="flex cursor-pointer items-start justify-between gap-4 px-6 py-5 transition hover:bg-brand-50/40">
+            <h3 class="font-display text-base font-semibold text-ink-950 md:text-lg">{f.q}</h3>
+            <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-700 transition group-open:rotate-45">
+              <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <div class="border-t border-ink-100 px-6 py-5 text-sm leading-relaxed text-ink-700">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

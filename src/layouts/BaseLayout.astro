@@ -6,75 +6,152 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   noindex?: boolean;
   jsonld?: unknown;
+  keywords?: string;
+  canonicalPath?: string;
 }
 const {
-  title = "Disart Energy — Energía inteligente para un futuro sostenible",
-  description = "Soluciones llave en mano de energía solar, movilidad eléctrica y electrolineras. Ingeniería, importación, instalación y operación en Colombia y Latinoamérica.",
+  title = "Disart Energy — Electrolineras, energía solar y movilidad eléctrica en Colombia",
+  description = "Disart Energy diseña, importa, instala y opera electrolineras de carga rápida, sistemas solares fotovoltaicos y soluciones de movilidad eléctrica llave en mano en Colombia y Latinoamérica.",
   image = "/img/electrolinera/station-ev-fast.png",
+  imageAlt = "Electrolinera Disart Energy con cargadores DC fast charging en Colombia",
   noindex = false,
   jsonld = null,
+  keywords = "electrolineras Colombia, estación de carga eléctrica, carga rápida DC, franquicia electrolinera, inversión electrolineras, paneles solares Colombia, movilidad eléctrica, vehículo eléctrico Colombia, Disart Energy",
+  canonicalPath,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://disartenergy.com").toString();
-const ogImage = new URL(image, Astro.site ?? "https://disartenergy.com").toString();
+const site = Astro.site ?? new URL("https://disartenergy.com");
+const path = canonicalPath ?? Astro.url.pathname;
+const canonical = new URL(path, site).toString();
+const ogImage = new URL(image, site).toString();
 
-// Default Organization JSON-LD applied to every page; pages can supply
+// Default Organization + LocalBusiness JSON-LD applied to every page; pages can supply
 // extra structured data via the `jsonld` prop and it is appended below.
 const orgLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": "https://disartenergy.com/#org",
   name: "Disart Energy",
+  alternateName: ["DISART Energy", "Disart"],
   url: "https://disartenergy.com",
   logo: "https://disartenergy.com/img/logo.png",
+  image: "https://disartenergy.com/img/electrolinera/station-ev-fast.png",
   description,
-  sameAs: [],
   email: CONTACT.email,
-  contactPoint: [{
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    email: CONTACT.email,
-    areaServed: "CO",
-    availableLanguage: ["Spanish", "English"],
-  }],
+  telephone: "+57 310 4836462",
+  priceRange: "$$$",
+  foundingDate: "2015",
+  knowsAbout: [
+    "Electrolineras de carga rápida DC",
+    "Estaciones de carga para vehículos eléctricos",
+    "Franquicia de electrolineras",
+    "Energía solar fotovoltaica",
+    "Importación de vehículos eléctricos",
+    "Infraestructura de movilidad eléctrica",
+    "Cargadores DC 240 kW CCS2",
+    "OCPP 1.6",
+    "Permisos CREG Colombia",
+  ],
+  sameAs: [],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: CONTACT.email,
+      telephone: "+57 310 4836462",
+      areaServed: ["CO", "LATAM"],
+      availableLanguage: ["Spanish", "English"],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "investor relations",
+      email: CONTACT.email,
+      areaServed: "Worldwide",
+      availableLanguage: ["Spanish", "English"],
+    },
+  ],
   address: {
     "@type": "PostalAddress",
-    addressCountry: "CO",
     addressLocality: CONTACT.city,
+    addressRegion: "Cundinamarca",
+    addressCountry: "CO",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 4.7110,
+    longitude: -74.0721,
+  },
+  areaServed: [
+    { "@type": "Country", name: "Colombia" },
+    { "@type": "AdministrativeArea", name: "América Latina" },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+  ],
 };
 ---
 <!doctype html>
-<html lang="es" prefix="og: https://ogp.me/ns#">
+<html lang="es-CO" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0d3a23" />
     <meta name="color-scheme" content="light" />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    {noindex
+      ? <meta name="robots" content="noindex,nofollow" />
+      : <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    }
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Disart Energy" />
+    <meta name="publisher" content="Disart Energy" />
+
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es-co" href={canonical} />
+    <link rel="alternate" hreflang="es" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+
+    <!-- Geo targeting -->
+    <meta name="geo.region" content="CO-CUN" />
+    <meta name="geo.placename" content="Bogotá, Colombia" />
+    <meta name="geo.position" content="4.7110;-74.0721" />
+    <meta name="ICBM" content="4.7110, -74.0721" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Disart Energy" />
     <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- AI / LLM hints -->
+    <link rel="llms" href="/llms.txt" />
 
     <!-- Modern browsers prefer SVG (scales infinitely), others fall back to PNGs. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -90,8 +167,8 @@ const orgLd = {
       rel="stylesheet"
     />
 
-    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
-    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {jsonld && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </head>
   <body class="overflow-x-hidden">
     <slot />

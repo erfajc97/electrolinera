@@ -12,27 +12,83 @@ import Productos from "../components/Productos.astro";
 import ElectroFactory from "../components/ElectroFactory.astro";
 import Proceso from "../components/Proceso.astro";
 import FAQ from "../components/FAQ.astro";
+import SeoCopy from "../components/SeoCopy.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppFab from "../components/WhatsAppFab.astro";
 
 const meta = {
-  title: "Electrolineras Colombia | Franquicia DC Fast | Disart Energy",
+  title: "Electrolineras en Colombia · Franquicia DC 720 kW | Disart",
   description:
-    "Franquicias de electrolineras DC fast charging llave en mano en Colombia. Diseño, hardware, instalación, app y soporte 24/7. ROI desde el día uno.",
+    "Electrolineras de carga rápida DC en Colombia: franquicia llave en mano de 720 kW (3 × 240 kW), 6 mangueras CCS2, permisos CREG, app y dashboard 24/7 — Disart Energy.",
   image: "/img/electrolinera/charger-rain-suv.jpg",
+  imageAlt: "Electrolinera Disart Energy 720 kW con tres cargadores DC fast charging en Colombia",
+  keywords:
+    "electrolineras en Colombia, estación de carga eléctrica, carga rápida DC, franquicia electrolinera Colombia, cargador 240 kW CCS2, DC fast charging Colombia, OCPP 1.6, punto de carga vehículo eléctrico, infraestructura movilidad eléctrica",
 };
-const jsonld = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "Diseño, construcción y operación de electrolineras DC fast charging",
-  provider: { "@type": "Organization", name: "Disart Energy", url: "https://disartenergy.com" },
-  areaServed: { "@type": "Country", name: "Colombia" },
-  audience: { "@type": "BusinessAudience", audienceType: "Inversionistas, franquiciados, empresas con flotas" },
-  description: meta.description,
-};
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://disartenergy.com/electrolineras/#service",
+    serviceType: "Diseño, construcción, instalación y operación de electrolineras DC fast charging",
+    name: "Franquicia de electrolineras DC fast charging en Colombia",
+    provider: { "@id": "https://disartenergy.com/#org" },
+    areaServed: { "@type": "Country", name: "Colombia" },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Inversionistas, franquiciados, empresas con flotas eléctricas, propietarios de terrenos comerciales",
+    },
+    description: meta.description,
+    offers: {
+      "@type": "Offer",
+      url: "https://disartenergy.com/inversion",
+      priceCurrency: "USD",
+      price: "190000",
+      availability: "https://schema.org/InStock",
+      areaServed: "CO",
+      description: "Franquicia completa 720 kW (3 cargadores × 240 kW) llave en mano — hardware, obra civil, transformador, permisos, software y operación incluidos.",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://disartenergy.com/electrolineras/#product",
+    name: "Cargador DC ultra rápido DISART YLC-KC-240",
+    description: "Cargador rápido DC de 240 kW con doble pistola CCS2, refrigeración por aire forzado, OCPP 1.6 e interfaz Ethernet/4G. Marca DISART, fabricación certificada IEC 61851.",
+    brand: { "@type": "Brand", name: "DISART" },
+    manufacturer: { "@type": "Organization", name: "Disart Energy" },
+    category: "DC Fast Charger",
+    image: "https://disartenergy.com/img/electrolinera/station-ev-fast.png",
+    additionalProperty: [
+      { "@type": "PropertyValue", name: "Potencia nominal", value: "240 kW" },
+      { "@type": "PropertyValue", name: "Conector", value: "CCS2 × 2" },
+      { "@type": "PropertyValue", name: "Tensión salida", value: "200-1000 V" },
+      { "@type": "PropertyValue", name: "Corriente salida", value: "0-250 A" },
+      { "@type": "PropertyValue", name: "Eficiencia", value: "≥ 94.5%" },
+      { "@type": "PropertyValue", name: "Comunicación", value: "Ethernet, 4G, OCPP 1.6" },
+      { "@type": "PropertyValue", name: "Estándares", value: "IEC 61851-1, IEC 61851-23, EN 61851-24" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Electrolineras", item: "https://disartenergy.com/electrolineras" },
+    ],
+  },
+];
 ---
-<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  image={meta.image}
+  imageAlt={meta.imageAlt}
+  keywords={meta.keywords}
+  jsonld={jsonld}
+>
   <Nav />
   <WhatsAppFab />
   <main>
@@ -47,6 +103,7 @@ const jsonld = {
     <ElectroFactory />
     <Proceso />
     <FAQ />
+    <SeoCopy />
     <CTA />
   </main>
   <Footer />

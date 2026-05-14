@@ -1,0 +1,96 @@
+---
+const flow = [
+  { tag: "Compra", v: "$ 800 COP", l: "por kWh a la empresa eléctrica", tone: "ink" },
+  { tag: "Venta",  v: "$ 1.600 COP", l: "por kWh al conductor", tone: "brand" },
+  { tag: "Margen", v: "$ 800 COP", l: "bruto por cada kWh entregado", tone: "lime" },
+];
+
+const stats = [
+  { v: "600 kWh", l: "capacidad por hora (720 kW al 83%)" },
+  { v: "$480.000", l: "ganancia por hora a capacidad plena (COP)" },
+  { v: "USD 18k", l: "facturación mínima proyectada / mes" },
+  { v: "USD 216k", l: "facturación anual estimada" },
+];
+
+const capex = [
+  { k: "Cargadores rápidos",     v: "41%", note: "3 × YLC-KC-240" },
+  { k: "Transformador 1000 kVA", v: "21%", note: "Adecuación eléctrica" },
+  { k: "Obras civiles",          v: "24%", note: "Excavación, placa, bases" },
+  { k: "Sistema eléctrico",      v: "11%", note: "Conexión y protecciones" },
+  { k: "Trámites y legalización",v: "3%",  note: "Permisos CREG / operador red" },
+];
+---
+<section id="modelo" class="relative bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Modelo de negocio</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Cobramos el doble de lo que pagamos. Por cada kWh.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        La unidad económica es simple: energía comprada a la red, entregada
+        al conductor al doble de precio. El resto es escala — más horas
+        de uso, más kWh, más utilidad.
+      </p>
+    </div>
+
+    <div class="mt-10 md:mt-14 grid gap-4 sm:grid-cols-3">
+      {flow.map((f) => (
+        <div class={`relative overflow-hidden rounded-3xl border p-6 ${f.tone === "ink" ? "border-ink-100 bg-white" : f.tone === "brand" ? "border-brand-200 bg-brand-50/60" : "border-lime-glow/40 bg-linear-to-br from-lime-glow/20 to-brand-50"}`}>
+          <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">{f.tag}</p>
+          <p class={`font-display mt-2 text-3xl font-bold ${f.tone === "lime" ? "text-brand-800" : "text-ink-950"}`}>{f.v}</p>
+          <p class="mt-1 text-sm text-ink-700">{f.l}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 grid items-start gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <div class="rounded-4xl border border-ink-100 bg-white p-8 shadow-soft">
+          <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Infraestructura instalada</p>
+          <h3 class="font-display mt-2 text-2xl font-bold text-ink-950">3 cargadores · 720 kW · 6 mangueras</h3>
+          <p class="mt-2 text-sm text-ink-700">
+            Cada franquicia opera 3 unidades del cargador <strong>YLC-KC-240</strong>
+            (240 kW, doble pistola CCS2). Capacidad agregada de 600 kWh por hora
+            de operación efectiva.
+          </p>
+
+          <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+            {stats.map((s) => (
+              <div class="rounded-2xl border border-ink-100 bg-ink-50 p-4">
+                <dt class="font-display text-2xl font-bold text-ink-950">{s.v}</dt>
+                <dd class="mt-1 text-xs text-ink-700">{s.l}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-4xl border border-ink-100 bg-ink-950 p-8 text-white shadow-soft">
+          <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">CAPEX por franquicia</p>
+          <h3 class="font-display mt-2 text-2xl font-bold">USD 190.000</h3>
+          <p class="mt-2 text-sm text-ink-300">
+            Inversión total para entregar la electrolinera operando.
+            Todo incluido — hardware, obra, permisos, conexión.
+          </p>
+
+          <ul class="mt-6 space-y-3">
+            {capex.map((c) => (
+              <li>
+                <div class="flex items-baseline justify-between text-sm">
+                  <span class="font-semibold text-white">{c.k}</span>
+                  <span class="font-display font-bold text-lime-glow">{c.v}</span>
+                </div>
+                <p class="text-[11px] text-ink-300">{c.note}</p>
+                <div class="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
+                  <div class="h-full rounded-full bg-linear-to-r from-brand-500 to-lime-glow" style={`width:${c.v}`}></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

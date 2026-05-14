@@ -1,35 +1,20 @@
 ---
 const bullets = [
-  { k: "Inversión recuperable", v: "ROI proyectado de 24–36 meses según tráfico y tarifa." },
-  { k: "Modelo escalable", v: "Empieza con 1 cargador, crece a una red multi-sitio sin cambiar de plataforma." },
-  { k: "Marca consolidada", v: "Apóyate en Disart Energy: 10+ años en energía limpia y solar." },
-  { k: "Sin operación técnica", v: "Nosotros operamos el hardware y software. Tú gestionas tu negocio." },
+  { k: "Llave en mano",       v: "Cargadores, transformador, obra civil, sistema eléctrico, permisos y legalización — todo incluido." },
+  { k: "Importación exenta",  v: "No te retiene aduana. Somos importadores certificados con todos los permisos en Colombia." },
+  { k: "Modelo escalable",    v: "Comienza con 1 estación de 720 kW y crece a una red multi-sitio bajo la misma plataforma." },
+  { k: "Operación sin fricción", v: "Hardware, software, mantenimiento y soporte 24/7 corren por nuestra cuenta — tú recibes utilidades." },
 ];
-const pkgs = [
-  {
-    tag: "Starter",
-    title: "1 cargador DC 60 kW",
-    price: "Desde 28k USD",
-    perks: ["Instalación llave en mano","App + dashboard básico","Soporte 12×7","SLA 95%"],
-    highlight: false,
-  },
-  {
-    tag: "Growth",
-    title: "2 cargadores DC 120 kW",
-    price: "Desde 62k USD",
-    perks: ["PSE, Nequi, Daviplata","Roaming en Colombia","Soporte 24/7","SLA 99%","Marketing digital"],
-    highlight: true,
-  },
-  {
-    tag: "Hub",
-    title: "Estación 360 kW + solar",
-    price: "Desde 145k USD",
-    perks: ["Hasta 4 puntos de carga","Paneles + batería","Branding personalizado","SLA 99.7%","Account manager"],
-    highlight: false,
-  },
+
+const shares = [
+  { usd: "USD 19.000",  pct: "10%",  ret: "≈ USD 1.800/mes",  highlight: false },
+  { usd: "USD 38.000",  pct: "20%",  ret: "≈ USD 3.600/mes",  highlight: false },
+  { usd: "USD 57.000",  pct: "30%",  ret: "≈ USD 5.400/mes",  highlight: false },
+  { usd: "USD 95.000",  pct: "50%",  ret: "≈ USD 9.000/mes",  highlight: true  },
+  { usd: "USD 190.000", pct: "100%", ret: "≈ USD 18.000/mes", highlight: false },
 ];
 ---
-<section id="franquicia" class="relative overflow-hidden bg-linear-to-b from-ink-50 to-white py-24">
+<section id="franquicia" class="relative overflow-hidden bg-linear-to-b from-ink-50 to-white py-16 md:py-24">
   <div class="absolute inset-x-0 top-0 -z-10 h-64 bg-radial-fade opacity-60"></div>
 
   <div class="mx-auto max-w-6xl px-4">
@@ -37,27 +22,28 @@ const pkgs = [
       <div>
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Modelo de franquicia</p>
         <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
-          Tu propia electrolinera, sin reinventar la rueda.
+          Una franquicia. 720 kW. Cero engorros.
         </h2>
       </div>
       <p class="text-lg text-ink-700">
-        Aprovecha la infraestructura, software y experiencia de Disart Energy.
-        Te entregamos el sitio operando y participamos contigo en los ingresos.
+        Cada electrolinera Disart está compuesta por <strong>3 cargadores de 240 kW</strong>
+        (6 mangueras simultáneas, 600 kWh/h instalados). Aportas el capital, nosotros
+        entregamos el activo en operación y la gestión continua.
       </p>
     </div>
 
     <div class="mt-12 grid gap-10 lg:grid-cols-12">
       <div class="lg:col-span-5">
         <div class="relative overflow-hidden rounded-4xl border border-ink-100 shadow-soft">
-          <img src="/img/electrolinera/station-ev-fast.png" alt="Cargador EV-FAST en sitio" class="h-full w-full object-cover" loading="lazy" />
-          <div class="absolute inset-0 bg-linear-to-t from-ink-950/60 via-transparent"></div>
+          <img src="/img/electrolinera/station-ev-fast.png" alt="Cargador EV-FAST en sitio" class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-linear-to-t from-ink-950/65 via-transparent"></div>
           <div class="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-white">
             <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-500/90 backdrop-blur">
               <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M14.69 2.66 9.5 12h4l-1.19 9.34L18 12h-4l1.19-9.34Z"/></svg>
             </span>
             <div>
               <p class="text-xs font-medium uppercase tracking-widest text-brand-200">Cargador instalado</p>
-              <p class="font-display text-base font-semibold">Modelo EV-FAST 120 kW</p>
+              <p class="font-display text-base font-semibold">DISART YLC-KC-240 · CCS2 × 2</p>
             </div>
           </div>
         </div>
@@ -78,34 +64,72 @@ const pkgs = [
       </div>
 
       <div class="lg:col-span-7">
-        <div class="grid gap-5 sm:grid-cols-3">
-          {pkgs.map((p) => (
-            <div class={`relative flex flex-col rounded-3xl border p-6 transition ${p.highlight ? "border-brand-500 bg-ink-950 text-white shadow-glow" : "border-ink-100 bg-white text-ink-950 shadow-soft hover:border-brand-200"}`}>
-              {p.highlight && <span class="absolute -top-3 left-6 rounded-full bg-lime-glow px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ink-950">Más elegido</span>}
-              <p class={`text-xs font-semibold uppercase tracking-widest ${p.highlight ? "text-brand-200" : "text-brand-700"}`}>{p.tag}</p>
-              <h3 class="font-display mt-2 text-xl font-bold">{p.title}</h3>
-              <p class={`mt-3 text-sm font-semibold ${p.highlight ? "text-white" : "text-ink-700"}`}>{p.price}</p>
-              <ul class={`mt-5 space-y-2 text-sm ${p.highlight ? "text-ink-100" : "text-ink-700"}`}>
-                {p.perks.map((x) => (
-                  <li class="flex items-center gap-2">
-                    <svg class={`h-4 w-4 ${p.highlight ? "text-lime-glow" : "text-brand-600"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    {x}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contacto" class={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-semibold transition ${p.highlight ? "bg-white text-ink-950 hover:bg-brand-100" : "bg-ink-950 text-white hover:bg-brand-700"}`}>
-                Cotizar
-                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
+        <div class="rounded-3xl border border-ink-100 bg-white p-6 shadow-soft md:p-8">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Participación accionaria</p>
+              <h3 class="font-display mt-1 text-2xl font-bold text-ink-950">Tabla de participación</h3>
+              <p class="mt-1 text-sm text-ink-700">Cada inversionista adquiere un porcentaje de la electrolinera y de sus utilidades.</p>
             </div>
-          ))}
+            <span class="hidden rounded-full bg-brand-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-brand-700 ring-1 ring-inset ring-brand-200 sm:inline-flex">Escenario objetivo · 6 h/día</span>
+          </div>
+
+          <div class="mt-6 overflow-hidden rounded-2xl border border-ink-100">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-ink-50">
+                <tr>
+                  <th class="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-ink-500">Inversión</th>
+                  <th class="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-ink-500">Participación</th>
+                  <th class="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-ink-500">Retorno mensual</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-ink-100 bg-white">
+                {shares.map((s) => (
+                  <tr class={s.highlight ? "bg-brand-50/50" : ""}>
+                    <td class="px-4 py-3 font-display text-base font-bold text-ink-950">{s.usd}</td>
+                    <td class="px-4 py-3 font-semibold text-ink-700">
+                      {s.pct}
+                      {s.highlight && <span class="ml-2 rounded-full bg-brand-600 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">recomendado</span>}
+                    </td>
+                    <td class="px-4 py-3 font-medium text-brand-700">{s.ret}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mt-3 text-xs text-ink-500">
+            Retornos proyectados sobre facturación mínima estimada de USD 18.000/mes
+            (escenario objetivo). Valores antes de costos operativos y fiscales.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/inversion" class="group inline-flex items-center gap-1.5 rounded-full bg-ink-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700">
+              Calcular mi retorno
+              <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contacto" class="inline-flex items-center gap-1.5 rounded-full border border-ink-300 bg-white px-5 py-3 text-sm font-semibold text-ink-900 transition hover:border-brand-400 hover:text-brand-700">
+              Agendar diagnóstico
+            </a>
+          </div>
         </div>
 
-        <div class="mt-6 rounded-3xl border border-ink-100 bg-white p-6 shadow-soft">
-          <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">¿No estás seguro?</p>
-          <p class="font-display mt-2 text-xl font-semibold text-ink-950">Te ayudamos a evaluar tu sitio y simulamos tu retorno en 48h.</p>
-          <p class="mt-2 text-sm text-ink-700">Análisis de tráfico, consumo eléctrico, permisos y proyección financiera personalizada.</p>
-          <a href="#contacto" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800">Agendar diagnóstico gratuito <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <div class="mt-6 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Escenario bajo · 3 h/día</p>
+            <p class="font-display mt-2 text-xl font-bold text-ink-950">20 meses</p>
+            <p class="mt-1 text-xs text-ink-500">payback proyectado</p>
+          </div>
+          <div class="rounded-2xl border border-brand-200 bg-brand-50/50 p-5 shadow-soft ring-1 ring-inset ring-brand-200">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Objetivo · 6 h/día</p>
+            <p class="font-display mt-2 text-xl font-bold text-ink-950">8.6 meses</p>
+            <p class="mt-1 text-xs text-ink-500">payback proyectado</p>
+          </div>
+          <div class="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Alto · 9 h/día</p>
+            <p class="font-display mt-2 text-xl font-bold text-ink-950">5.5 meses</p>
+            <p class="mt-1 text-xs text-ink-500">payback proyectado</p>
+          </div>
         </div>
       </div>
     </div>

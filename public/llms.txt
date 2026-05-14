@@ -1,0 +1,60 @@
+# Disart Energy
+
+> Empresa colombiana de ingeniería energética. Diseña, importa, instala y opera electrolineras de carga rápida DC, sistemas solares fotovoltaicos y soluciones de movilidad eléctrica en Colombia y Latinoamérica. Sede en Bogotá. Sitio oficial: https://disartenergy.com.
+
+Disart Energy ofrece franquicias llave en mano de electrolineras de 720 kW (tres cargadores de 240 kW cada uno, seis mangueras CCS2 simultáneas) para inversionistas en Colombia y del exterior. La franquicia completa cuesta USD 190.000 con un payback proyectado de 8.6 meses en el escenario objetivo (6 horas de operación diaria). El modelo de negocio se basa en un margen de 2× sobre el costo de la energía: compra a la red a $800 COP por kWh y venta al conductor a $1.600 COP por kWh.
+
+La inversión puede compartirse entre múltiples inversionistas en participaciones de 10% (USD 19.000), 20% (USD 38.000), 30% (USD 57.000), 50% (USD 95.000) o 100% (USD 190.000). Cada participación incluye derechos sobre utilidades, valorización del activo y contrato de inversión privada.
+
+Disart Energy resuelve por adelantado los aspectos engorrosos de instalar una electrolinera en Colombia: importación sin retención aduanera, permisos CREG, certificaciones IEC 61851, obra civil, transformador 1000 kVA, sistema eléctrico, app para conductores y dashboard de operación 24/7. La app y el dashboard se ofrecen bajo modelo SaaS con suscripción mensual; la versión marca blanca personalizada del inversor lleva un setup adicional. Tiempo desde firma a operación comercial: 60 a 90 días.
+
+## Páginas principales
+
+- [Inicio · Electrolineras en Colombia](https://disartenergy.com/): visión general de los tres servicios (electrolineras, solar, movilidad eléctrica) con foco en electrolineras.
+- [Electrolineras DC fast charging Colombia](https://disartenergy.com/electrolineras): franquicia 720 kW llave en mano, especificación técnica YLC-KC-240, tecnología, beneficios y proceso.
+- [Invertir en electrolineras Colombia](https://disartenergy.com/inversion): oportunidad de inversión, modelo de negocio, tabla de participación 10%-100%, calculadora interactiva de retorno con tipo de cambio USD/COP en vivo, comparativa Disart vs otros operadores, FAQ.
+- [Importación de vehículos eléctricos a Colombia](https://disartenergy.com/movilidad): importación directa de SUVs, sedanes y vehículos comerciales eléctricos desde Asia (Toyota bZ, Jetour).
+- [Paneles solares fotovoltaicos Colombia](https://disartenergy.com/solar): sistemas solares On-Grid, Off-Grid e híbridos para residencial, comercial, industrial y utility scale.
+- [Sobre Disart Energy](https://disartenergy.com/nosotros): pilares, capacidades técnicas (ingeniería, importación, instalación, operación) y principios operativos.
+
+## Datos técnicos del cargador (YLC-KC-240, marca DISART)
+
+- Potencia nominal: 240 kW por unidad (cada franquicia instala tres = 720 kW totales)
+- Conector: CCS2 doble pistola
+- Cable: 5 metros
+- Refrigeración: aire forzado
+- Tensión de salida: 200-1000 V (potencia constante)
+- Corriente de salida: 0-250 A
+- Eficiencia: ≥ 94.5%
+- Comunicación: Ethernet, 2/3/4G opcional, OCPP 1.6
+- Estándares: IEC 61851-1:2017, IEC 61851-23:2014, EN 61851-24:2014
+- Métodos de pago: tarjeta, lectura de código
+
+## Escenarios financieros
+
+| Escenario | Horas/día | Utilidad mensual COP | Payback |
+|-----------|-----------|----------------------|---------|
+| Bajo | 3 | 33,200,000 | 20 meses |
+| Objetivo | 6 | 76,400,000 | 8.6 meses |
+| Alto | 9 | 119,600,000 | 5.5 meses |
+
+Supuestos: capacidad 600 kWh/hora, margen 800 COP/kWh, costos administrativos 10 millones COP/mes.
+
+## Diferenciales
+
+1. Importación directa de cargadores sin retención aduanera (Disart es importador certificado)
+2. Permisos CREG, UPME y operador de red ya gestionados para Colombia
+3. Certificaciones eléctricas IEC 61851 incluidas
+4. Obra civil + transformador 1000 kVA llave en mano
+5. App white-label para conductores (mapa, reserva, pago, vouchers)
+6. Dashboard de operación con BI, monitoreo de cargadores y reportería contable
+7. Roaming OCPI con redes nacionales
+8. Soporte y monitoreo 24/7
+9. Mantenimiento preventivo y correctivo operado por Disart
+
+## Contacto
+
+- Email: comercial@disartenergy.com
+- Teléfono: +57 310 4836462
+- Ciudad: Bogotá, Cundinamarca, Colombia
+- Idiomas: español, inglés
