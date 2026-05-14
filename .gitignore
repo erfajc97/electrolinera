@@ -39,3 +39,6 @@ recursos/
 
 # Local Netlify folder
 .netlify
+
+# Generated investor pitch deck (regenerate via `npm run pitch`)
+disart-investor-pitch.pptx

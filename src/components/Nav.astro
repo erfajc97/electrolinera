@@ -90,11 +90,18 @@ const icons: Record<string, string> = {
 
       <div class="flex items-center gap-2">
         <a
-          href="/#contacto"
-          class="inline-flex items-center gap-1.5 rounded-full bg-ink-950 px-3.5 py-2 text-xs font-semibold text-white shadow-soft transition hover:bg-brand-700 sm:px-4 sm:text-sm"
+          href="/inversion"
+          class="group inline-flex items-center gap-1.5 rounded-full bg-linear-to-br from-brand-600 to-brand-700 px-3.5 py-2 text-xs font-bold text-white shadow-glow transition hover:from-brand-700 hover:to-brand-800 md:hidden"
         >
-          <span class="sm:hidden">Contacto</span>
-          <span class="hidden sm:inline">Hablar con un asesor</span>
+          <span class="h-1.5 w-1.5 rounded-full bg-lime-glow animate-pulse-soft"></span>
+          Invertir
+          <svg class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a
+          href="/#contacto"
+          class="hidden items-center gap-1.5 rounded-full bg-ink-950 px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700 md:inline-flex"
+        >
+          Hablar con un asesor
           <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
 
