@@ -42,3 +42,6 @@ recursos/
 
 # Generated investor pitch deck (regenerate via `npm run pitch`)
 disart-investor-pitch.pptx
+
+# Generated investment contract (regenerate via `npm run contract`)
+disart-contrato-inversion.docx
