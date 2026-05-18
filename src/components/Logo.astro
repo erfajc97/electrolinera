@@ -2,16 +2,13 @@
 const { className = "" } = Astro.props;
 ---
 <a href="/" aria-label="Disart Energy — ir al inicio" class={`inline-flex items-center ${className}`}>
-  <picture>
-    <source srcset="/img/logo.webp" type="image/webp" />
-    <img
-      src="/img/logo.png"
-      alt="Disart Energy"
-      width="180"
-      height="51"
-      class="h-9 w-auto md:h-10 object-contain"
-      loading="eager"
-      decoding="async"
-    />
-  </picture>
+  <img
+    src="/img/logo.svg"
+    alt="Disart Energy"
+    width="200"
+    height="45"
+    class="h-9 w-auto md:h-10"
+    loading="eager"
+    decoding="async"
+  />
 </a>
