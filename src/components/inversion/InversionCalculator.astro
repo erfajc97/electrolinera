@@ -1,4 +1,6 @@
 ---
+import { CAPEX_COP, fmtCopM } from "../../config/invest";
+
 const presets = [
   { hours: 3, label: "Bajo · 3 h/día" },
   { hours: 6, label: "Objetivo · 6 h/día" },
@@ -96,7 +98,7 @@ const presets = [
               <dt class="text-ink-700">Compra kWh</dt><dd class="font-semibold text-ink-950 text-right">$800 COP</dd>
               <dt class="text-ink-700">Venta kWh</dt><dd class="font-semibold text-ink-950 text-right">$1.600 COP</dd>
               <dt class="text-ink-700">Admin / mes</dt><dd class="font-semibold text-ink-950 text-right">$10M COP</dd>
-              <dt class="text-ink-700">CAPEX total</dt><dd class="font-semibold text-ink-950 text-right">USD 190.000</dd>
+              <dt class="text-ink-700">CAPEX total</dt><dd class="font-semibold text-ink-950 text-right">{fmtCopM(CAPEX_COP)}</dd>
             </dl>
           </div>
         </div>
@@ -112,12 +114,12 @@ const presets = [
           </div>
 
           <div class="mt-4 grid items-baseline gap-2 sm:grid-cols-[auto_1fr] sm:gap-4">
-            <p class="font-display text-5xl font-bold leading-none md:text-6xl" data-calc-investment-usd>USD 38.000</p>
-            <p class="text-base text-ink-300"><span data-calc-investment-cop>$ 152.000.000 COP</span></p>
+            <p class="font-display text-5xl font-bold leading-none md:text-6xl" data-calc-investment-usd>USD 41.250</p>
+            <p class="text-base text-ink-300"><span data-calc-investment-cop>$ 132.000.000 COP</span></p>
           </div>
           <p class="mt-3 text-sm text-ink-300">
             Equivale al <strong class="font-semibold text-lime-glow"><span data-calc-pct-display>20</span>%</strong>
-            de una franquicia completa de USD 190.000.
+            de una franquicia completa de {fmtCopM(CAPEX_COP)}.
           </p>
         </div>
 
@@ -157,7 +159,7 @@ const presets = [
         </div>
 
         <p class="text-center text-xs text-ink-500">
-          Cifras estimadas con la tasa de cambio en vivo USD → COP.
+          Inversión fija en pesos colombianos; el equivalente en USD se actualiza con la tasa de cambio en vivo.
           No constituyen oferta vinculante; proyección sujeta a tráfico, tarifa eléctrica y operación.
         </p>
 
@@ -233,8 +235,8 @@ const presets = [
 </style>
 
 <script>
-  const FALLBACK_FX = 4100;
-  const CAPEX_USD = 190_000;
+  const FALLBACK_FX = 3200;
+  const CAPEX_COP = 660_000_000;
   const CAPACITY_KWH_PER_HOUR = 600;
   const PRICE_KWH_COP = 1600;
   const COST_KWH_COP = 800;
@@ -294,19 +296,18 @@ const presets = [
       const utilityMonthCop = energyMarginMonthCop - ADMIN_MONTHLY_COP;
 
       const share = s.pct / 100;
-      const investorInvUsd = CAPEX_USD * share;
+      const investorInvCop = CAPEX_COP * share;
       const investorGrossMonthCop = grossMonthCop * share;
       const investorUtilityMonthCop = utilityMonthCop * share;
       const investorAnnualUtilityCop = investorUtilityMonthCop * 12;
 
-      const capexCop = CAPEX_USD * s.fxCop;
       const paybackMonths = utilityMonthCop > 0
-        ? capexCop / utilityMonthCop
+        ? CAPEX_COP / utilityMonthCop
         : Infinity;
 
       return {
-        investorInvUsd,
-        investorInvCop: investorInvUsd * s.fxCop,
+        investorInvUsd: investorInvCop / s.fxCop,
+        investorInvCop,
         investorGrossMonthCop,
         investorGrossMonthUsd: investorGrossMonthCop / s.fxCop,
         investorUtilityMonthCop,

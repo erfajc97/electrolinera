@@ -1,0 +1,23 @@
+<script>
+  // Rellena cualquier [data-usd-cop] con el equivalente en USD a la TRM en vivo.
+  // data-usd-cop = monto en COP; data-usd-fmt = "full" (USD 206.250) | "short" (USD 206k)
+  const nodes = document.querySelectorAll<HTMLElement>('[data-usd-cop]');
+  const paint = (fx: number) => {
+    nodes.forEach((el) => {
+      const cop = Number(el.dataset.usdCop);
+      if (!Number.isFinite(cop)) return;
+      const usd = cop / fx;
+      el.textContent =
+        el.dataset.usdFmt === 'short' && usd >= 1000
+          ? 'USD ' + Math.round(usd / 1000) + 'k'
+          : 'USD ' + Math.round(usd).toLocaleString('en-US');
+    });
+  };
+  fetch('/api/fx')
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((d) => {
+      const cop = Number(d?.cop);
+      if (Number.isFinite(cop) && cop > 0) paint(cop);
+    })
+    .catch(() => { /* keep SSR fallback */ });
+</script>

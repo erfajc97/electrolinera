@@ -1,11 +1,17 @@
 ---
+import { CAPEX_COP, FALLBACK_FX, REVENUE_MONTH_COP, fmtCopM, fmtUsd } from "../../config/invest";
+
 const shares = [
-  { usd: 19000,  pct: 10,  ret: 1800,  tag: "Entrada" },
-  { usd: 38000,  pct: 20,  ret: 3600,  tag: "Diversificación" },
-  { usd: 57000,  pct: 30,  ret: 5400,  tag: "Crecimiento" },
-  { usd: 95000,  pct: 50,  ret: 9000,  tag: "Control compartido", featured: true },
-  { usd: 190000, pct: 100, ret: 18000, tag: "Propiedad total" },
-];
+  { pct: 10,  tag: "Entrada" },
+  { pct: 20,  tag: "Diversificación" },
+  { pct: 30,  tag: "Crecimiento" },
+  { pct: 50,  tag: "Control compartido", featured: true },
+  { pct: 100, tag: "Propiedad total" },
+].map((s) => ({
+  ...s,
+  cop: (CAPEX_COP * s.pct) / 100,
+  retCop: (REVENUE_MONTH_COP * s.pct) / 100,
+}));
 
 const benefits = [
   "Participación accionaria proporcional",
@@ -37,12 +43,14 @@ const benefits = [
 
           <div class={`mt-5 border-t pt-4 ${s.featured ? "border-white/15" : "border-ink-100"}`}>
             <p class={`text-[10px] font-semibold uppercase tracking-widest ${s.featured ? "text-brand-200" : "text-ink-500"}`}>Inversión</p>
-            <p class="font-display mt-1 text-lg font-bold">USD {s.usd.toLocaleString("en-US")}</p>
+            <p class="font-display mt-1 text-lg font-bold">{fmtCopM(s.cop)}</p>
+            <p class={`text-[11px] ${s.featured ? "text-ink-300" : "text-ink-500"}`}>≈ <span data-usd-cop={s.cop}>{fmtUsd(s.cop / FALLBACK_FX)}</span></p>
           </div>
 
           <div class={`mt-3 border-t pt-4 ${s.featured ? "border-white/15" : "border-ink-100"}`}>
             <p class={`text-[10px] font-semibold uppercase tracking-widest ${s.featured ? "text-brand-200" : "text-ink-500"}`}>Retorno bruto / mes</p>
-            <p class={`font-display mt-1 text-lg font-bold ${s.featured ? "text-lime-glow" : "text-brand-700"}`}>≈ USD {s.ret.toLocaleString("en-US")}</p>
+            <p class={`font-display mt-1 text-lg font-bold ${s.featured ? "text-lime-glow" : "text-brand-700"}`}>≈ {fmtCopM(s.retCop)}</p>
+            <p class={`text-[11px] ${s.featured ? "text-ink-300" : "text-ink-500"}`}>≈ <span data-usd-cop={s.retCop}>{fmtUsd(s.retCop / FALLBACK_FX)}</span></p>
           </div>
         </article>
       ))}
@@ -66,7 +74,7 @@ const benefits = [
         <h3 class="font-display mt-2 text-xl font-bold text-ink-950">Sobre facturación mínima</h3>
         <p class="mt-2 text-sm text-ink-700">
           Los retornos por participación de la tabla asumen el escenario
-          objetivo de 6 h/día (USD 18.000 facturados al mes).
+          objetivo de 6 h/día ({fmtCopM(REVENUE_MONTH_COP)} facturados al mes, ≈ <span data-usd-cop={REVENUE_MONTH_COP}>{fmtUsd(REVENUE_MONTH_COP / FALLBACK_FX)}</span>).
           En la calculadora puedes simular con tus propios supuestos.
         </p>
         <a href="#calculadora" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-800">

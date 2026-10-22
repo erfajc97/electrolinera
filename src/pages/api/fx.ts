@@ -11,7 +11,7 @@ type FxPayload = {
 
 const FALLBACK: FxPayload = {
   base: 'USD',
-  cop: 4100,
+  cop: 3200,
   source: 'fallback',
   updated: new Date().toISOString(),
 };

@@ -9,6 +9,7 @@ import InversionVsCompetition from "../components/inversion/InversionVsCompetiti
 import Productos from "../components/Productos.astro";
 import Tecnologia from "../components/Tecnologia.astro";
 import InversionFAQ from "../components/inversion/InversionFAQ.astro";
+import FxSync from "../components/inversion/FxSync.astro";
 import SeoCopy from "../components/SeoCopy.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
@@ -54,14 +55,14 @@ const jsonld = [
     "@type": "Offer",
     name: "Participación accionaria en electrolinera Disart Energy",
     url: "https://disartenergy.com/inversion",
-    priceCurrency: "USD",
-    price: "19000",
+    priceCurrency: "COP",
+    price: "66000000",
     priceSpecification: [
-      { "@type": "PriceSpecification", price: 19000, priceCurrency: "USD", description: "Participación 10%" },
-      { "@type": "PriceSpecification", price: 38000, priceCurrency: "USD", description: "Participación 20%" },
-      { "@type": "PriceSpecification", price: 57000, priceCurrency: "USD", description: "Participación 30%" },
-      { "@type": "PriceSpecification", price: 95000, priceCurrency: "USD", description: "Participación 50%" },
-      { "@type": "PriceSpecification", price: 190000, priceCurrency: "USD", description: "Participación 100%" },
+      { "@type": "PriceSpecification", price: 66000000, priceCurrency: "COP", description: "Participación 10%" },
+      { "@type": "PriceSpecification", price: 132000000, priceCurrency: "COP", description: "Participación 20%" },
+      { "@type": "PriceSpecification", price: 198000000, priceCurrency: "COP", description: "Participación 30%" },
+      { "@type": "PriceSpecification", price: 330000000, priceCurrency: "COP", description: "Participación 50%" },
+      { "@type": "PriceSpecification", price: 660000000, priceCurrency: "COP", description: "Participación 100%" },
     ],
     availability: "https://schema.org/LimitedAvailability",
     seller: { "@id": "https://disartenergy.com/#org" },
@@ -77,7 +78,7 @@ const jsonld = [
         name: "¿Cuánto cuesta una franquicia de electrolinera en Colombia?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "El CAPEX total de una franquicia Disart Energy es de USD 190.000 (aprox. COP 660 millones). Incluye 3 cargadores DC de 240 kW, transformador 1000 kVA, obras civiles, sistema eléctrico, trámites y legalización. La inversión puede compartirse entre varios inversionistas desde el 10% (USD 19.000).",
+          text: "El CAPEX total de una franquicia Disart Energy es de COP 660 millones (el equivalente en USD varía con la tasa de cambio del día). Incluye 3 cargadores DC de 240 kW, transformador 1000 kVA, obras civiles, sistema eléctrico, trámites y legalización. La inversión puede compartirse entre varios inversionistas desde el 10% (COP 66 millones).",
         },
       },
       {
@@ -148,4 +149,5 @@ const jsonld = [
     <CTA />
   </main>
   <Footer />
+  <FxSync />
 </BaseLayout>

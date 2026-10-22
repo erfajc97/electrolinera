@@ -1,4 +1,6 @@
 ---
+import { CAPEX_COP, FALLBACK_FX, REVENUE_MONTH_COP, fmtCopM, fmtUsd } from "../../config/invest";
+
 const flow = [
   { tag: "Compra", v: "$ 800 COP", l: "por kWh a la empresa eléctrica", tone: "ink" },
   { tag: "Venta",  v: "$ 1.600 COP", l: "por kWh al conductor", tone: "brand" },
@@ -8,8 +10,8 @@ const flow = [
 const stats = [
   { v: "600 kWh", l: "capacidad por hora (720 kW al 83%)" },
   { v: "$480.000", l: "ganancia por hora a capacidad plena (COP)" },
-  { v: "USD 18k", l: "facturación mínima proyectada / mes" },
-  { v: "USD 216k", l: "facturación anual estimada" },
+  { v: fmtCopM(REVENUE_MONTH_COP), l: "facturación mínima proyectada / mes", usd: REVENUE_MONTH_COP },
+  { v: fmtCopM(REVENUE_MONTH_COP * 12), l: "facturación anual estimada", usd: REVENUE_MONTH_COP * 12 },
 ];
 
 const capex = [
@@ -59,7 +61,7 @@ const capex = [
             {stats.map((s) => (
               <div class="rounded-2xl border border-ink-100 bg-ink-50 p-4">
                 <dt class="font-display text-2xl font-bold text-ink-950">{s.v}</dt>
-                <dd class="mt-1 text-xs text-ink-700">{s.l}</dd>
+                <dd class="mt-1 text-xs text-ink-700">{s.l}{s.usd && <> · ≈ <span data-usd-cop={s.usd}>{fmtUsd(s.usd / FALLBACK_FX)}</span></>}</dd>
               </div>
             ))}
           </dl>
@@ -69,7 +71,8 @@ const capex = [
       <div class="lg:col-span-5">
         <div class="rounded-4xl border border-ink-100 bg-ink-950 p-8 text-white shadow-soft">
           <p class="text-xs font-semibold uppercase tracking-widest text-brand-200">CAPEX por franquicia</p>
-          <h3 class="font-display mt-2 text-2xl font-bold">USD 190.000</h3>
+          <h3 class="font-display mt-2 text-2xl font-bold">{fmtCopM(CAPEX_COP)}</h3>
+          <p class="text-xs text-ink-300">≈ <span data-usd-cop={CAPEX_COP}>{fmtUsd(CAPEX_COP / FALLBACK_FX)}</span> a la TRM del día</p>
           <p class="mt-2 text-sm text-ink-300">
             Inversión total para entregar la electrolinera operando.
             Todo incluido — hardware, obra, permisos, conexión.

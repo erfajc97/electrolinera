@@ -1,6 +1,8 @@
 ---
+import { CAPEX_COP, FALLBACK_FX, REVENUE_MONTH_COP, fmtCopM, fmtUsd } from "../../config/invest";
+
 const highlights = [
-  { v: "USD 190k", l: "Por franquicia completa · 720 kW" },
+  { v: "$ 660 M COP", l: "Por franquicia completa · 720 kW", usd: CAPEX_COP },
   { v: "8.6 mo",   l: "Payback proyectado (objetivo 6 h/día)" },
   { v: "100%",     l: "Llave en mano · sin operación técnica" },
 ];
@@ -59,6 +61,7 @@ const highlights = [
             <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
               <dt class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">{h.l}</dt>
               <dd class="font-display mt-1 text-2xl font-bold">{h.v}</dd>
+              {h.usd && <p class="text-[11px] text-ink-300">≈ <span data-usd-cop={h.usd}>{fmtUsd(h.usd / FALLBACK_FX)}</span></p>}
             </div>
           ))}
         </dl>
@@ -98,8 +101,8 @@ const highlights = [
 
           <div class="pointer-events-none absolute -right-4 bottom-20 hidden w-44 rounded-2xl border border-white/15 bg-ink-900/80 p-3 shadow-soft backdrop-blur lg:block">
             <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Facturación min.</p>
-            <p class="font-display mt-1 text-xl font-bold text-lime-glow">USD 18k <span class="text-[10px] font-medium text-ink-300">/mes</span></p>
-            <p class="text-[10px] text-ink-300">USD 216k anuales proyectados</p>
+            <p class="font-display mt-1 text-xl font-bold text-lime-glow">{fmtCopM(REVENUE_MONTH_COP)} <span class="text-[10px] font-medium text-ink-300">/mes</span></p>
+            <p class="text-[10px] text-ink-300">{fmtCopM(REVENUE_MONTH_COP * 12)} anuales · ≈ <span data-usd-cop={REVENUE_MONTH_COP * 12} data-usd-fmt="short">{fmtUsd(REVENUE_MONTH_COP * 12 / FALLBACK_FX)}</span></p>
           </div>
         </div>
       </div>
