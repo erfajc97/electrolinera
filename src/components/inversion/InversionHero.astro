@@ -1,10 +1,10 @@
 ---
-import { CAPEX_COP, FALLBACK_FX, REVENUE_MONTH_COP, fmtCopM, fmtUsd } from "../../config/invest";
+import { CAPEX_COP, FALLBACK_FX, INVESTOR_PCT, DISART_PCT, TARGET, TARGET_HOURS, PRICE_KWH_COP, COST_KWH_COP, fmtCopM, fmtUsd } from "../../config/invest";
 
 const highlights = [
   { v: "$ 660 M COP", l: "Por franquicia completa · 720 kW", usd: CAPEX_COP },
-  { v: "8.6 mo",   l: "Payback proyectado (objetivo 6 h/día)" },
-  { v: "100%",     l: "Llave en mano · sin operación técnica" },
+  { v: `${INVESTOR_PCT} / ${DISART_PCT}`, l: "Inversionista / Disart · propiedad y utilidades" },
+  { v: `${TARGET.paybackMonths.toFixed(1)} mo`, l: `Payback proyectado (${TARGET_HOURS} h/día)` },
 ];
 ---
 <section id="top" class="relative isolate overflow-x-clip overflow-hidden bg-ink-950 pt-28 pb-20 text-white sm:pt-32 md:pt-40 md:pb-28">
@@ -42,8 +42,8 @@ const highlights = [
           Una franquicia Disart son 3 cargadores ultra rápidos de 240 kW
           —720 kW totales, 6 mangueras— operando bajo nuestra marca, app y
           dashboard. Importamos los equipos, gestionamos los permisos,
-          construimos la obra y operamos 24/7. Tú aportas el capital
-          y participas de las utilidades.
+          construimos la obra y operamos 24/7. Tú aportas el capital,
+          eres dueño del 70% de los equipos y recibes el 70% de las utilidades.
         </p>
 
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -91,18 +91,18 @@ const highlights = [
 
           <div class="pointer-events-none absolute -left-6 top-6 hidden w-44 rounded-2xl border border-white/15 bg-ink-900/80 p-3 shadow-soft backdrop-blur lg:block">
             <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Margen kWh</p>
-            <p class="font-display mt-1 text-xl font-bold text-white">$ 800 <span class="text-[10px] font-medium text-ink-300">COP</span></p>
+            <p class="font-display mt-1 text-xl font-bold text-white">$ {(PRICE_KWH_COP - COST_KWH_COP).toLocaleString("es-CO")} <span class="text-[10px] font-medium text-ink-300">COP</span></p>
             <div class="mt-1 flex items-center gap-1.5 text-[10px] text-ink-300">
-              <span>$ 800 compra</span>
+              <span>$ {COST_KWH_COP.toLocaleString("es-CO")} compra</span>
               <svg class="h-2.5 w-2.5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              <span class="font-semibold text-lime-glow">$ 1.600 venta</span>
+              <span class="font-semibold text-lime-glow">$ {PRICE_KWH_COP.toLocaleString("es-CO")} venta</span>
             </div>
           </div>
 
           <div class="pointer-events-none absolute -right-4 bottom-20 hidden w-44 rounded-2xl border border-white/15 bg-ink-900/80 p-3 shadow-soft backdrop-blur lg:block">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Facturación min.</p>
-            <p class="font-display mt-1 text-xl font-bold text-lime-glow">{fmtCopM(REVENUE_MONTH_COP)} <span class="text-[10px] font-medium text-ink-300">/mes</span></p>
-            <p class="text-[10px] text-ink-300">{fmtCopM(REVENUE_MONTH_COP * 12)} anuales · ≈ <span data-usd-cop={REVENUE_MONTH_COP * 12} data-usd-fmt="short">{fmtUsd(REVENUE_MONTH_COP * 12 / FALLBACK_FX)}</span></p>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Tu 70% / mes</p>
+            <p class="font-display mt-1 text-xl font-bold text-lime-glow">{fmtCopM(TARGET.investorMonth)}</p>
+            <p class="text-[10px] text-ink-300">≈ <span data-usd-cop={TARGET.investorMonth}>{fmtUsd(TARGET.investorMonth / FALLBACK_FX)}</span> · {TARGET_HOURS} h/día</p>
           </div>
         </div>
       </div>

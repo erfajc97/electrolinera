@@ -1,17 +1,18 @@
 ---
-import { CAPEX_COP, FALLBACK_FX, REVENUE_MONTH_COP, fmtCopM, fmtUsd } from "../../config/invest";
+import { CAPEX_COP, FALLBACK_FX, INVESTOR_PCT, TARGET, TARGET_HOURS, PRICE_KWH_COP, COST_KWH_COP, POWER_KW, fmtCopM, fmtUsd } from "../../config/invest";
 
+const fmtN = (n: number) => n.toLocaleString("es-CO");
 const flow = [
-  { tag: "Compra", v: "$ 800 COP", l: "por kWh a la empresa eléctrica", tone: "ink" },
-  { tag: "Venta",  v: "$ 1.600 COP", l: "por kWh al conductor", tone: "brand" },
-  { tag: "Margen", v: "$ 800 COP", l: "bruto por cada kWh entregado", tone: "lime" },
+  { tag: "Compra", v: `$ ${fmtN(COST_KWH_COP)} COP`, l: "por kWh a la empresa eléctrica", tone: "ink" },
+  { tag: "Venta",  v: `$ ${fmtN(PRICE_KWH_COP)} COP`, l: "por kWh al conductor", tone: "brand" },
+  { tag: "Margen", v: `$ ${fmtN(PRICE_KWH_COP - COST_KWH_COP)} COP`, l: "bruto por cada kWh entregado", tone: "lime" },
 ];
 
 const stats = [
-  { v: "600 kWh", l: "capacidad por hora (720 kW al 83%)" },
-  { v: "$480.000", l: "ganancia por hora a capacidad plena (COP)" },
-  { v: fmtCopM(REVENUE_MONTH_COP), l: "facturación mínima proyectada / mes", usd: REVENUE_MONTH_COP },
-  { v: fmtCopM(REVENUE_MONTH_COP * 12), l: "facturación anual estimada", usd: REVENUE_MONTH_COP * 12 },
+  { v: `${POWER_KW} kWh`, l: "energía por hora a plena potencia" },
+  { v: `$ ${fmtN(POWER_KW * (PRICE_KWH_COP - COST_KWH_COP))}`, l: "margen por hora a plena potencia (COP)" },
+  { v: fmtCopM(TARGET.marginMonth), l: `resultado distribuible / mes (${TARGET_HOURS} h/día)`, usd: TARGET.marginMonth },
+  { v: fmtCopM(TARGET.investorMonth), l: `tu ${INVESTOR_PCT}% / mes (${TARGET_HOURS} h/día)`, usd: TARGET.investorMonth },
 ];
 
 const capex = [
@@ -27,11 +28,11 @@ const capex = [
     <div class="mx-auto max-w-2xl text-center">
       <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Modelo de negocio</p>
       <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
-        Cobramos el doble de lo que pagamos. Por cada kWh.
+        Vendemos cada kWh a más del doble de lo que cuesta.
       </h2>
       <p class="mt-4 text-lg text-ink-700">
         La unidad económica es simple: energía comprada a la red, entregada
-        al conductor al doble de precio. El resto es escala — más horas
+        al conductor a más del doble de precio. El resto es escala — más horas
         de uso, más kWh, más utilidad.
       </p>
     </div>
@@ -53,8 +54,8 @@ const capex = [
           <h3 class="font-display mt-2 text-2xl font-bold text-ink-950">3 cargadores · 720 kW · 6 mangueras</h3>
           <p class="mt-2 text-sm text-ink-700">
             Cada franquicia opera 3 unidades del cargador <strong>YLC-KC-240</strong>
-            (240 kW, doble pistola CCS2). Capacidad agregada de 600 kWh por hora
-            de operación efectiva.
+            (240 kW, doble pistola CCS2). Capacidad agregada de 720 kWh por hora
+            de operación a plena potencia.
           </p>
 
           <dl class="mt-6 grid gap-4 sm:grid-cols-2">

@@ -16,9 +16,9 @@ import Footer from "../components/Footer.astro";
 import WhatsAppFab from "../components/WhatsAppFab.astro";
 
 const meta = {
-  title: "Invertir en electrolineras Colombia · ROI 8.6 meses | Disart",
+  title: "Invertir en electrolineras Colombia · 70% para el inversionista | Disart",
   description:
-    "Invierte en una electrolinera Disart Energy en Colombia: franquicia 720 kW llave en mano, ROI proyectado desde 8.6 meses. Calculadora de retorno en vivo con tipo de cambio USD/COP.",
+    "Invierte en una electrolinera Disart Energy en Colombia: electrolinera 720 kW llave en mano por COP 660 millones. Eres dueño del 70% de los equipos y de las utilidades; Disart opera todo por el 30%. Calculadora de retorno.",
   image: "/img/electrolinera/charger-rain-suv.jpg",
   imageAlt: "Inversión en franquicia de electrolinera Disart Energy Colombia 720 kW con tres cargadores DC",
   keywords:
@@ -53,17 +53,12 @@ const jsonld = [
   {
     "@context": "https://schema.org",
     "@type": "Offer",
-    name: "Participación accionaria en electrolinera Disart Energy",
+    name: "Inversión en electrolinera Disart Energy (70% inversionista / 30% Disart)",
     url: "https://disartenergy.com/inversion",
     priceCurrency: "COP",
-    price: "66000000",
-    priceSpecification: [
-      { "@type": "PriceSpecification", price: 66000000, priceCurrency: "COP", description: "Participación 10%" },
-      { "@type": "PriceSpecification", price: 132000000, priceCurrency: "COP", description: "Participación 20%" },
-      { "@type": "PriceSpecification", price: 198000000, priceCurrency: "COP", description: "Participación 30%" },
-      { "@type": "PriceSpecification", price: 330000000, priceCurrency: "COP", description: "Participación 50%" },
-      { "@type": "PriceSpecification", price: 660000000, priceCurrency: "COP", description: "Participación 100%" },
-    ],
+    price: "660000000",
+    description:
+      "Aporte de capital de COP 660 millones por electrolinera de 720 kW. El inversionista es dueño del 70% de los equipos y recibe el 70% del resultado distribuible; Disart Energy conserva el 30% como operador integral.",
     availability: "https://schema.org/LimitedAvailability",
     seller: { "@id": "https://disartenergy.com/#org" },
     areaServed: ["CO", "US", "EU", "LATAM"],
@@ -78,7 +73,7 @@ const jsonld = [
         name: "¿Cuánto cuesta una franquicia de electrolinera en Colombia?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "El CAPEX total de una franquicia Disart Energy es de COP 660 millones (el equivalente en USD varía con la tasa de cambio del día). Incluye 3 cargadores DC de 240 kW, transformador 1000 kVA, obras civiles, sistema eléctrico, trámites y legalización. La inversión puede compartirse entre varios inversionistas desde el 10% (COP 66 millones).",
+          text: "La inversión por electrolinera es de COP 660 millones (el equivalente en USD varía con la tasa de cambio del día). Incluye 3 cargadores DC de 240 kW, transformador 1000 kVA, obras civiles, sistema eléctrico, trámites y legalización. El inversionista es dueño del 70% de los equipos y recibe el 70% del resultado distribuible; Disart Energy conserva el 30% por administrar, operar y mantener la estación.",
         },
       },
       {
@@ -86,7 +81,7 @@ const jsonld = [
         name: "¿Cuál es el retorno de inversión proyectado de una electrolinera?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "El payback proyectado es de 8.6 meses en el escenario objetivo de 6 horas diarias de operación, con utilidad mensual aproximada de COP 76.4 millones. En el escenario alto (9 h/día) baja a 5.5 meses; en el escenario bajo (3 h/día) sube a 20 meses.",
+          text: "El payback proyectado es de 10.9 meses en el escenario objetivo de 4 horas diarias a plena potencia (720 kW), con una utilidad mensual para el inversionista de aproximadamente COP 60,5 millones (70% del resultado distribuible). Con 6 h/día baja a 7.3 meses; con 2 h/día sube a 21.8 meses. Proyección ilustrativa, no garantiza rentabilidad.",
         },
       },
       {
@@ -94,7 +89,7 @@ const jsonld = [
         name: "¿Puedo invertir si no resido en Colombia?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sí. El modelo está abierto a inversionistas internacionales. Disart maneja la estructura legal y financiera local; tu participación se respalda con contrato de inversión privada y distribución periódica de utilidades en USD o COP según prefieras.",
+          text: "Sí. El modelo está abierto a inversionistas internacionales. Disart maneja la estructura legal y financiera local; tu participación (70%) se respalda con contrato de inversión y distribución periódica de utilidades en USD o COP según prefieras.",
         },
       },
       {

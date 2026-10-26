@@ -1,24 +1,36 @@
 ---
-import { CAPEX_COP, fmtCopM } from "../../config/invest";
+import {
+  CAPEX_COP, INVESTOR_PCT, DISART_PCT, TARGET_HOURS, POWER_KW,
+  PRICE_KWH_COP, COST_KWH_COP, fmtCopM,
+} from "../../config/invest";
 
 const presets = [
-  { hours: 3, label: "Bajo · 3 h/día" },
-  { hours: 6, label: "Objetivo · 6 h/día" },
-  { hours: 9, label: "Alto · 9 h/día" },
+  { hours: 2, label: "Bajo · 2 h/día" },
+  { hours: 4, label: "Objetivo · 4 h/día" },
+  { hours: 6, label: "Alto · 6 h/día" },
 ];
+const fmtN = (n: number) => n.toLocaleString("es-CO");
 ---
 <section id="calculadora" class="relative overflow-hidden bg-linear-to-b from-white via-brand-50/30 to-white py-16 md:py-24">
   <div class="absolute inset-x-0 top-0 -z-10 h-72 bg-radial-fade opacity-60"></div>
 
-  <div class="mx-auto max-w-6xl px-4">
+  <div class="mx-auto max-w-6xl px-4"
+    data-calc-config
+    data-capex={CAPEX_COP}
+    data-investor-pct={INVESTOR_PCT}
+    data-power-kw={POWER_KW}
+    data-price={PRICE_KWH_COP}
+    data-cost={COST_KWH_COP}
+    data-target-hours={TARGET_HOURS}
+  >
     <div class="mx-auto max-w-2xl text-center">
       <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Calculadora de retorno</p>
       <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
         Simula tu inversión en tiempo real.
       </h2>
       <p class="mt-4 text-lg text-ink-700">
-        Ajusta las horas de operación diarias y tu porcentaje de participación.
-        Las cifras se actualizan al instante con la tasa de cambio en vivo.
+        Ajusta las horas de operación diarias a plena potencia. La inversión está fijada en pesos
+        y el equivalente en dólares se actualiza con la tasa de cambio en vivo.
       </p>
     </div>
 
@@ -38,9 +50,9 @@ const presets = [
 
           <div class="mt-8">
             <div class="flex items-baseline justify-between">
-              <label for="calc-hours" class="text-sm font-semibold text-ink-950">Horas activas / día</label>
+              <label for="calc-hours" class="text-sm font-semibold text-ink-950">Horas a plena potencia / día</label>
               <span class="font-display text-3xl font-bold text-brand-700">
-                <span data-calc-hours-value>6</span><span class="text-base font-medium text-ink-500">h</span>
+                <span data-calc-hours-value>{TARGET_HOURS}</span><span class="text-base font-medium text-ink-500">h</span>
               </span>
             </div>
             <input
@@ -49,7 +61,7 @@ const presets = [
               min="1"
               max="12"
               step="1"
-              value="6"
+              value={TARGET_HOURS}
               class="calc-range mt-3 w-full"
               data-calc-hours
             />
@@ -69,36 +81,15 @@ const presets = [
             </div>
           </div>
 
-          <div class="mt-10">
-            <div class="flex items-baseline justify-between">
-              <label for="calc-pct" class="text-sm font-semibold text-ink-950">Tu participación</label>
-              <span class="font-display text-3xl font-bold text-brand-700">
-                <span data-calc-pct-value>20</span><span class="text-base font-medium text-ink-500">%</span>
-              </span>
-            </div>
-            <input
-              id="calc-pct"
-              type="range"
-              min="10"
-              max="100"
-              step="10"
-              value="20"
-              class="calc-range mt-3 w-full"
-              data-calc-pct
-            />
-            <div class="mt-2 flex justify-between text-[10px] font-medium text-ink-500">
-              <span>10%</span><span>50%</span><span>100%</span>
-            </div>
-          </div>
-
           <div class="mt-8 border-t border-ink-100 pt-6">
             <p class="text-[10px] font-semibold uppercase tracking-widest text-ink-500">Constantes del modelo</p>
             <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-              <dt class="text-ink-700">Capacidad / hora</dt><dd class="font-semibold text-ink-950 text-right">600 kWh</dd>
-              <dt class="text-ink-700">Compra kWh</dt><dd class="font-semibold text-ink-950 text-right">$800 COP</dd>
-              <dt class="text-ink-700">Venta kWh</dt><dd class="font-semibold text-ink-950 text-right">$1.600 COP</dd>
-              <dt class="text-ink-700">Admin / mes</dt><dd class="font-semibold text-ink-950 text-right">$10M COP</dd>
-              <dt class="text-ink-700">CAPEX total</dt><dd class="font-semibold text-ink-950 text-right">{fmtCopM(CAPEX_COP)}</dd>
+              <dt class="text-ink-700">Potencia instalada</dt><dd class="font-semibold text-ink-950 text-right">{POWER_KW} kW</dd>
+              <dt class="text-ink-700">Compra kWh</dt><dd class="font-semibold text-ink-950 text-right">${fmtN(COST_KWH_COP)} COP</dd>
+              <dt class="text-ink-700">Venta kWh</dt><dd class="font-semibold text-ink-950 text-right">${fmtN(PRICE_KWH_COP)} COP</dd>
+              <dt class="text-ink-700">Inversionista</dt><dd class="font-semibold text-ink-950 text-right">{INVESTOR_PCT}%</dd>
+              <dt class="text-ink-700">Disart (operación)</dt><dd class="font-semibold text-ink-950 text-right">{DISART_PCT}%</dd>
+              <dt class="text-ink-700">Inversión</dt><dd class="font-semibold text-ink-950 text-right">{fmtCopM(CAPEX_COP)}</dd>
             </dl>
           </div>
         </div>
@@ -114,53 +105,61 @@ const presets = [
           </div>
 
           <div class="mt-4 grid items-baseline gap-2 sm:grid-cols-[auto_1fr] sm:gap-4">
-            <p class="font-display text-5xl font-bold leading-none md:text-6xl" data-calc-investment-usd>USD 41.250</p>
-            <p class="text-base text-ink-300"><span data-calc-investment-cop>$ 132.000.000 COP</span></p>
+            <p class="font-display text-5xl font-bold leading-none md:text-6xl">{fmtCopM(CAPEX_COP)}</p>
+            <p class="text-base text-ink-300">≈ <span data-calc-investment-usd>USD 206.250</span></p>
           </div>
           <p class="mt-3 text-sm text-ink-300">
-            Equivale al <strong class="font-semibold text-lime-glow"><span data-calc-pct-display>20</span>%</strong>
-            de una franquicia completa de {fmtCopM(CAPEX_COP)}.
+            Eres dueño del <strong class="font-semibold text-lime-glow">{INVESTOR_PCT}%</strong> de los equipos
+            y recibes el <strong class="font-semibold text-lime-glow">{INVESTOR_PCT}%</strong> del resultado distribuible.
+            Disart opera la estación por el {DISART_PCT}% restante.
           </p>
         </div>
 
         <!-- Monthly returns -->
         <div class="grid gap-5 sm:grid-cols-2">
           <div class="rounded-3xl border border-ink-100 bg-white p-6 shadow-soft">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Ingreso bruto / mes</p>
-            <p class="font-display mt-3 text-3xl font-bold text-ink-950" data-calc-gross-usd>USD 3.600</p>
-            <p class="mt-1 text-sm text-ink-500" data-calc-gross-cop>$ 14.400.000 COP</p>
-            <p class="mt-3 text-xs text-ink-500">Tu participación sobre la facturación mensual proyectada.</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Ventas de energía / mes</p>
+            <p class="font-display mt-3 text-3xl font-bold text-ink-950" data-calc-sales-cop>$ 155.520.000 COP</p>
+            <p class="mt-1 text-sm text-ink-500" data-calc-sales-usd>USD 48.600</p>
+            <p class="mt-3 text-xs text-ink-500">
+              Ingresos de la estación completa. Resultado distribuible tras energía:
+              <span class="font-semibold text-ink-700" data-calc-margin-cop>$ 86.400.000 COP</span>.
+            </p>
           </div>
 
           <div class="rounded-3xl border border-brand-200 bg-brand-50/60 p-6 shadow-soft ring-1 ring-inset ring-brand-200">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Utilidad / mes</p>
-            <p class="font-display mt-3 text-3xl font-bold text-brand-800" data-calc-utility-usd>USD 4.366</p>
-            <p class="mt-1 text-sm text-brand-700" data-calc-utility-cop>$ 15.280.000 COP</p>
-            <p class="mt-3 text-xs text-ink-700">Margen energético menos costos administrativos prorrateados.</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Tu {INVESTOR_PCT}% / mes</p>
+            <p class="font-display mt-3 text-3xl font-bold text-brand-800" data-calc-utility-cop>$ 60.480.000 COP</p>
+            <p class="mt-1 text-sm text-brand-700" data-calc-utility-usd>USD 18.900</p>
+            <p class="mt-3 text-xs text-ink-700">
+              Disart ({DISART_PCT}%): <span class="font-semibold" data-calc-disart-cop>$ 25.920.000 COP</span>
+              por operar, mantener y proteger la estación.
+            </p>
           </div>
         </div>
 
         <!-- Annual + payback -->
         <div class="grid gap-5 sm:grid-cols-2">
           <div class="rounded-3xl border border-ink-100 bg-white p-6 shadow-soft">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Utilidad anual</p>
-            <p class="font-display mt-3 text-3xl font-bold text-ink-950" data-calc-annual-usd>USD 52.392</p>
-            <p class="mt-1 text-sm text-ink-500" data-calc-annual-cop>$ 183.360.000 COP</p>
-            <p class="mt-3 text-xs text-ink-500">Tu participación sobre la utilidad operativa de los 12 meses.</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Tu utilidad anual</p>
+            <p class="font-display mt-3 text-3xl font-bold text-ink-950" data-calc-annual-cop>$ 725.760.000 COP</p>
+            <p class="mt-1 text-sm text-ink-500" data-calc-annual-usd>USD 226.800</p>
+            <p class="mt-3 text-xs text-ink-500">Tu participación sobre el resultado distribuible de los 12 meses.</p>
           </div>
 
           <div class="rounded-3xl border border-lime-glow/40 bg-linear-to-br from-lime-glow/20 to-brand-50 p-6 shadow-soft">
             <p class="text-[10px] font-bold uppercase tracking-widest text-brand-700">Payback proyectado</p>
             <p class="font-display mt-3 text-3xl font-bold text-brand-900">
-              <span data-calc-payback>8.6</span><span class="ml-1 text-base font-semibold text-ink-700">meses</span>
+              <span data-calc-payback>10.9</span><span class="ml-1 text-base font-semibold text-ink-700">meses</span>
             </p>
-            <p class="mt-3 text-xs text-ink-700">Tiempo para recuperar la inversión a las horas y participación seleccionadas.</p>
+            <p class="mt-3 text-xs text-ink-700">Tiempo para recuperar la inversión a las horas seleccionadas.</p>
           </div>
         </div>
 
         <p class="text-center text-xs text-ink-500">
-          Inversión fija en pesos colombianos; el equivalente en USD se actualiza con la tasa de cambio en vivo.
-          No constituyen oferta vinculante; proyección sujeta a tráfico, tarifa eléctrica y operación.
+          Proyección ilustrativa; no garantiza ingresos ni rentabilidad. Antes de impuestos aplicables.
+          Depende de demanda real, potencia entregada, disponibilidad de equipos y tarifa eléctrica.
+          Los valores en USD varían con la tasa de cambio; la inversión es fija en pesos.
         </p>
 
         <div class="text-center">
@@ -235,40 +234,39 @@ const presets = [
 </style>
 
 <script>
-  const FALLBACK_FX = 3200;
-  const CAPEX_COP = 660_000_000;
-  const CAPACITY_KWH_PER_HOUR = 600;
-  const PRICE_KWH_COP = 1600;
-  const COST_KWH_COP = 800;
-  const ADMIN_MONTHLY_COP = 10_000_000;
   const DAYS_PER_MONTH = 30;
+  const FALLBACK_FX = 3200;
 
-  type CalcState = { hours: number; pct: number; fxCop: number };
-
+  const cfg = document.querySelector<HTMLElement>('[data-calc-config]');
   const root = document.querySelector<HTMLElement>('[data-calc-root]');
-  if (root) {
+  if (cfg && root) {
+    const CAPEX_COP = Number(cfg.dataset.capex);
+    const INVESTOR_SHARE = Number(cfg.dataset.investorPct) / 100;
+    const POWER_KW = Number(cfg.dataset.powerKw);
+    const PRICE_KWH_COP = Number(cfg.dataset.price);
+    const COST_KWH_COP = Number(cfg.dataset.cost);
+    const TARGET_HOURS = Number(cfg.dataset.targetHours);
+
+    const $ = (sel: string) => root.querySelector<HTMLElement>(sel)!;
     const hoursInput = root.querySelector<HTMLInputElement>('[data-calc-hours]')!;
-    const pctInput   = root.querySelector<HTMLInputElement>('[data-calc-pct]')!;
-    const hoursVal   = root.querySelector<HTMLElement>('[data-calc-hours-value]')!;
-    const pctVal     = root.querySelector<HTMLElement>('[data-calc-pct-value]')!;
-    const pctDisplay = root.querySelector<HTMLElement>('[data-calc-pct-display]')!;
-    const fxBadge    = root.querySelector<HTMLElement>('[data-fx-rate]')!;
-    const scenarioBadge = root.querySelector<HTMLElement>('[data-calc-scenario]')!;
-    const investUsdEl = root.querySelector<HTMLElement>('[data-calc-investment-usd]')!;
-    const investCopEl = root.querySelector<HTMLElement>('[data-calc-investment-cop]')!;
-    const grossUsdEl  = root.querySelector<HTMLElement>('[data-calc-gross-usd]')!;
-    const grossCopEl  = root.querySelector<HTMLElement>('[data-calc-gross-cop]')!;
-    const utilUsdEl   = root.querySelector<HTMLElement>('[data-calc-utility-usd]')!;
-    const utilCopEl   = root.querySelector<HTMLElement>('[data-calc-utility-cop]')!;
-    const annUsdEl    = root.querySelector<HTMLElement>('[data-calc-annual-usd]')!;
-    const annCopEl    = root.querySelector<HTMLElement>('[data-calc-annual-cop]')!;
-    const paybackEl   = root.querySelector<HTMLElement>('[data-calc-payback]')!;
-    const presetBtns  = root.querySelectorAll<HTMLButtonElement>('[data-calc-preset]');
+    const hoursVal = $('[data-calc-hours-value]');
+    const fxBadge = $('[data-fx-rate]');
+    const scenarioBadge = $('[data-calc-scenario]');
+    const investUsdEl = $('[data-calc-investment-usd]');
+    const salesCopEl = $('[data-calc-sales-cop]');
+    const salesUsdEl = $('[data-calc-sales-usd]');
+    const marginCopEl = $('[data-calc-margin-cop]');
+    const utilCopEl = $('[data-calc-utility-cop]');
+    const utilUsdEl = $('[data-calc-utility-usd]');
+    const disartCopEl = $('[data-calc-disart-cop]');
+    const annCopEl = $('[data-calc-annual-cop]');
+    const annUsdEl = $('[data-calc-annual-usd]');
+    const paybackEl = $('[data-calc-payback]');
+    const presetBtns = root.querySelectorAll<HTMLButtonElement>('[data-calc-preset]');
 
     const fmtCop = (n: number) =>
       '$ ' + Math.round(n).toLocaleString('es-CO').replace(/,/g, '.') + ' COP';
-    const fmtUsd = (n: number) =>
-      'USD ' + Math.round(n).toLocaleString('en-US');
+    const fmtUsd = (n: number) => 'USD ' + Math.round(n).toLocaleString('en-US');
     const fmtFx = (n: number) =>
       'USD = $' + Math.round(n).toLocaleString('es-CO').replace(/,/g, '.');
 
@@ -276,75 +274,52 @@ const presets = [
       const min = Number(el.min);
       const max = Number(el.max);
       const val = Number(el.value);
-      const pct = ((val - min) / (max - min)) * 100;
-      el.style.setProperty('--calc-fill', pct + '%');
+      el.style.setProperty('--calc-fill', ((val - min) / (max - min)) * 100 + '%');
     };
 
-    const state: CalcState = {
-      hours: Number(hoursInput.value) || 6,
-      pct:   Number(pctInput.value) || 20,
-      fxCop: FALLBACK_FX,
-    };
+    const state = { hours: Number(hoursInput.value) || TARGET_HOURS, fxCop: FALLBACK_FX };
 
-    function compute(s: CalcState) {
-      const kwhPerDay   = s.hours * CAPACITY_KWH_PER_HOUR;
-      const grossDayCop = kwhPerDay * PRICE_KWH_COP;
-      const costDayCop  = kwhPerDay * COST_KWH_COP;
-      const grossMonthCop = grossDayCop * DAYS_PER_MONTH;
-      const costMonthCop  = costDayCop * DAYS_PER_MONTH;
-      const energyMarginMonthCop = grossMonthCop - costMonthCop;
-      const utilityMonthCop = energyMarginMonthCop - ADMIN_MONTHLY_COP;
-
-      const share = s.pct / 100;
-      const investorInvCop = CAPEX_COP * share;
-      const investorGrossMonthCop = grossMonthCop * share;
-      const investorUtilityMonthCop = utilityMonthCop * share;
-      const investorAnnualUtilityCop = investorUtilityMonthCop * 12;
-
-      const paybackMonths = utilityMonthCop > 0
-        ? CAPEX_COP / utilityMonthCop
-        : Infinity;
-
+    function compute(hours: number) {
+      const kwhMonth = POWER_KW * hours * DAYS_PER_MONTH;
+      const salesMonth = kwhMonth * PRICE_KWH_COP;
+      const marginMonth = kwhMonth * (PRICE_KWH_COP - COST_KWH_COP);
+      const investorMonth = marginMonth * INVESTOR_SHARE;
+      const disartMonth = marginMonth - investorMonth;
       return {
-        investorInvUsd: investorInvCop / s.fxCop,
-        investorInvCop,
-        investorGrossMonthCop,
-        investorGrossMonthUsd: investorGrossMonthCop / s.fxCop,
-        investorUtilityMonthCop,
-        investorUtilityMonthUsd: investorUtilityMonthCop / s.fxCop,
-        investorAnnualUtilityCop,
-        investorAnnualUtilityUsd: investorAnnualUtilityCop / s.fxCop,
-        paybackMonths,
+        salesMonth,
+        marginMonth,
+        investorMonth,
+        disartMonth,
+        investorYear: investorMonth * 12,
+        paybackMonths: investorMonth > 0 ? CAPEX_COP / investorMonth : Infinity,
       };
     }
 
     function scenarioLabel(hours: number) {
-      if (hours <= 3) return 'Escenario bajo · ' + hours + ' h/día';
-      if (hours <= 6) return 'Escenario objetivo · ' + hours + ' h/día';
+      if (hours < TARGET_HOURS) return 'Escenario bajo · ' + hours + ' h/día';
+      if (hours === TARGET_HOURS) return 'Escenario objetivo · ' + hours + ' h/día';
       return 'Escenario alto · ' + hours + ' h/día';
     }
 
     function render() {
-      const r = compute(state);
+      const r = compute(state.hours);
+      const fx = state.fxCop;
       hoursVal.textContent = String(state.hours);
-      pctVal.textContent   = String(state.pct);
-      pctDisplay.textContent = String(state.pct);
       scenarioBadge.textContent = scenarioLabel(state.hours);
-      fxBadge.textContent = fmtFx(state.fxCop);
+      fxBadge.textContent = fmtFx(fx);
 
-      investUsdEl.textContent = fmtUsd(r.investorInvUsd);
-      investCopEl.textContent = fmtCop(r.investorInvCop);
+      investUsdEl.textContent = fmtUsd(CAPEX_COP / fx);
 
-      const gross = r.investorGrossMonthCop > 0 ? r.investorGrossMonthCop : 0;
-      grossUsdEl.textContent = fmtUsd(gross / state.fxCop);
-      grossCopEl.textContent = fmtCop(gross);
+      salesCopEl.textContent = fmtCop(r.salesMonth);
+      salesUsdEl.textContent = fmtUsd(r.salesMonth / fx);
+      marginCopEl.textContent = fmtCop(r.marginMonth);
 
-      const utility = r.investorUtilityMonthCop;
-      utilUsdEl.textContent = fmtUsd(utility / state.fxCop);
-      utilCopEl.textContent = fmtCop(utility);
+      utilCopEl.textContent = fmtCop(r.investorMonth);
+      utilUsdEl.textContent = fmtUsd(r.investorMonth / fx);
+      disartCopEl.textContent = fmtCop(r.disartMonth);
 
-      annUsdEl.textContent = fmtUsd(r.investorAnnualUtilityUsd);
-      annCopEl.textContent = fmtCop(r.investorAnnualUtilityCop);
+      annCopEl.textContent = fmtCop(r.investorYear);
+      annUsdEl.textContent = fmtUsd(r.investorYear / fx);
 
       if (!isFinite(r.paybackMonths) || r.paybackMonths < 0) {
         paybackEl.textContent = '—';
@@ -355,15 +330,10 @@ const presets = [
       }
 
       setFill(hoursInput);
-      setFill(pctInput);
     }
 
     hoursInput.addEventListener('input', () => {
       state.hours = Number(hoursInput.value);
-      render();
-    });
-    pctInput.addEventListener('input', () => {
-      state.pct = Number(pctInput.value);
       render();
     });
     presetBtns.forEach((btn) => {
@@ -380,7 +350,7 @@ const presets = [
     render();
 
     fetch('/api/fx')
-      .then((r) => r.ok ? r.json() : Promise.reject(r.status))
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((data) => {
         const cop = Number(data?.cop);
         if (Number.isFinite(cop) && cop > 0) {

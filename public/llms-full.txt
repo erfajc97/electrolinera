@@ -23,11 +23,11 @@ Una electrolinera Disart Energy = **3 cargadores DC de 240 kW** instalados en un
 ### Estructura de costos e ingresos por kWh
 
 - Compra a la empresa de energía: **$800 COP/kWh**
-- Venta al conductor del vehículo eléctrico: **$1.600 COP/kWh**
-- Margen bruto por kWh entregado: **$800 COP**
-- Margen máximo por hora de operación plena: **$480.000 COP**
+- Venta al conductor del vehículo eléctrico: **$1.800 COP/kWh**
+- Margen bruto por kWh entregado: **$1.000 COP**
+- Margen por hora de operación plena (720 kW): **$720.000 COP**
 
-### CAPEX por franquicia: USD 190.000 (≈ COP 660 millones)
+### Inversión por electrolinera: COP 660 millones (precio fijo en pesos; el equivalente en USD varía con la tasa de cambio)
 
 Distribución del CAPEX:
 - Cargadores rápidos (3 × YLC-KC-240): 41% — COP 270 millones
@@ -36,30 +36,26 @@ Distribución del CAPEX:
 - Sistema eléctrico y conexión: 11% — COP 70 millones
 - Trámites, diseño y legalización: 3% — COP 20 millones
 
-### Escenarios de operación
+### Reparto 70% inversionista / 30% Disart
 
-| Escenario | Horas/día | Ganancia día | Ingreso mensual | Utilidad mensual | Utilidad anual | Payback |
-|-----------|-----------|--------------|-----------------|------------------|----------------|---------|
-| Bajo | 3 h | $1.440.000 | $43.200.000 | $33.200.000 | $398.400.000 | 20 meses |
-| Objetivo | 6 h | $2.880.000 | $86.400.000 | $76.400.000 | $916.800.000 | 8.6 meses |
-| Alto | 9 h | $4.320.000 | $129.600.000 | $119.600.000 | $1.435.200.000 | 5.5 meses |
+- Propiedad de los equipos: 70% inversionista, 30% Disart Energy.
+- Resultado distribuible (ingresos por venta de energía − costo de energía − impuestos aplicables): 70% inversionista, 30% Disart Energy.
+- El 30% de Disart remunera: importación y trámites aduaneros, permisos de instalación, obra, licencia de la app móvil, dashboard del socio, pasarela de pagos, monitoreo y soporte 24/7, mantenimiento preventivo y correctivo, equipo de desarrollo atento a incidentes de seguridad, siniestros e imprevistos. Software incluido, sin porcentaje adicional.
 
-Valores en pesos colombianos (COP). Costos administrativos asumidos: $10.000.000 COP/mes.
+### Escenarios de operación (720 kW a plena potencia, 30 días/mes)
 
-### Modelo de inversión por participación
+| Escenario | Horas/día | Ventas mensuales | Resultado distribuible | Inversionista 70% / mes | Inversionista 70% / año | Payback |
+|-----------|-----------|------------------|------------------------|-------------------------|-------------------------|---------|
+| Bajo | 2 h | $77.760.000 | $43.200.000 | $30.240.000 | $362.880.000 | 21.8 meses |
+| Objetivo | 4 h | $155.520.000 | $86.400.000 | $60.480.000 | $725.760.000 | 10.9 meses |
+| Alto | 6 h | $233.280.000 | $129.600.000 | $90.720.000 | $1.088.640.000 | 7.3 meses |
 
-| Inversión USD | Participación accionaria | Retorno mensual proyectado (escenario objetivo) |
-|---------------|--------------------------|-------------------------------------------------|
-| USD 19.000 | 10% | ≈ USD 1.800/mes brutos |
-| USD 38.000 | 20% | ≈ USD 3.600/mes brutos |
-| USD 57.000 | 30% | ≈ USD 5.400/mes brutos |
-| USD 95.000 | 50% | ≈ USD 9.000/mes brutos |
-| USD 190.000 | 100% | ≈ USD 18.000/mes brutos |
+Valores en pesos colombianos (COP), antes de impuestos. Proyección ilustrativa, no garantiza ingresos ni rentabilidad.
 
 Cada inversionista recibe:
-- Participación accionaria proporcional sobre la electrolinera
-- Contrato de inversión privada
-- Distribución periódica de utilidades (mensual)
+- 70% de la propiedad de los equipos
+- Contrato de inversión
+- 70% del resultado distribuible, con corte mensual
 - Derecho proporcional sobre la valorización del activo
 - Acceso al dashboard de operación con métricas en tiempo real
 

@@ -1,0 +1,182 @@
+[
+  {
+    "n": 1,
+    "fase": "Antes de operar",
+    "title": "Importación y trámites aduaneros",
+    "summary": "Disart se encarga de que los equipos lleguen a Colombia nacionalizados y listos para instalar, sin que el inversionista tenga que coordinar proveedores, agentes ni documentos.",
+    "items": [
+      "Compra e importación de los cargadores de corriente continua y de los equipos asociados",
+      "Gestión documental y trámites ante la aduana para la nacionalización",
+      "Coordinación del transporte internacional y del traslado hasta el sitio de instalación",
+      "Revisión de los equipos a su llegada y verificación de que corresponden con lo comprado",
+      "Manejo del trato con el proveedor y de las garantías del fabricante"
+    ]
+  },
+  {
+    "n": 2,
+    "fase": "Antes de operar",
+    "title": "Permisos de instalación y trámites con el operador de red",
+    "summary": "Una electrolinera no se enciende con solo conectar los cargadores: requiere autorizaciones y acuerdos técnicos que Disart tramita de principio a fin.",
+    "items": [
+      "Permisos de instalación y trámites ante las entidades y autoridades competentes",
+      "Solicitud de conexión y negociación técnica con el operador de red",
+      "Gestión de los requisitos regulatorios aplicables a la venta de energía para vehículos eléctricos",
+      "Certificaciones eléctricas de la instalación y de los equipos",
+      "Legalización de la estación para que pueda operar y facturar"
+    ]
+  },
+  {
+    "n": 3,
+    "fase": "Antes de operar",
+    "title": "Ingeniería, obra civil e infraestructura eléctrica",
+    "summary": "Diseñamos y construimos la estación completa, con un solo responsable de la calidad y los plazos de la obra.",
+    "items": [
+      "Diseño de ingeniería de la estación: ubicación de cargadores, flujo vehicular y capacidad eléctrica",
+      "Obra civil: excavación, placa de concreto, bases y canalizaciones",
+      "Suministro e instalación del transformador de 1000 kVA y de las protecciones",
+      "Sistema eléctrico completo y conexión a la red",
+      "Señalización y adecuación de la zona de carga",
+      "Supervisión de la obra y control del presupuesto aprobado"
+    ]
+  },
+  {
+    "n": 4,
+    "fase": "Antes de operar",
+    "title": "Puesta en marcha y entrega operando",
+    "summary": "La estación se entrega funcionando, conectada a la plataforma y vendiendo energía, no solo instalada.",
+    "items": [
+      "Pruebas eléctricas y de carga de cada cargador",
+      "Configuración de los cargadores y vinculación con nuestra plataforma",
+      "Pruebas del cobro por código QR y de la pasarela de pagos de punta a punta",
+      "Alta de la estación en la aplicación y en el dashboard del socio",
+      "Arranque de la operación comercial"
+    ]
+  },
+  {
+    "n": 5,
+    "fase": "Tecnología propia",
+    "title": "Aplicación móvil para conductores",
+    "summary": "El conductor encuentra la estación, inicia la carga y paga desde una aplicación que desarrollamos y mantenemos nosotros. El inversionista no paga licencias ni desarrollo.",
+    "items": [
+      "Licencia de uso de la aplicación móvil propia de Disart para la estación del inversionista",
+      "Inicio y control de la sesión de carga desde el teléfono",
+      "Registro de usuarios y de su historial de cargas",
+      "Actualizaciones, mejoras y corrección de errores de la aplicación",
+      "Infraestructura de servidores y servicios que la mantienen disponible"
+    ]
+  },
+  {
+    "n": 6,
+    "fase": "Tecnología propia",
+    "title": "Pasarela de pagos y cobro por código QR",
+    "summary": "Todo el dinero que entra por energía vendida queda registrado y conciliado. El inversionista no tiene que contratar ni configurar un sistema de cobro.",
+    "items": [
+      "Cobro por código QR en cada cargador",
+      "Integración con la pasarela de pagos y administración de la conexión",
+      "Registro y control de cada transacción",
+      "Conciliación de los cobros con la energía entregada",
+      "Soporte ante pagos fallidos o disputas de los conductores"
+    ]
+  },
+  {
+    "n": 7,
+    "fase": "Tecnología propia",
+    "title": "Dashboard del socio",
+    "summary": "El inversionista ve su negocio en tiempo real y no depende de que alguien le mande un reporte para saber cómo va su inversión.",
+    "items": [
+      "Panel administrativo propio para cada inversionista",
+      "Ventas, consumos de energía y transacciones por estación y por cargador",
+      "Disponibilidad de los equipos y estado de cada cargador",
+      "Reportes financieros y operativos descargables",
+      "Un mismo panel para todas las estaciones del inversionista, bajo el mismo nombre comercial"
+    ]
+  },
+  {
+    "n": 8,
+    "fase": "Operación diaria",
+    "title": "Monitoreo remoto 24/7",
+    "summary": "Hay alguien pendiente de la estación todos los días del año, incluso cuando nadie la visita.",
+    "items": [
+      "Supervisión remota continua de cada cargador",
+      "Control de disponibilidad: detección de equipos fuera de servicio",
+      "Alertas ante fallas, caídas de comunicación o consumos anómalos",
+      "Reinicio remoto y diagnóstico inicial antes de enviar un técnico",
+      "Seguimiento del consumo y de la venta de energía"
+    ]
+  },
+  {
+    "n": 9,
+    "fase": "Operación diaria",
+    "title": "Atención y soporte a los conductores",
+    "summary": "El conductor que tiene un problema con la carga o con el pago se comunica con Disart, no con el inversionista.",
+    "items": [
+      "Atención de consultas e incidentes de los usuarios",
+      "Acompañamiento durante la carga cuando el conductor lo necesita",
+      "Gestión de reclamos, devoluciones y ajustes de cobro",
+      "Información al usuario sobre tarifas y disponibilidad"
+    ]
+  },
+  {
+    "n": 10,
+    "fase": "Operación diaria",
+    "title": "Administración y gestión comercial de la estación",
+    "summary": "Disart administra el negocio día a día, como lo haría un gerente de estación dedicado.",
+    "items": [
+      "Administración general de la electrolinera",
+      "Gestión comercial: tarifas, promociones y relación con flotas y clientes frecuentes",
+      "Compra de la energía y control del costo por kWh",
+      "Gestión de proveedores y de los servicios de la estación",
+      "Control de ingresos y de transacciones"
+    ]
+  },
+  {
+    "n": 11,
+    "fase": "Operación diaria",
+    "title": "Informes y liquidación al inversionista",
+    "summary": "El inversionista recibe cuentas claras y a tiempo, con el reparto calculado de forma transparente.",
+    "items": [
+      "Informes periódicos de operación y de resultados financieros",
+      "Cálculo del resultado distribuible: ingresos menos costo de energía e impuestos aplicables",
+      "Liquidación del 70% al inversionista y del 30% a Disart",
+      "Información de respaldo disponible en el dashboard para auditar cada corte"
+    ]
+  },
+  {
+    "n": 12,
+    "fase": "Mantenimiento y protección",
+    "title": "Mantenimiento preventivo y correctivo",
+    "summary": "Un cargador parado no vende energía. Por eso el mantenimiento está a cargo de quien tiene el mayor interés en que la estación funcione.",
+    "items": [
+      "Programación y ejecución de mantenimientos preventivos",
+      "Inspección periódica de cargadores, cables, conectores y componentes eléctricos",
+      "Coordinación y ejecución de reparaciones",
+      "Seguimiento y reclamación de garantías ante el fabricante",
+      "Gestión técnica de fallas operativas y atención de fallas menores"
+    ]
+  },
+  {
+    "n": 13,
+    "fase": "Mantenimiento y protección",
+    "title": "Ciberseguridad y continuidad del sistema",
+    "summary": "Una estación conectada es un activo digital. Tenemos un equipo de desarrollo propio atento a que ni los pagos ni los equipos queden expuestos.",
+    "items": [
+      "Equipo de desarrolladores pendiente de intentos de intrusión, hackeos e incidentes de seguridad",
+      "Protección de la plataforma, de las cuentas de usuarios y de los datos de transacciones",
+      "Respuesta a incidentes y restablecimiento del servicio",
+      "Actualizaciones de seguridad del software y de la comunicación con los cargadores",
+      "Respaldo de la información de la estación"
+    ]
+  },
+  {
+    "n": 14,
+    "fase": "Mantenimiento y protección",
+    "title": "Siniestros, imprevistos y reserva operativa",
+    "summary": "Cuando algo sale mal, Disart es quien lo resuelve. El inversionista no tiene que coordinar nada.",
+    "items": [
+      "Atención de incidentes operativos y siniestros",
+      "Coordinación de soluciones técnicas y de proveedores",
+      "Gestión de contingencias",
+      "Administración de una reserva para gastos operativos imprevistos"
+    ]
+  }
+]

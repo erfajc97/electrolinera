@@ -4,7 +4,32 @@ import { CONTACT, CONTACT_FROM } from '../../config/contact';
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const RESEND_API_KEY = import.meta.env.RESEND_API_KEY as string | undefined;
+// Lazy: `new Resend(undefined)` throws, which would take the whole endpoint down
+// while the Resend account is being migrated.
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
+
+// Fallback delivery to CONTACT.email while Resend is unavailable.
+// FormSubmit.co forwards the submission to the mailbox (one-time activation
+// email is sent to CONTACT.email on the first submission).
+const sendViaFormSubmit = async (fields: Record<string, string>) => {
+  const res = await fetch(`https://formsubmit.co/ajax/${CONTACT.email}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      _subject: fields.subject,
+      _replyto: fields.email,
+      _template: 'table',
+      _captcha: 'false',
+      Nombre: fields.name,
+      Email: fields.email,
+      Telefono: fields.phone,
+      Ciudad: fields.city,
+      Interes: fields.interest,
+    }),
+  });
+  return res.ok;
+};
 
 const WHATSAPP = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '';
 
@@ -252,21 +277,27 @@ export const POST: APIRoute = async ({ request }) => {
     `Ciudad: ${city}\n` +
     `Interés: ${interest}\n`;
 
-  const { data, error } = await resend.emails.send({
-    from: CONTACT_FROM,
-    to: CONTACT.email,
-    replyTo: email,
-    subject,
-    html,
-    text,
-  });
-
-  if (error) {
+  if (resend) {
+    const { data, error } = await resend.emails.send({
+      from: CONTACT_FROM,
+      to: CONTACT.email,
+      replyTo: email,
+      subject,
+      html,
+      text,
+    });
+    if (!error) return json(200, { ok: true, id: data?.id });
     console.error('[resend]', error);
-    return json(502, { ok: false, error: 'PROVIDER_ERROR' });
   }
 
-  return json(200, { ok: true, id: data?.id });
+  try {
+    if (await sendViaFormSubmit({ subject, name, email, phone, city, interest })) {
+      return json(200, { ok: true });
+    }
+  } catch (err) {
+    console.error('[formsubmit]', err);
+  }
+  return json(502, { ok: false, error: 'PROVIDER_ERROR' });
 };
 
 export const GET: APIRoute = () =>
