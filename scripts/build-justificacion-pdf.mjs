@@ -78,22 +78,17 @@ const html = `<!doctype html>
   <p class="sub">Detalle del alcance de servicios dentro del esquema 70% inversionista / 30% Disart</p>
 </header>
 
-<h2>1. El esquema en pocas palabras</h2>
-<p>El inversionista aporta el capital de <strong>$ 660.000.000 COP</strong> para desarrollar una electrolinera de 720 kW (tres cargadores DC de 240 kW). A cambio es dueño del <strong>70%</strong> de los equipos y de la infraestructura y recibe el <strong>70%</strong> del resultado distribuible. Disart Energy conserva el <strong>30%</strong> restante.</p>
-<p>El resultado distribuible se calcula tomando los ingresos por venta de energía y descontando el costo de la energía comprada y los impuestos aplicables. Sobre ese resultado se aplica el reparto 70/30.</p>
-<p>Ese 30% no es una participación pasiva: es la remuneración por asumir, de principio a fin, todo el trabajo que hace falta para que la electrolinera exista, funcione y se mantenga segura. Un inversionista que quisiera armar esto por su cuenta tendría que contratar por separado a un importador, un gestor de permisos, un constructor, un proveedor de software, una pasarela de pagos, un centro de monitoreo, técnicos de mantenimiento y un equipo de seguridad informática, y además coordinarlos entre sí. Con Disart es un solo responsable y un solo reparto.</p>
-
-<h2>2. Alcance detallado de los servicios</h2>
+<h2>1. Alcance detallado de los servicios</h2>
 <p>A continuación se describe, área por área, lo que Disart Energy hace y asume con su 30%.</p>
 ${seccionesServicios}
 
-<h2>3. Lo que el inversionista no paga aparte</h2>
+<h2>2. Lo que el inversionista no paga aparte</h2>
 <p>Con su 70% del resultado distribuible el inversionista no recibe cobros adicionales de Disart por ninguno de los servicios descritos: el software y la aplicación, la pasarela de pagos y el cobro, la administración, el monitoreo 24/7, el soporte a los conductores y el mantenimiento ordinario están cubiertos por el 30%. Tampoco hay un porcentaje adicional por el uso de la plataforma.</p>
 
-<h2>4. Gastos extraordinarios</h2>
+<h2>3. Gastos extraordinarios</h2>
 <p>Quedan para regularse expresamente en el contrato la reposición de equipos principales, las ampliaciones de infraestructura y los daños que no estén cubiertos por garantía.</p>
 
-<h2>5. Ejemplo ilustrativo de distribución</h2>
+<h2>4. Ejemplo ilustrativo de distribución</h2>
 <p>Escenario de ${HOURS} horas diarias de utilización equivalente a plena potencia (${POWER_KW} kW), 30 días al mes, venta a $ ${PRICE.toLocaleString('es-CO')} por kWh y compra a $ ${COST.toLocaleString('es-CO')} por kWh.</p>
 <table>
   <tr><th>Concepto</th><th class="r">Valor mensual (COP)</th></tr>

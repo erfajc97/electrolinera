@@ -3,7 +3,6 @@ import {
   CAPEX_COP, FALLBACK_FX, INVESTOR_PCT, DISART_PCT, TARGET, TARGET_HOURS,
   PRICE_KWH_COP, COST_KWH_COP, POWER_KW, fmtCopM, fmtUsd,
 } from "../../config/invest";
-import servicios from "../../config/servicios-30.json";
 
 const investorGets = [
   `${INVESTOR_PCT}% de la propiedad de los cargadores y la infraestructura`,
@@ -11,20 +10,6 @@ const investorGets = [
   "Acceso a tu dashboard de socio con ingresos y consumos en tiempo real",
   "Informes periódicos de operación y resultados financieros",
   "Sin administrar equipos, software, cobros ni mantenimiento",
-];
-
-const fases = [...new Set(servicios.map((x) => x.fase))].map((fase) => ({
-  fase,
-  items: servicios.filter((x) => x.fase === fase),
-}));
-
-const noExtraCharge = [
-  "Software y app",
-  "Pasarela y cobros",
-  "Administración",
-  "Monitoreo 24/7",
-  "Soporte a conductores",
-  "Mantenimiento ordinario",
 ];
 
 const fmtN = (n: number) => n.toLocaleString("es-CO");
@@ -78,57 +63,6 @@ const fmtN = (n: number) => n.toLocaleString("es-CO");
           funcione y venda energía todos los días.
         </p>
       </article>
-    </div>
-
-    <div class="mt-10 rounded-3xl border border-ink-100 bg-white p-6 shadow-soft md:p-8">
-      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Qué justifica el {DISART_PCT}% de Disart</p>
-      <h3 class="font-display mt-2 text-2xl font-bold text-ink-950">Un solo operador para todo el ciclo del negocio</h3>
-      <p class="mt-2 max-w-3xl text-sm text-ink-700">
-        Sin Disart, el inversionista tendría que contratar por separado importador, gestor de permisos,
-        constructor, proveedor de software, pasarela de pagos, centro de monitoreo, técnicos de mantenimiento
-        y seguridad informática. Con Disart es un solo responsable y un solo reparto.
-      </p>
-      <div class="mt-8 space-y-10">
-        {fases.map((f) => (
-          <div>
-            <p class="border-b border-ink-100 pb-2 text-xs font-bold uppercase tracking-widest text-brand-700">{f.fase}</p>
-            <div class="mt-4 grid gap-4 md:grid-cols-2">
-              {f.items.map((g) => (
-                <div class="rounded-2xl border border-ink-100 bg-ink-50 p-5">
-                  <div class="flex items-baseline gap-3">
-                    <span class="font-display text-sm font-bold text-brand-700">{String(g.n).padStart(2, "0")}</span>
-                    <h4 class="font-display text-base font-bold text-ink-950">{g.title}</h4>
-                  </div>
-                  <p class="mt-2 text-sm leading-relaxed text-ink-700">{g.summary}</p>
-                  <ul class="mt-3 space-y-1.5">
-                    {g.items.map((i) => (
-                      <li class="flex items-start gap-2 text-xs leading-relaxed text-ink-700">
-                        <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                        {i}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-5">
-        <p class="text-sm font-semibold text-ink-950">
-          Tu {INVESTOR_PCT}% es limpio: todo esto está cubierto por el {DISART_PCT}% de Disart y no se te cobra aparte.
-        </p>
-        <div class="mt-3 flex flex-wrap gap-2">
-          {noExtraCharge.map((n) => (
-            <span class="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-brand-700 ring-1 ring-inset ring-brand-200">{n}</span>
-          ))}
-        </div>
-        <p class="mt-3 text-[11px] text-ink-500">
-          Gastos extraordinarios (reposición de equipos principales, ampliaciones de infraestructura o daños
-          no cubiertos por garantía) se regulan expresamente en el contrato.
-        </p>
-      </div>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-12">

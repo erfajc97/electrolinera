@@ -1,0 +1,156 @@
+---
+const tabs = [
+  {
+    id: "app",
+    label: "App del conductor",
+    kicker: "Lo que usa quien carga",
+    title: "La app que le trae clientes a tu estación.",
+    text: "Es nuestra aplicación propia: el conductor encuentra la estación, carga y paga desde el celular. Cada recarga queda registrada y llega a tu dashboard.",
+    points: [
+      "Mapa de cargadores cercanos con disponibilidad, potencia y tarifa por kWh",
+      "Carga escaneando el código QR del cargador",
+      "Billetera con saldo disponible y recargas",
+      "Historial de cargas y recargas, con kWh y valor de cada una",
+      "Inicio de sesión con correo, Google o Apple",
+    ],
+    kind: "phone",
+    shots: [
+      { src: "/img/plataforma/app-inicio.webp", alt: "App Disart Energy: saldo, consumo del mes y actividad" },
+      { src: "/img/plataforma/app-mapa.webp", alt: "App Disart Energy: mapa de cargadores cercanos con disponibilidad y tarifa" },
+      { src: "/img/plataforma/app-actividad.webp", alt: "App Disart Energy: historial de cargas y recargas" },
+    ],
+  },
+
+  {
+    id: "socio",
+    label: "Dashboard del socio",
+    kicker: "Para ti, el inversionista",
+    title: "Tus estaciones y tus máquinas, siempre a la vista.",
+    text: "Entras con tu propio usuario y ves lo que es tuyo: cada estación, cada cargador, su estado en tiempo real y sus consumos. Sin pedirle un reporte a nadie.",
+    points: [
+      "Estaciones y su estado: encendidas, en el mapa, cuántas máquinas tienen",
+      "Cada máquina: potencia, estado OCPP (disponible, cargando, con falla) y última señal",
+      "Consumos: sesiones y kWh por estación y por máquina, por rango de fechas",
+      "Personas de tu equipo con acceso al panel",
+    ],
+    kind: "desktop",
+    shots: [{ src: "/img/plataforma/socio-estaciones.webp", alt: "Dashboard del socio de Disart Energy: lista de estaciones con estado y máquinas" }],
+  },
+  {
+    id: "admin",
+    label: "Panel de administración",
+    kicker: "Lo que usa el equipo de Disart",
+    title: "Así operamos tu electrolinera todos los días.",
+    text: "El mismo sistema con el que Disart monitorea la red completa: indicadores, mapa, eventos en vivo y el detalle de cada recarga con montos, impuestos y pasarela.",
+    points: [
+      "Indicadores: cargadores en línea, usuarios, partners y kWh vendidos",
+      "Mapa de estaciones y cargadores por país y ciudad",
+      "Eventos en vivo de cada cargador, por socket en tiempo real",
+      "Recargas con la operación completa: cliente, acreditado, impuestos, cobrado y pasarela",
+      "Auditoría de acciones y administradores por rol",
+    ],
+    kind: "desktop",
+    shots: [
+      { src: "/img/plataforma/admin-inicio.webp", alt: "Panel de administración de Disart Energy: indicadores y kWh vendidos" },
+      { src: "/img/plataforma/admin-mapa.webp", alt: "Mapa de estaciones de carga en el panel de administración" },
+      { src: "/img/plataforma/admin-envivo.webp", alt: "Eventos en vivo de los cargadores" },
+      { src: "/img/plataforma/admin-recargas.webp", alt: "Listado de recargas con montos, impuestos y estado" },
+    ],
+  },
+];
+---
+<section id="plataforma" class="relative overflow-hidden bg-linear-to-b from-white via-brand-50/40 to-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Tecnología propia</p>
+      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+        Tu inversión no es una caja negra. La puedes ver.
+      </h2>
+      <p class="mt-4 text-lg text-ink-700">
+        Desarrollamos la plataforma completa: la app del conductor, el panel de administración y el dashboard del socio.
+        Estas son pantallas reales del sistema.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-2" role="tablist" data-plat-tabs>
+      {tabs.map((t, i) => (
+        <button
+          type="button"
+          role="tab"
+          data-plat-tab={t.id}
+          aria-selected={i === 0 ? "true" : "false"}
+          class="rounded-full border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 transition hover:border-brand-400 hover:text-brand-700 aria-selected:border-ink-950 aria-selected:bg-ink-950 aria-selected:text-white"
+        >
+          {t.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="mt-10">
+      {tabs.map((t, i) => (
+        <div role="tabpanel" data-plat-panel={t.id} class={i === 0 ? "grid items-center gap-10 lg:grid-cols-12" : "hidden grid items-center gap-10 lg:grid-cols-12"}>
+          <div class="lg:col-span-5">
+            <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">{t.kicker}</p>
+            <h3 class="font-display mt-2 text-balance text-3xl font-bold text-ink-950">{t.title}</h3>
+            <p class="mt-3 text-base leading-relaxed text-ink-700">{t.text}</p>
+            <ul class="mt-6 space-y-3">
+              {t.points.map((p) => (
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-ink-800">
+                  <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="lg:col-span-7">
+            {t.kind === "desktop" ? (
+              <div class="space-y-6">
+                {t.shots.map((s, j) => (
+                  <div class={j === 0 ? "" : "hidden sm:block"}>
+                    <div class="overflow-hidden rounded-2xl border border-ink-200 bg-white shadow-glow">
+                      <div class="flex items-center gap-1.5 border-b border-ink-100 bg-ink-50 px-4 py-2.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-ink-200"></span>
+                      </div>
+                      <img src={s.src} alt={s.alt} width="1920" height="1080" class="block w-full" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div class="flex justify-center gap-4 sm:gap-6">
+                {t.shots.map((s, j) => (
+                  <div class={`w-[30%] max-w-[15rem] shrink-0 ${j === 1 ? "sm:-translate-y-6" : ""}`}>
+                    <div class="overflow-hidden rounded-[1.6rem] border-[5px] border-ink-950 bg-ink-950 shadow-glow sm:rounded-[2rem] sm:border-[7px]">
+                      <img src={s.src} alt={s.alt} width="780" height="1688" class="block w-full" loading="lazy" decoding="async" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-10 text-center text-xs text-ink-500">
+      Capturas del sistema funcionando con datos de demostración. Los datos reales de tu estación aparecen en tu propio dashboard.
+    </p>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-plat-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-plat-panel]');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.dataset.platTab;
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+      panels.forEach((p) => p.classList.toggle('hidden', p.dataset.platPanel !== id));
+    });
+  });
+</script>
