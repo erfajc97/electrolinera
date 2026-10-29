@@ -8,6 +8,7 @@ interface Props {
   image?: string;
   imageAlt?: string;
   noindex?: boolean;
+  preloader?: boolean;
   jsonld?: unknown;
   keywords?: string;
   canonicalPath?: string;
@@ -15,9 +16,10 @@ interface Props {
 const {
   title = "Disart Energy — Electrolineras, energía solar y movilidad eléctrica en Colombia",
   description = "Disart Energy diseña, importa, instala y opera electrolineras de carga rápida, sistemas solares fotovoltaicos y soluciones de movilidad eléctrica llave en mano en Colombia y Latinoamérica.",
-  image = "/img/electrolinera/og-cargadores.jpg",
+  image = "/img/electrolinera/og-cargadores-v3.jpg",
   imageAlt = "Electrolinera Disart Energy con cargadores DC fast charging en Colombia",
   noindex = false,
+  preloader = true,
   jsonld = null,
   keywords = "electrolineras Colombia, estación de carga eléctrica, carga rápida DC, franquicia electrolinera, inversión electrolineras, paneles solares Colombia, movilidad eléctrica, vehículo eléctrico Colombia, Disart Energy",
   canonicalPath,
@@ -38,7 +40,7 @@ const orgLd = {
   alternateName: ["DISART Energy", "Disart"],
   url: "https://disartenergy.com",
   logo: "https://disartenergy.com/img/logo.svg",
-  image: "https://disartenergy.com/img/electrolinera/og-cargadores.jpg",
+  image: "https://disartenergy.com/img/electrolinera/og-cargadores-v3.jpg",
   description,
   email: CONTACT.email,
   telephone: "+57 310 4836462",
@@ -138,7 +140,7 @@ const orgLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
@@ -162,14 +164,53 @@ const orgLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
+    <script is:inline define:vars={{ preloader }}>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var seen = false;
+        try { seen = sessionStorage.getItem('disart-pl') === '1'; } catch (e) {}
+        if (preloader && !seen && !reduce) {
+          d.classList.add('preload');
+          try { sessionStorage.setItem('disart-pl', '1'); } catch (e) {}
+        }
+      })();
+    </script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     {jsonld && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   </head>
   <body class="overflow-x-hidden">
+    <div id="preloader" aria-hidden="true">
+      <div class="pl-logo">
+        <img src="/img/logo.svg" alt="" width="710" height="160" />
+        <span class="pl-bar"></span>
+      </div>
+    </div>
     <slot />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        function ready() { d.classList.add('ready'); }
+        if (d.classList.contains('preload')) {
+          setTimeout(function () { d.classList.add('preload-out'); ready(); }, 1900);
+          setTimeout(function () { d.classList.remove('preload', 'preload-out'); }, 2800);
+        } else {
+          setTimeout(ready, 30);
+        }
+        var els = document.querySelectorAll('[data-reveal], [data-wipe]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        els.forEach(function (e) { io.observe(e); });
+      })();
+    </script>
   </body>
 </html>

@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import SubHero from "../components/shared/SubHero.astro";
+import NextStep from "../components/shared/NextStep.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Plataforma de carga en marca blanca: app y backoffice | Disart Energy",
+  description:
+    "Licencia de la plataforma de Disart Energy en marca blanca: app para conductores y backoffice propios, con tu nombre y tus colores, para operar tus propias estaciones de carga.",
+  image: "/img/plataforma/app-inicio.webp",
+};
+
+const includes = [
+  { t: "App para tus conductores", d: "Mapa de cargadores, carga con código QR, billetera y historial. Publicada con tu nombre, tu logo y tus colores." },
+  { t: "Backoffice propio", d: "Tu panel de operación: indicadores, mapa de estaciones, eventos en vivo de cada cargador y detalle de cada recarga." },
+  { t: "Dashboard para tus socios", d: "Si compartes estaciones con inversionistas, cada uno entra con su usuario y ve sus equipos, estados y consumos." },
+  { t: "Conexión con tus cargadores", d: "Operación sobre OCPP 1.6: el sistema habla con tus equipos y muestra su estado en tiempo real." },
+  { t: "Cobros y reportes", d: "Cada recarga queda registrada con sus montos, impuestos y pasarela, lista para conciliar." },
+  { t: "Mantenimiento y evolución", d: "Alojamiento, monitoreo, soporte y actualizaciones corren por cuenta de Disart mientras dure la licencia." },
+];
+
+const audiences = [
+  "Operadores que quieren lanzar su red de estaciones sin desarrollar software.",
+  "Empresas y flotas con cargadores propios que necesitan control y cobro.",
+  "Dueños de parqueaderos, centros comerciales y hoteles que cobran la carga.",
+  "Distribuidores de cargadores que quieren entregar el equipo con su plataforma.",
+];
+
+const steps = [
+  { t: "Definimos tu marca", d: "Nombre, logo, colores y dominio. Con eso preparamos tu app y tu backoffice." },
+  { t: "Conectamos tus cargadores", d: "Registramos tus estaciones y equipos y verificamos que reporten estado y consumo." },
+  { t: "Publicamos y operas", d: "Tu app queda disponible para tus conductores y tú empiezas a operar desde tu propio panel." },
+];
+
+const swatches = [
+  { id: "verde", label: "Verde", rot: 0, color: "oklch(0.55 0.17 152)" },
+  { id: "azul", label: "Azul", rot: 95, color: "oklch(0.55 0.17 247)" },
+  { id: "naranja", label: "Naranja", rot: -105, color: "oklch(0.68 0.17 47)" },
+  { id: "rojo", label: "Rojo", rot: -150, color: "oklch(0.58 0.2 2)" },
+];
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Marca blanca", item: "https://disartenergy.com/marca-blanca" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Plataforma de carga de vehículos eléctricos en marca blanca",
+    serviceType: "Licencia de software (app móvil y backoffice) para operadores de electrolineras",
+    provider: { "@id": "https://disartenergy.com/#org" },
+    areaServed: ["CO", "LATAM"],
+  },
+];
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <SubHero
+      current="marca-blanca"
+      title="Tu plataforma de carga, con tu marca."
+      lead="Licenciamos el mismo sistema con el que operamos nuestras estaciones: app para conductores y backoffice, bajo tu nombre. Sin desarrollar ni mantener software propio."
+    />
+
+    <!-- Probador de marca: la pieza interactiva -->
+    <section class="bg-white py-12 md:py-16" id="probador">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div class="lg:col-span-4" data-reveal>
+            <h2 class="font-display text-balance text-[1.75rem] font-extrabold leading-[1.02] text-ink-950 md:text-4xl">Mírala con tu marca.</h2>
+            <p class="mt-4 text-base text-ink-700">Elige un color y escribe el nombre de tu red. Es una simulación de cómo se adapta la interfaz; en la licencia definimos tu identidad completa.</p>
+
+            <label for="bw-name" class="mt-8 block text-sm font-semibold text-ink-950">Nombre de tu marca</label>
+            <input id="bw-name" type="text" maxlength="22" value="Tu Marca" autocomplete="off" class="mt-2 w-full rounded-2xl bg-ink-100 px-4 py-3.5 text-base font-semibold text-ink-950 outline-none transition focus:bg-white focus:ring-2 focus:ring-ink-950" />
+
+            <p class="mt-6 text-sm font-semibold text-ink-950">Color principal</p>
+            <div class="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label="Color principal">
+              {swatches.map((s, i) => (
+                <button type="button" role="radio" aria-checked={i === 0 ? "true" : "false"} data-bw-rot={s.rot}
+                  class="press flex items-center gap-2 rounded-full bg-ink-100 py-2 pl-2 pr-4 text-sm font-semibold text-ink-950 aria-checked:bg-ink-950 aria-checked:text-white">
+                  <span class="h-6 w-6 rounded-full" style={`background:${s.color}`}></span>
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="lg:col-span-8" data-reveal style="--i:1">
+            <div id="bw-stage" class="rounded-[2rem] bg-ink-100 p-4 sm:p-8" style="--rot:0deg">
+              <div class="flex items-center justify-between rounded-2xl bg-white px-4 py-3">
+                <p class="font-display text-lg font-extrabold text-ink-950"><span id="bw-label">Tu Marca</span><span class="text-ink-500"> · backoffice</span></p>
+                <span class="h-3 w-3 rounded-full bg-brand-600" id="bw-dot"></span>
+              </div>
+              <div class="mt-3 grid grid-cols-5 items-end gap-3">
+                <img src="/img/plataforma/admin-inicio.webp" alt="Backoffice con indicadores de estaciones y consumo" width="1920" height="1080" class="bw-shot col-span-3 w-full rounded-xl" loading="lazy" />
+                <div class="col-span-2 flex items-end justify-end gap-2">
+                  <img src="/img/plataforma/app-inicio.webp" alt="App del conductor con saldo y consumo" width="780" height="1688" class="bw-shot w-1/2 rounded-[1.1rem] border-4 border-ink-950" loading="lazy" />
+                  <img src="/img/plataforma/app-mapa.webp" alt="App del conductor con mapa de cargadores" width="780" height="1688" class="bw-shot w-1/2 rounded-[1.1rem] border-4 border-ink-950 sm:translate-y-0" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="bg-ink-950 py-16 text-white md:py-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="font-display max-w-3xl text-balance text-[1.75rem] font-extrabold leading-[1.02] md:text-5xl" data-reveal>Lo que incluye la licencia.</h2>
+        <div class="mt-8 grid gap-x-14 gap-y-10 md:grid-cols-2">
+          {includes.map((x, i) => (
+            <div data-reveal style={`--i:${i % 2}`}>
+              <h3 class="font-display text-2xl font-extrabold text-lime-glow">{x.t}</h3>
+              <p class="mt-2 max-w-md text-base leading-relaxed text-ink-200">{x.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Para quién -->
+    <section class="bg-ink-50 py-12 md:py-16">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="font-display max-w-3xl text-balance text-[1.75rem] font-extrabold leading-[1.02] text-ink-950 md:text-5xl" data-reveal>Para quién es.</h2>
+        <ul class="mt-10 max-w-4xl space-y-6">
+          {audiences.map((a, i) => (
+            <li class="font-display text-balance text-lg font-bold leading-snug text-ink-950 md:text-2xl" data-reveal style={`--i:${i}`}>{a}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cómo empezamos -->
+    <section class="bg-brand-800 py-16 text-white md:py-24">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="font-display max-w-3xl text-balance text-[1.75rem] font-extrabold leading-[1.02] md:text-5xl" data-reveal>Cómo empezamos.</h2>
+        <div class="mt-8 grid gap-10 md:grid-cols-3">
+          {steps.map((s, i) => (
+            <div data-reveal style={`--i:${i}`}>
+              <h3 class="font-display text-2xl font-extrabold text-lime-glow">{s.t}</h3>
+              <p class="mt-3 text-base leading-relaxed text-brand-50">{s.d}</p>
+            </div>
+          ))}
+        </div>
+        <p class="mt-12 max-w-2xl text-base text-brand-100" data-reveal>Las condiciones de la licencia se definen según el tamaño de tu operación. Cuéntanos cuántas estaciones tienes o planeas y te preparamos una propuesta.</p>
+        <a href="#contacto" class="press mt-8 inline-flex items-center gap-2 rounded-full bg-lime-glow px-7 py-4 text-sm font-bold text-ink-950 hover:bg-white" data-reveal>
+          Hablar con el equipo
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <NextStep current="marca-blanca" />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .bw-shot { filter: hue-rotate(var(--rot, 0deg)); transition: filter 500ms var(--ease-out); }
+</style>
+
+<script>
+  const stage = document.getElementById('bw-stage');
+  const label = document.getElementById('bw-label');
+  const input = document.getElementById('bw-name') as HTMLInputElement | null;
+  const dot = document.getElementById('bw-dot');
+  const swatches = document.querySelectorAll<HTMLButtonElement>('[data-bw-rot]');
+  const colors = ['oklch(0.55 0.17 152)', 'oklch(0.55 0.17 247)', 'oklch(0.68 0.17 47)', 'oklch(0.58 0.2 2)'];
+  swatches.forEach((b, i) => {
+    b.addEventListener('click', () => {
+      swatches.forEach((x) => x.setAttribute('aria-checked', String(x === b)));
+      stage?.style.setProperty('--rot', `${b.dataset.bwRot}deg`);
+      if (dot) dot.style.background = colors[i];
+    });
+  });
+  input?.addEventListener('input', () => {
+    if (label) label.textContent = input.value.trim() || 'Tu Marca';
+  });
+</script>

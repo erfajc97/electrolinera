@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import SubHero from "../../components/shared/SubHero.astro";
+import NextStep from "../../components/shared/NextStep.astro";
+import Productos from "../../components/Productos.astro";
+import Tecnologia from "../../components/Tecnologia.astro";
+import CTA from "../../components/CTA.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFab from "../../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "Cargadores DC de 240 kW para electrolineras | Disart Energy",
+  description:
+    "Tres cargadores DC de 240 kW con dos mangueras CCS2 cada uno, OCPP 1.6 y monitoreo en tiempo real. Los equipos de la electrolinera Disart de 720 kW.",
+  image: "/img/electrolinera/cargador-240kw.jpg",
+};
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Inversión", item: "https://disartenergy.com/inversion" },
+      { "@type": "ListItem", position: 3, name: "Equipos", item: "https://disartenergy.com/inversion/equipos" },
+    ],
+  },
+];
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <SubHero
+      current="equipos"
+      title="Cargadores DC de 240 kW."
+      lead="Tres equipos por estación, seis mangueras CCS2 y 720 kW en total. Conectados a nuestra plataforma desde el primer día."
+      image="/img/electrolinera/cargador-240kw.jpg"
+      imageAlt="Cargador DC de 240 kW Disart Energy con pantalla, lector y dos mangueras CCS2"
+    />
+    <Productos />
+    <Tecnologia />
+    <NextStep current="equipos" />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

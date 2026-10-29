@@ -23,6 +23,11 @@ export default defineConfig({
         // Priority hierarchy: home + investor money page = max; flagship verticals next.
         if (item.url === 'https://disartenergy.com/') return { ...item, priority: 1.0, changefreq: 'weekly' };
         if (item.url === 'https://disartenergy.com/inversion/') return { ...item, priority: 0.95, changefreq: 'weekly' };
+        if (
+          item.url === 'https://disartenergy.com/plataforma/' ||
+          item.url === 'https://disartenergy.com/marca-blanca/' ||
+          item.url.startsWith('https://disartenergy.com/inversion/')
+        ) return { ...item, priority: 0.9, changefreq: 'weekly' };
         if (item.url === 'https://disartenergy.com/electrolineras/') return { ...item, priority: 0.95, changefreq: 'weekly' };
         if (
           item.url === 'https://disartenergy.com/solar/' ||

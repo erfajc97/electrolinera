@@ -1,0 +1,30 @@
+---
+import { INV_PAGES } from "../../config/sections";
+interface Props { current: string; title: string; lead: string; image?: string; imageAlt?: string; pages?: typeof INV_PAGES }
+const { current, title, lead, image, imageAlt = "", pages = INV_PAGES } = Astro.props;
+---
+<section class="relative bg-ink-950 pt-24 text-white md:pt-32">
+  <div class="mx-auto max-w-6xl px-4">
+    <nav aria-label="Secciones de inversión" class="hero-in -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" style="--i:0">
+      {pages.map((p) => (
+        <a
+          href={p.href}
+          aria-current={p.id === current ? "page" : undefined}
+          class="press shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition aria-[current=page]:bg-lime-glow aria-[current=page]:text-ink-950 bg-white/10 text-white hover:bg-white/20"
+        >{p.nav}</a>
+      ))}
+    </nav>
+
+    <div class="grid gap-6 pb-10 pt-7 md:pb-14 md:pt-10 lg:grid-cols-12 lg:items-end lg:gap-14">
+      <div class={image ? "lg:col-span-7" : "lg:col-span-9"}>
+        <h1 class="hero-in font-display text-balance text-[1.9rem] font-extrabold leading-[1] sm:text-5xl lg:text-[clamp(2.4rem,min(4.6vw,8svh),4.2rem)]" style="--i:1">{title}</h1>
+        <p class="hero-in mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-ink-200 md:mt-5 md:text-base" style="--i:2">{lead}</p>
+      </div>
+      {image && (
+        <div class="hero-in lg:col-span-5" style="--i:2">
+          <img src={image} alt={imageAlt} class="aspect-video w-full rounded-3xl object-cover object-[50%_35%] lg:aspect-4/3" loading="eager" decoding="async" />
+        </div>
+      )}
+    </div>
+  </div>
+</section>

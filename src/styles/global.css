@@ -30,8 +30,8 @@
   --color-bg: var(--color-ink-50);
   --color-fg: var(--color-ink-950);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Manrope", "Inter", ui-sans-serif, sans-serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Hanken Grotesk", ui-sans-serif, sans-serif;
 
   --radius-card: 1.25rem;
   --radius-pill: 9999px;
@@ -85,7 +85,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+.font-display { font-family: var(--font-display); font-stretch: 108%; letter-spacing: -0.03em; }
 
 .bg-grid {
   background-image:
@@ -150,4 +150,86 @@ body {
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid oklch(0.55 0.17 152 / 0.10);
+}
+
+
+/* ---------- Motion tokens ---------- */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Press feedback on every pill/button-like control */
+.press { transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease; }
+.press:active { transform: scale(0.97); }
+
+/* Scroll reveal: only hidden when JS is on, so content never depends on script */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+html.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Image reveal: wipe from the bottom */
+html.js [data-wipe] {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1100ms var(--ease-drawer);
+}
+html.js [data-wipe].is-in { clip-path: inset(0 0 0 0); }
+
+/* ---------- Preloader ---------- */
+#preloader { display: none; }
+html.preload #preloader {
+  display: grid;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  place-items: center;
+  background: var(--color-ink-950);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 800ms var(--ease-drawer);
+}
+html.preload.preload-out #preloader { clip-path: inset(0 0 100% 0); }
+html.preload { overflow: hidden; }
+
+.pl-logo { position: relative; width: min(72vw, 420px); }
+.pl-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+  clip-path: inset(0 100% 0 0);
+  animation: plWipe 900ms 150ms var(--ease-drawer) forwards;
+}
+.pl-bar {
+  display: block;
+  height: 3px;
+  margin-top: 18px;
+  background: var(--color-lime-glow);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: plBar 1100ms 200ms var(--ease-drawer) forwards;
+}
+@keyframes plWipe { to { clip-path: inset(0 0 0 0); } }
+@keyframes plBar { to { transform: scaleX(1); } }
+
+/* Hero entrance after the preloader */
+html.js .hero-in { opacity: 0; transform: translateY(26px); }
+html.js.ready .hero-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
+html.js .hero-img { transform: scale(1.07); }
+html.js.ready .hero-img { transform: scale(1); transition: transform 2400ms var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal], html.js [data-wipe], html.js .hero-in, html.js .hero-img {
+    opacity: 1; transform: none; clip-path: none; transition: none;
+  }
+  html.preload #preloader { display: none; }
+  html.preload { overflow: auto; }
 }

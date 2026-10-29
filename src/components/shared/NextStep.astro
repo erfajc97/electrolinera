@@ -1,0 +1,20 @@
+---
+import { INV_PAGES } from "../../config/sections";
+interface Props { current: string }
+const { current } = Astro.props;
+const list = INV_PAGES.filter((p) => p.id !== "resumen");
+const i = list.findIndex((p) => p.id === current);
+const next = list[(i + 1) % list.length];
+---
+<section class="bg-ink-950 py-14 text-white md:py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <a href={next.href} class="group block" data-reveal>
+      <p class="text-sm font-semibold text-lime-glow">Siguiente</p>
+      <p class="font-display mt-3 max-w-4xl text-balance text-3xl font-extrabold leading-[1.02] transition group-hover:text-lime-glow sm:text-5xl md:text-6xl">{next.title}</p>
+      <p class="mt-4 inline-flex items-center gap-2 text-base text-ink-200">
+        {next.blurb}
+        <svg class="h-5 w-5 shrink-0 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </p>
+    </a>
+  </div>
+</section>

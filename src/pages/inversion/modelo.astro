@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import SubHero from "../../components/shared/SubHero.astro";
+import NextStep from "../../components/shared/NextStep.astro";
+import InversionModel from "../../components/inversion/InversionModel.astro";
+import InversionShares from "../../components/inversion/InversionShares.astro";
+import InversionVsCompetition from "../../components/inversion/InversionVsCompetition.astro";
+import FxSync from "../../components/inversion/FxSync.astro";
+import CTA from "../../components/CTA.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFab from "../../components/WhatsAppFab.astro";
+import { INVESTOR_PCT, DISART_PCT } from "../../config/invest";
+
+const meta = {
+  title: "Modelo 70/30 de inversión en electrolineras | Disart Energy",
+  description:
+    "El inversionista es dueño del 70% de los equipos y recibe el 70% del resultado distribuible de la electrolinera; Disart opera todo por el 30%. Ejemplo de distribución mensual.",
+};
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Inversión", item: "https://disartenergy.com/inversion" },
+      { "@type": "ListItem", position: 3, name: "Modelo 70/30", item: "https://disartenergy.com/inversion/modelo" },
+    ],
+  },
+];
+---
+<BaseLayout title={meta.title} description={meta.description} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <SubHero
+      current="modelo"
+      title={`Tú pones el capital y eres dueño del ${INVESTOR_PCT}%.`}
+      lead={`Disart construye, opera y protege la estación, y conserva el ${DISART_PCT}% como operador integral. Así se reparten los equipos y las utilidades.`}
+    />
+    <InversionModel />
+    <InversionShares />
+    <InversionVsCompetition />
+    <NextStep current="modelo" />
+    <CTA />
+  </main>
+  <Footer />
+  <FxSync />
+</BaseLayout>

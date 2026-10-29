@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
-import HomeHero from "../components/home/HomeHero.astro";
+import HeroRender from "../components/shared/HeroRender.astro";
+import HomeFocus from "../components/home/HomeFocus.astro";
 import TrustBar from "../components/TrustBar.astro";
 import HomeServices from "../components/home/HomeServices.astro";
 import HomeProjects from "../components/home/HomeProjects.astro";
@@ -16,7 +17,7 @@ const meta = {
   title: "Electrolineras en Colombia · Franquicia 720 kW | Disart Energy",
   description:
     "Electrolineras DC fast charging, paneles solares e importación de vehículos eléctricos en Colombia. Electrolinera 720 kW llave en mano: el inversionista recibe el 70% de las utilidades — Disart Energy.",
-  image: "/img/electrolinera/og-cargadores.jpg",
+  image: "/img/electrolinera/og-cargadores-v3.jpg",
   imageAlt: "Electrolinera Disart Energy en Bogotá Colombia con cargador DC fast charging cargando un SUV eléctrico",
   keywords:
     "electrolineras en Colombia, estación de carga eléctrica Colombia, carga rápida DC, franquicia electrolinera, paneles solares Colombia, energía solar fotovoltaica, importación vehículos eléctricos Colombia, movilidad eléctrica, Disart Energy",
@@ -94,7 +95,18 @@ const jsonld = [
   <Nav />
   <WhatsAppFab />
   <main>
-    <HomeHero />
+    <HeroRender
+      title="Tu electrolinera, operada por nosotros."
+      text="Diseñamos, importamos, instalamos y operamos estaciones de carga rápida en Colombia, con app y dashboard propios. Tú pones el capital y eres dueño de tu estación."
+      primary={{ href: "/inversion", label: "Invertir en electrolineras" }}
+      secondary={{ href: "/plataforma", label: "Ver la plataforma" }}
+      stats={[
+        { v: "720 kW", l: "Por estación, 3 cargadores DC" },
+        { v: "COP 660 M", l: "Inversión por estación" },
+        { v: "24/7", l: "Monitoreo, soporte y mantenimiento" },
+      ]}
+    />
+    <HomeFocus />
     <TrustBar />
     <HomeServices />
     <HomeProjects />

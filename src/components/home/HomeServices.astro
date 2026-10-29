@@ -12,7 +12,7 @@ const featured = {
     "Margen sobre el kWh — compra $800, vende $1.800 COP",
     "Llave en mano: permisos, certificaciones e importación incluidas",
     "App + dashboard SaaS con opción de marca blanca personalizada",
-    "Tú aportas el capital: 70% de equipos y utilidades. Payback objetivo 10.9 meses (4 h/día)",
+    "Tú pones el capital; Disart opera. Payback objetivo 10,9 meses (4 h/día)",
   ],
   ctaPrimary: "Calcular mi retorno",
   ctaSecondary: "Ver la franquicia",
@@ -51,11 +51,11 @@ const secondary = [
   },
 ];
 ---
-<section id="soluciones" class="relative py-16 md:py-24">
+<section id="soluciones" class="relative py-12 md:py-16">
   <div class="mx-auto max-w-6xl px-4">
     <div class="mx-auto max-w-2xl text-center">
       <p class="text-xs font-semibold uppercase tracking-widest text-brand-700">Nuestras soluciones</p>
-      <h2 class="font-display mt-3 text-balance text-4xl font-bold tracking-tight text-ink-950 md:text-5xl">
+      <h2 class="font-display mt-3 text-balance text-[1.75rem] font-bold tracking-tight text-ink-950 md:text-4xl">
         Una sola compañía. Tres frentes de la transición energética.
       </h2>
       <p class="mt-4 text-lg text-ink-700">
@@ -67,30 +67,20 @@ const secondary = [
 
     <article class="group relative mt-10 md:mt-14 overflow-hidden rounded-4xl border border-brand-200 bg-ink-950 shadow-glow">
       <div class="grid gap-0 lg:grid-cols-12">
-        <div class="relative aspect-16/10 overflow-hidden lg:col-span-7 lg:aspect-auto">
-          <img src={featured.image} alt={featured.title} class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]" loading="eager" />
+        <div class="relative h-44 overflow-hidden sm:h-56 lg:col-span-4 lg:h-auto lg:max-h-[24rem]">
+          <img src={featured.image} alt={featured.title} class="h-full w-full object-cover object-[50%_35%] transition duration-700 group-hover:scale-[1.03]" loading="eager" />
           <div class="absolute inset-0 bg-linear-to-r from-ink-950/40 via-ink-950/15 to-transparent lg:bg-linear-to-r"></div>
           <div class="absolute inset-0 bg-linear-to-t from-ink-950/80 via-transparent to-transparent"></div>
           <span class="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-soft">
             <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={featured.icon} />
             {featured.tag}
           </span>
-          <div class="absolute inset-x-5 bottom-5 hidden gap-3 lg:flex">
-            <div class="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white backdrop-blur">
-              <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Inversión</p>
-              <p class="font-display text-base font-bold">$ 660 M COP</p>
-            </div>
-            <div class="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white backdrop-blur">
-              <p class="text-[10px] font-semibold uppercase tracking-widest text-brand-200">Tu participación</p>
-              <p class="font-display text-base font-bold">70% de utilidades</p>
-            </div>
-          </div>
         </div>
 
-        <div class="flex flex-col p-8 text-white lg:col-span-5 lg:p-10">
-          <h3 class="font-display text-3xl font-bold leading-tight md:text-4xl">{featured.title}</h3>
+        <div class="flex flex-col p-6 text-white lg:col-span-8 lg:p-8">
+          <h3 class="font-display text-2xl font-bold leading-tight md:text-3xl">{featured.title}</h3>
           <p class="mt-3 text-base italic text-brand-200">{featured.pitch}</p>
-          <ul class="mt-6 space-y-2.5 text-sm text-ink-100">
+          <ul class="mt-4 space-y-2 text-sm text-ink-100">
             {featured.bullets.map((b) => (
               <li class="flex items-start gap-2.5">
                 <svg class="mt-0.5 h-4 w-4 shrink-0 text-lime-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -98,7 +88,7 @@ const secondary = [
               </li>
             ))}
           </ul>
-          <div class="mt-8 flex flex-wrap gap-2.5">
+          <div class="mt-6 flex flex-wrap gap-2.5">
             <a href={featured.invest} class="inline-flex items-center gap-1.5 rounded-full bg-lime-glow px-5 py-3 text-sm font-bold text-ink-950 transition hover:bg-white">
               {featured.ctaPrimary}
               <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -114,7 +104,7 @@ const secondary = [
     <div class="mt-6 grid gap-6 lg:grid-cols-2">
       {secondary.map((s) => (
         <article class="group relative flex flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition hover:-translate-y-1 hover:border-brand-200">
-          <div class="relative aspect-16/9 overflow-hidden">
+          <div class="relative aspect-16/8 overflow-hidden">
             {s.video ? (
               <video src={s.video} autoplay loop muted playsinline preload="metadata" class="h-full w-full object-cover transition duration-700 group-hover:scale-105"></video>
             ) : (

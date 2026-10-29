@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import SubHero from "../components/shared/SubHero.astro";
+import NextStep from "../components/shared/NextStep.astro";
+import InversionPlataforma from "../components/inversion/InversionPlataforma.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFab from "../components/WhatsAppFab.astro";
+
+const meta = {
+  title: "App para conductores y dashboard del socio | Disart Energy",
+  description:
+    "La plataforma de Disart Energy: app móvil para conductores, dashboard del socio con consumos en tiempo real y panel de operación. Pantallas reales del sistema.",
+  image: "/img/plataforma/app-inicio.webp",
+};
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://disartenergy.com/" },
+      { "@type": "ListItem", position: 2, name: "Plataforma", item: "https://disartenergy.com/plataforma" },
+    ],
+  },
+];
+---
+<BaseLayout title={meta.title} description={meta.description} image={meta.image} jsonld={jsonld}>
+  <Nav />
+  <WhatsAppFab />
+  <main>
+    <SubHero
+      current="plataforma"
+      title="Tu inversión se puede ver."
+      lead="Desarrollamos la plataforma completa: la app del conductor, el dashboard del socio y el panel con el que operamos cada estación. Estas son pantallas reales del sistema."
+    />
+    <InversionPlataforma />
+    <NextStep current="plataforma" />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

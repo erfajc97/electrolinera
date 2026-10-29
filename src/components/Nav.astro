@@ -10,6 +10,18 @@ const solutions = [
     featured: true,
   },
   {
+    href: "/plataforma",
+    icon: "app",
+    title: "App y dashboard",
+    desc: "La plataforma con la que operamos cada estación, con pantallas reales.",
+  },
+  {
+    href: "/marca-blanca",
+    icon: "brand",
+    title: "Marca blanca",
+    desc: "Licencia de app y backoffice para operar con tu propia marca.",
+  },
+  {
     href: "/movilidad",
     icon: "car",
     title: "Movilidad eléctrica",
@@ -24,6 +36,8 @@ const solutions = [
 ];
 const links = [
   { href: "/inversion", label: "Invertir", featured: true },
+  { href: "/plataforma", label: "Plataforma" },
+  { href: "/marca-blanca", label: "Marca blanca" },
   { href: "/nosotros",  label: "Nosotros" },
   { href: "/#contacto", label: "Contacto" },
 ];
@@ -31,6 +45,8 @@ const icons: Record<string, string> = {
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
   car: '<path d="M5 17h14"/><path d="M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/><path d="M3 13l2-5h14l2 5v4H3v-4Z"/>',
   bolt: '<path d="M14 2 5 14h7l-2 8 9-12h-7l2-8Z"/>',
+  app: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+  brand: '<path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/>',
 };
 ---
 <header class="fixed inset-x-0 top-0 z-50">
@@ -50,7 +66,7 @@ const icons: Record<string, string> = {
             <svg class="h-3 w-3 transition group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div class="invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100">
-            <div class="w-[440px] rounded-2xl border border-ink-100 bg-white/95 p-2 shadow-soft backdrop-blur">
+            <div class="w-[460px] rounded-2xl border border-ink-100 bg-white/95 p-2 shadow-soft backdrop-blur">
               <ul class="grid gap-1">
                 {solutions.map((s) => (
                   <li>

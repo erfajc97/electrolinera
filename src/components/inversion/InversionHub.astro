@@ -1,0 +1,78 @@
+---
+import { TARGET } from "../../config/invest";
+import { pageById } from "../../config/sections";
+import servicios from "../../config/servicios-30.json";
+
+const c = pageById("cobertura");
+const p = pageById("plataforma");
+const e = pageById("equipos");
+const mb = pageById("marca-blanca");
+const arrow = '<path d="M5 12h14M13 5l7 7-7 7"/>';
+const payback = TARGET.paybackMonths.toFixed(1).replace(".", ",");
+const pill = "mt-4 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition";
+---
+<section id="detalle" class="bg-ink-50 py-12 md:py-14 lg:flex lg:min-h-svh lg:items-center">
+  <div class="mx-auto w-full max-w-6xl px-4">
+    <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between" data-reveal>
+      <h2 class="font-display text-balance text-[1.75rem] font-extrabold leading-[1.02] text-ink-950 md:text-[clamp(2rem,4.4svh+0.6rem,3.2rem)]">Elige qué quieres ver en detalle.</h2>
+      <p class="max-w-sm text-sm text-ink-700 md:text-base">Cada tema tiene su propia página.</p>
+    </div>
+
+    <div class="mt-6 grid gap-3 md:mt-8 md:gap-4 lg:grid-cols-12 lg:[grid-auto-rows:minmax(0,max(16.5rem,34svh))]">
+      <a href={c.href} class="tile group relative flex min-h-[13rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-ink-950 p-6 text-white lg:col-span-4" data-reveal style="--i:0">
+        <p class="font-display text-[4.5rem] font-extrabold leading-[0.85] text-lime-glow lg:text-[clamp(3rem,9svh,5rem)]">{servicios.length}</p>
+        <div>
+          <h3 class="font-display text-balance text-xl font-extrabold leading-tight md:text-2xl">Costos de nuestros servicios</h3>
+          <p class="mt-1.5 text-sm text-ink-300">14 servicios incluidos, sin cobros adicionales.</p>
+          <span class={`${pill} bg-lime-glow text-ink-950 group-hover:bg-white`}>Ver costos y servicios <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={arrow} /></span>
+        </div>
+      </a>
+
+      <a href={p.href} class="tile group relative flex min-h-[13rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-brand-100 p-6 text-ink-950 lg:col-span-4" data-reveal style="--i:1">
+        <div class="relative z-10 max-w-[56%]">
+          <h3 class="font-display text-balance text-xl font-extrabold leading-tight md:text-2xl">App y dashboard</h3>
+          <p class="mt-1.5 text-sm text-ink-700">Pantallas reales del sistema.</p>
+        </div>
+        <span class={`${pill} relative z-10 bg-ink-950 text-white group-hover:bg-brand-700`}>Ver pantallas <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={arrow} /></span>
+        <img src="/img/plataforma/app-inicio.webp" alt="Pantalla de inicio de la app Disart Energy" width="780" height="1688" class="tile-img absolute -right-3 top-6 w-[38%] max-w-[10rem] rounded-[1.3rem] border-4 border-ink-950" loading="lazy" />
+      </a>
+
+      <a href={e.href} class="tile group relative flex min-h-[13rem] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-ink-900 p-6 text-white lg:col-span-4" data-reveal style="--i:2">
+        <img src="/img/electrolinera/cargador-240kw.jpg" alt="Cargador DC de 240 kW Disart Energy con dos mangueras CCS2" width="1024" height="1536" class="tile-img absolute inset-y-0 right-0 h-full w-[46%] object-cover object-[50%_30%]" loading="lazy" />
+        <div class="relative z-10 max-w-[52%]">
+          <h3 class="font-display text-balance text-xl font-extrabold leading-tight md:text-2xl">Cargadores de 240 kW</h3>
+          <span class={`${pill} bg-white text-ink-950 group-hover:bg-lime-glow`}>Ver equipos <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={arrow} /></span>
+        </div>
+      </a>
+
+      <a href={mb.href} class="tile group relative flex min-h-[13rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-white p-6 text-ink-950 ring-1 ring-ink-100 lg:col-span-8" data-reveal style="--i:0">
+        <div class="relative z-10 max-w-md sm:max-w-[44%]">
+          <h3 class="font-display text-balance text-xl font-extrabold leading-tight md:text-3xl">Plataforma en marca blanca</h3>
+          <p class="mt-1.5 text-sm text-ink-700 md:text-base">App y backoffice con tu nombre, para operar tus propias estaciones.</p>
+        </div>
+        <span class={`${pill} relative z-10 bg-ink-950 text-white group-hover:bg-brand-700`}>Ver marca blanca <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={arrow} /></span>
+        <img src="/img/plataforma/admin-inicio.webp" alt="Backoffice de Disart Energy con indicadores" width="1920" height="1080" class="tile-img absolute -bottom-8 -right-12 hidden w-[52%] rounded-2xl border border-ink-100 sm:block" loading="lazy" />
+      </a>
+
+      <a href="/inversion#calculadora" class="tile group relative flex min-h-[13rem] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-lime-glow p-6 text-ink-950 lg:col-span-4" data-reveal style="--i:1">
+        <div>
+          <p class="font-display text-[4rem] font-extrabold leading-[0.85] lg:text-[clamp(3rem,9svh,5rem)]">{payback}</p>
+          <p class="mt-1 text-sm font-bold">meses de retorno proyectado</p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-ink-900">Simula con tus propias horas de uso.</p>
+          <span class={`${pill} bg-ink-950 text-white group-hover:bg-brand-800`}>Ir a la calculadora <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={arrow} /></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tile { transition: transform 200ms var(--ease-out); }
+  .tile:active { transform: scale(0.99); }
+  .tile-img { transition: transform 500ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) {
+    .tile:hover .tile-img { transform: translateY(-8px) scale(1.02); }
+  }
+</style>

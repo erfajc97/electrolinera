@@ -58,3 +58,11 @@ Supuestos: 720 kW a plena potencia, margen 1.000 COP/kWh (venta 1.800 − compra
 - Teléfono: +57 310 4836462
 - Ciudad: Bogotá, Cundinamarca, Colombia
 - Idiomas: español, inglés
+
+## Páginas de inversión y plataforma
+- https://disartenergy.com/inversion — Resumen: electrolinera 720 kW, COP 660 millones, 70% inversionista / 30% Disart.
+- https://disartenergy.com/inversion/modelo — Modelo 70/30 y ejemplo de distribución mensual.
+- https://disartenergy.com/inversion/costos-servicios — Costos y servicios incluidos en la operación.
+- https://disartenergy.com/inversion/equipos — Cargadores DC de 240 kW (CCS2, OCPP 1.6).
+- https://disartenergy.com/plataforma — App del conductor, dashboard del socio y panel de operación.
+- https://disartenergy.com/marca-blanca — Licencia de la plataforma (app y backoffice) en marca blanca.
